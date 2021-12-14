@@ -1,0 +1,43 @@
+@mixin text($fs,$color,$lh,$fw) {
+    font-size: $fs;
+    color: $color;
+    line-height: $lh;
+    font-weight: $fw;
+}
+@mixin  linkBtn($color,$pt:10px,$pr:20px,$pb:10px,$pl:20px) {
+    width: 100%;
+    background-color: $color;
+    text-transform: uppercase;
+    border:3px solid $color;
+    padding: $pt $pr $pb $pl;
+    margin-bottom: 10px;
+    @include text(13px,white,24px,bold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    white-space: nowrap;
+    & svg{
+        color: $grey;
+        font-size: 21px;
+        margin-right: 10px;
+    }
+    &:hover svg{
+        color:$dark;
+        transition: color .3s ease;
+    }
+    &:hover{
+        background-color:white;
+        color: $color;
+        transition: color .3s ease,background-color .3s ease;
+    }
+}
+@mixin radio($bg) {
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    background-color: $bg;
+    cursor: pointer;
+    
+}

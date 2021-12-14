@@ -1,0 +1,13 @@
+.products-list{
+   width: calc(100% - $productsAsideWidth);
+}
+.products-list__showcase{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+@media screen and (max-width:768px) {
+    .products-list{
+        width: 100%;
+    }
+}

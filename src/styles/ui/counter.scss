@@ -1,0 +1,23 @@
+.counter__control{
+    margin: 20px 0;
+    user-select: none;
+}
+.counter__title{
+    margin-right: 20px;
+}
+.counter__btns{
+    display: flex;
+    // justify-content: space-between;
+ 
+}
+.counter__btn{
+    box-shadow: 5px 5px 5px 0px rgba(34, 60, 80, 0.1);
+    &:first-child{
+        border-top-left-radius: 100%;
+        border-bottom-left-radius: 100%;
+    }
+    &:last-child{
+        border-top-right-radius: 100%;
+        border-bottom-right-radius: 100%;
+    }
+}

@@ -1,0 +1,82 @@
+.colors{
+    margin: 30px 0;
+}
+.colors__title{
+    margin-right:20px;
+}
+.colors__list{
+    display: flex;
+    flex-wrap: wrap;
+}
+.colors__color{
+    position: relative;
+    margin-right:5px;
+    :last-child{
+        margin-right: 0;
+    }
+    & input{
+        width: 24px;
+        height: 24px;
+        opacity: 0;
+        &:checked + span{
+            width: 24px;
+            height: 24px;
+            margin-left: 0;
+            margin-top: 0;
+            &::after{
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+    & span{
+        cursor: pointer;
+        width:20px ;
+        height: 20px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-top: 2px;
+        margin-left: 2px;
+        &::after{
+            transition: width .3s ease,height .3s ease;
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background-color: transparent;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border: 2px solid $white;
+        }
+    }
+}
+@media screen  and (max-width:640px){
+    .colors__color{
+        & input{
+            width: 44px;
+            height: 44px;
+            margin: 0 10px;
+            &:checked + span{
+                width: 46px;
+                height: 46px;
+                &::after{
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+        }
+        & span{
+            width:40px ;
+            height: 40px;
+            margin-top: 4px;
+            margin-left: 4px;
+            &::after{
+                width: 44px;
+                height: 44px;
+                border: 2px solid $white;
+            }
+        }
+    }
+}

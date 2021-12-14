@@ -1,0 +1,103 @@
+$durAnim:.3s;
+$waitAnim:.2s;
+
+.products-aside{
+    width: $productsAsideWidth;
+    padding: 0 15px;
+    background-color: $white;
+}
+.products-aside__title{
+    display: block;
+    
+    width: 100%;
+    background-color: $lite;
+    padding: 19px 10px 18px 21px;
+    margin-bottom: 30px;
+}
+.products-aside__list{
+    padding: 5px 5px 15px;
+    border-bottom: 1px solid $border;
+    margin-bottom: 15px;
+}
+.products-aside__list_last{
+    border-bottom: none;
+}
+.products-aside__item{
+    margin: 3px 0;
+}
+.products-aside__item_title{
+    margin-bottom: 10px;
+}
+.product-aside__close,.product-aside__open{
+    display: none;
+}
+
+@media screen and (max-width:768px) {
+    .products-aside{
+        position: relative;
+        padding-top:35px ;
+        width: 100%;
+        position: fixed;
+        z-index: 1000;
+        top: 0px;
+        bottom: 0px;
+        left: 0%;
+        overflow-y: scroll;
+        transition: transform $durAnim ease ;
+        transform: translateX(-100%);
+    }
+    .product-aside__close{
+        display: block;
+        position: absolute;
+        right: 15px;
+        top: 5px;
+        background-color: transparent;
+        & svg{
+            font-size: 24px;
+            cursor: pointer;
+            color: $grey;
+            transition: color .1s ease;
+            &:hover{
+                color: $google;
+            }
+        }
+    }
+    .product-aside__open{
+        display: block;
+        position: fixed;
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        bottom:10%;
+        left: 10%;
+        z-index: 500;
+        background-color: $logoBg;
+        border: 2px solid $logoBg;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6);
+        transition: 
+            background-color $durAnim ease,
+            left .3s ease;
+        & svg{
+            color: $white;
+            transition: color $durAnim ease;
+        }
+        &:hover{
+            background-color: $white;
+            & svg{
+                color: $logoBg;
+            }
+        }
+    }
+    .product-aside__open_hidden{
+        overflow: hidden;
+        left: -10% ;
+        
+    }
+    .products-aside_show{
+        transform: translateX(0);
+        transition: transform $durAnim ease $waitAnim;
+    }
+}

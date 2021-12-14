@@ -1,0 +1,213 @@
+.card{
+    position: relative;
+    min-width: 23%;
+    max-width: 260px;
+    margin:0 1%;
+    border: 1px solid white;
+    background-color: white;
+    cursor: pointer;
+    padding: 5px;
+    &:hover{
+        transition: 
+            transform .2s ease;
+            transform: scale(1.07);
+        border-color: $lite;
+        z-index: 300;
+        & .card__shows-text{
+            z-index: 100;
+        }
+        & .slider__miniatures{
+            background-color: rgba(0,0,0,.35);
+            transform: translateY(0%);
+            opacity: 1;
+        }
+        & .slider__slide{
+            width: 100%;
+        }
+        & .card__btn{
+            opacity: 1;
+            height: auto;
+            width: auto;
+        }
+    }
+}
+
+.card__shows-text{
+    position: absolute;
+    top: 33%;
+    left: 50%;
+    transform: translate(-50%);
+    padding:5px 10px 7px;
+    background-color: rgba(0,0,0,.25);
+    @include text(16px,white,1,500);
+    z-index: -100;
+    &:hover{
+        background-color: rgba(0,0,0,.7);
+    }
+}
+.card__hashtags{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 100;
+}
+.card__sale{
+    @include text(13px, white,13px,bold);
+    text-transform: uppercase;
+    background-color: $darkPromo;
+    padding: 5px;
+    text-align: center;
+}
+.card__new{
+    @include text(13px, $darkPromo,13px,bold);
+    text-transform: uppercase;
+    background-color: white;
+    padding: 5px;
+    text-align: center;
+}
+.card__discount{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 100;
+    border-radius: 100%;
+    background-color: $darkPromo;
+    width: 42px;
+    @include text(13px,white,41px, bold);
+    text-align:center;
+}
+.card__info{
+    padding:10px;
+    background-color: white;
+    border: 2px solid white;
+    position: relative;
+    width: 100%;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.card__name{
+    @include text(14px,$grey,1.4,300);
+    margin-bottom: 3px;
+}
+.card__price{
+    @include text(16px,$darkPromo,22px,bold);
+    margin-bottom: 10px;
+}
+.card__btn{
+    opacity: 0;
+    @include linkBtn($dark);
+}
+@media screen {
+    
+}
+@media screen and (max-width:768px) {
+    .card{
+        min-width: 45%;
+        margin:0 2.5%;
+        &:hover{
+            transform: scale(1);
+            padding: 0px;
+            border-color: transparent;
+            z-index: 300;
+            & .card__shows-text{
+                z-index: 100;
+            }
+            & .slider__miniatures{
+                background-color: white;
+                transform: translateY(0%);
+            }
+            & .slider__slide{
+                width: 100%;
+            }
+            & .card__btn{
+                opacity: 0;
+                height: 0;
+                width: 0;
+            }
+        }
+    }
+}
+@media screen and (max-width:480px) {
+    .card{
+        min-width: 90%;
+        margin:0 5%;
+    }
+    .card__btn{
+        display: none;
+    }
+}
+
+
+// anime
+$durAnime:.15;
+
+.card_anime-0{
+    animation:move-first $durAnime + s linear;
+}
+.card_anime-1{
+    animation:move-second $durAnime * 2 + s linear;
+
+}
+.card_anime-2{
+    animation:move-third $durAnime * 3 + s linear;
+  
+}
+.card_anime-3{
+    animation:move-fourth $durAnime * 4 + s linear;
+
+}
+@keyframes move-first{
+from {
+    opacity: 0;
+    transform:rotate3d(0,1,0,270deg);
+}
+to {
+    transform:rotate3d(0,1,0,360deg);
+    opacity: 1;
+}
+}
+@keyframes move-second {
+    from {
+        opacity: 0;
+        transform:rotate3d(0,1,0,270deg);
+    }
+    25%{
+        opacity: 0;
+        transform:rotate3d(0,1,0,270deg);
+    }
+    to {
+        transform:rotate3d(0,1,0,360deg);
+        opacity: 1;
+    }
+}
+@keyframes move-third {
+    from {
+        opacity: 0;
+        transform:rotate3d(0,1,0,270deg);
+    }
+    50%{
+        opacity: 0;
+        transform:rotate3d(0,1,0,270deg);
+    }
+    to {
+        transform:rotate3d(0,1,0,360deg);
+        opacity: 1;
+    }
+}
+@keyframes move-fourth {
+    from {
+        opacity: 0;
+        transform:rotate3d(0,1,0,270deg);
+    }
+    75%{
+        opacity: 0;
+        transform:rotate3d(0,1,0,270deg);
+    }
+    to {
+        transform:rotate3d(0,1,0,360deg);
+        opacity: 1;
+    }
+}

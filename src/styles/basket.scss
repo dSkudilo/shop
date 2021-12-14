@@ -1,0 +1,39 @@
+.basket{
+    position: relative;
+    margin-left: auto;
+    max-width: $asideWidth;
+    min-width: $asideWidth;
+    min-height: $navHeight;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 502;
+    cursor: pointer;
+    user-select: none;
+    & svg{
+        font-size: 25px;
+    }
+}
+.basket__counter{
+    position: absolute;
+    top: 5%;
+    right: 10%;
+    background: $lite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 100%;
+    @include text(14px,$dark,20px,bold);
+}
+@media screen and (max-width:960px) {
+    .basket{
+        margin: 0;
+        background-color:$sup-lite;
+        top: 0px;
+        position: absolute;
+        transform: translateY(100%);
+    }
+}

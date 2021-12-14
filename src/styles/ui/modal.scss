@@ -1,0 +1,18 @@
+.modal{
+    // position: absolute;
+    background: $lite;
+    padding: 19px 29px 20px 31px;
+    z-index: 1000;
+}
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    // background: rgba(0, 0, 0, .35);
+    z-index: 1000;
+}
+.hidden{
+
+}

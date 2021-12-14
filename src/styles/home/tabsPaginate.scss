@@ -1,0 +1,35 @@
+.tabs-paginate{
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    display: flex;
+}
+.tabs-paginate__radio{
+    margin-right: 15px;
+    &:last-child{
+        margin-right: 0;
+    }
+}
+.tabs-paginate__real{
+    width: 0;
+    height: 0;
+    opacity: 0;
+    &:checked + .tabs-paginate__fake{
+        background-color: $darkPromo
+    } 
+}
+.tabs-paginate__fake{
+    @include radio($border);
+}
+@media screen and (max-width:768px) {
+    .tabs-paginate{
+        top: 100%;
+        right: 50%;
+        transform: translate(+50%,-100%);
+    }
+}
+@media screen and (max-width:480px) {
+    .tabs-paginate{
+        display: none;
+    }
+}

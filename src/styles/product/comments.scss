@@ -1,0 +1,15 @@
+.product-comments{
+    padding-top: 15px;
+}
+.product-comments__title{
+    margin-bottom: 20px;
+}
+.product-comments__list{
+    margin-bottom: 25px;
+}
+.product-comments__item{
+    margin-bottom: 30px;
+    &:last-child{
+        margin-bottom: none;
+    }
+}

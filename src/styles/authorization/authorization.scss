@@ -1,0 +1,33 @@
+.authorization{
+    padding: 0 15px;
+}
+.authorization__title{
+    text-transform: uppercase;
+    font-weight: 900;
+    border-bottom:1px solid $border ;
+    padding-bottom: 19px;
+    margin:0 0px 30px;
+
+}
+.authorization__text{
+    font-weight: 300;
+    margin-bottom: 8px;
+}
+.authorization__content{
+    display: flex;
+    // justify-content: space-between;
+    align-items:flex-start;
+    
+}
+.authorization__card{
+    width: 100%;
+    max-width: 420px;
+    padding: 14px 18px 13px;
+    margin:0 15px 30px;
+    background-color: $img-bg;
+    border: 2px solid $border;
+}
+.authorization__btn{
+    margin: 25px 0;
+
+}

@@ -1,0 +1,36 @@
+.checkbox__control{
+    position: relative;
+    user-select: none;
+}
+.checkbox__content{
+    cursor: pointer;
+    @include text(12px, $grey, 22px, 300);
+    display: flex;
+    align-items: center;
+}
+.checkbox__real{
+    width: 0;
+    height: 0 ;
+    opacity: 0;
+    &:checked + .checkbox__fake{
+        &::after{
+            content: '✔';
+        }
+    }
+}
+.checkbox__fake{
+    position: relative;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: 1px solid $border;
+    margin-right: 10px;
+    &::after{
+        content: '';
+        color: $grey;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+}

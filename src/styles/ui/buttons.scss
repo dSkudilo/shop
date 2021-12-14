@@ -1,0 +1,61 @@
+$durAnim:.3s;
+
+.dark-btn{
+    @include linkBtn($dark);
+}
+.aside-btn{
+    @include linkBtn($dark,5px,10px,5px,10px);
+    margin-bottom: 30px;
+}
+.disabled{
+    background-color:white;
+    color: $dark;
+    cursor: no-drop;
+    svg{
+        color:$dark;
+        transition: color .3s ease;
+    }
+}
+.grey-btn{
+    width: 55px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $white;
+    border: 1px solid $border;
+    @include text(14px,$grey,1.42,bold);
+    transition: background-color $durAnim ease;
+    &:hover{
+        background-color: $border;
+        color: $white;
+    }
+
+}
+.grey-btn_disable{
+    background-color: $border;
+    color: $white;
+    transition: 
+        background-color $durAnim ease,
+        color $durAnim ease;
+}
+.small-social{
+    display: block;
+    width: 50px;
+    height: 50px;
+    border:2px solid $border-dark;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color $durAnim ease;
+    &:hover{
+        background-color: rgba(200,200,200,.15);
+    }
+}
+
+.facebook{
+    @include linkBtn($facebook);
+}
+.google{
+    @include linkBtn($google);
+}

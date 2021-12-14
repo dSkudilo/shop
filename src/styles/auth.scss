@@ -1,0 +1,21 @@
+.auth{
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    width: $asideForm;
+    &::after{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 2px;
+        height: calc(100% - 98px);
+        background-color: white;
+    }
+}
+
+.auth__btns{
+    margin: 30px 0 10px;
+    width: 100%;
+}

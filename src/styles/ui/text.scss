@@ -1,0 +1,48 @@
+.title{
+    @include text(75px,$darkPromo,1em,bold);
+    text-transform: uppercase;
+}
+.small-title{
+    @include text(45px,$white,1em,normal);
+    text-transform: uppercase;
+}
+.subtitle{
+    @include text(36px,$darkPromo,1em,100);
+    letter-spacing: .4em;
+    text-transform: uppercase;
+}
+.title-block{
+    @include text(20px,$dark,28px,400)
+}
+.product-subtitle{
+    @include text(18px,$dark,20px,600);
+    text-transform: uppercase;
+}
+.topic-white{
+    @include text(16px,$white,31px,bold);
+    text-transform: uppercase;
+}
+.topic-dark{
+    @include text(16px,$dark,31px,bold);
+    text-transform: uppercase;
+}
+.text-gray{
+    @include text(12px,$grey,22px,500);
+    text-transform: uppercase;
+}
+.text-white{
+    @include text(12px,$white,22px,500);
+    text-transform: uppercase;
+}
+.text-dark{
+    @include text(12px,$dark,22px,500)
+}
+.heading-grey{
+    @include text(14px,$grey,22px,bold);
+    text-transform: uppercase;
+}
+.heading-dark{
+    @include text(14px,$dark,22px,bold);
+    text-transform: uppercase;
+}
+

@@ -1,0 +1,32 @@
+.products-paginate{
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.products-paginate__item{
+    margin: 0 1.5px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $grey;
+    border: 1px solid $border;
+    cursor: pointer;
+}
+.products-paginate__item_active{
+    margin: 0 1.5px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $border-dark;
+    border: 1px solid $border-dark;
+    cursor: pointer;
+}
+.products-paginate__item_disabled{
+    border-color: #f0eded;
+    color: #f0eded;
+}

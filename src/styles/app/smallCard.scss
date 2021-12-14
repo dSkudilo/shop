@@ -1,0 +1,23 @@
+.small-card{
+    width: 100%;
+    display: flex;
+    cursor: pointer;
+}
+.small-card__img{
+    max-width:110px;
+    width: 100% !important;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+    background-color: $lite;
+    margin-right: 20px;
+}
+.small-card__title{
+    margin-bottom: 5px;
+}
+.small-card__descr{
+    margin-bottom: 15px;
+}
+.small-card__price{
+    
+}

@@ -1,0 +1,46 @@
+.home-deal{
+    perspective: 1px;    
+    height: 100%;
+    cursor: pointer;
+    &:hover{
+        & .home-deal__btn{
+            background-color: transparent;
+        }
+    }
+    
+}
+.home-deal__parallax{
+    background-image: url("../assets/parallax-1.jpg");
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.home-deal__info{
+    padding: 193px 0 215px;
+    text-align: center;
+}
+.home-deal__title{
+   margin-bottom: 21px;
+    
+}
+.home-deal__subtitle{
+    margin-bottom: 30px;
+}
+.home-deal__btn{
+    background-color: white;
+    border: 2px solid white;
+    padding: 20px 30px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    @include text(35px,$darkPromo,1em,500);
+    transition: background-color .3s ease;
+
+}
+@media screen and (max-width:768px) {
+    .home-deal{
+        margin-top: 20px;
+    }
+}

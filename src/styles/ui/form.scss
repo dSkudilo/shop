@@ -1,0 +1,31 @@
+.grey-form{
+    position: relative;
+    & input{
+        width: 100%;
+        border-bottom: 1px solid white;
+        background: $lite;
+        font-size: 14px;
+        padding:14px 0;
+    }
+}
+.dark-form {
+    position: relative;
+    display: flex;
+    & input,& button{
+        border: 1px solid $border-dark;
+        padding: 10px 10px 10px 20px;
+        background-color: $dark;
+        @include text(14px,$grey,28px,normal)
+        
+    }
+    & button{
+        padding: 0;
+        min-width: 50px;
+        height: 50px;
+        font-size: 20px;
+        color: $white;
+    }
+    & input{
+        width: 100%;
+    }
+}

@@ -1,0 +1,26 @@
+.product-comment{
+    display: flex;
+}
+.product-comment__info{
+    min-width: 195px;
+    border-right: 1px solid $border;
+}
+.product-comment__message{
+    padding:10px 15px;
+}
+.product-comment__title{
+    margin-bottom: 10px;
+}
+.product-comment__text{
+    line-height: 1.4;
+}
+@media screen and (max-width:640px) {
+    .product-comment__text{
+        font-size: 10px;
+    }
+}
+@media screen and (max-width:500px) {
+    .product-comment__info{
+        min-width:100px ; 
+    }
+}

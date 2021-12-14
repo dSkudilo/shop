@@ -1,0 +1,93 @@
+$durAnim:.2s;
+
+.dropdown__control{
+    position: relative;
+    width: 100%;
+    @include text(14px,$dropdown,1.42,normal) ;
+    margin: 20px 0;
+    user-select: none;
+}
+.dropdown__select{
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: left;
+    background-color: $white;
+    @include text(14px,$dropdown,1.42,normal);
+    border: 1px solid $border;
+    border-radius: 4px;
+    padding: 7px 15px 4px;
+    box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6);
+    transition: border-color $durAnim ease;
+    &::before{
+        content: '';
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        border: solid $grey;
+        border-width: 0 3px 3px 0;
+        display: inline-block;
+        padding: 3px;
+        transform: rotate(45deg);
+        z-index: 100;
+        transition:  color $durAnim ease;
+    }
+    &::after{
+        content: '';
+        display: block;
+        position: absolute;
+        right: 0%;
+        top: -1px;
+        bottom: -1px;
+        width: 30px;
+        background-color: $border;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        transition: background-color $durAnim ease;
+        
+    }
+}
+.dropdown__select_active{
+    box-shadow: none;
+    border-color: $border-dark;
+    &::before{
+        border-color: $white;
+    }
+    &::after{
+        background-color: $border-dark;
+    }
+    z-index: 2001;
+}
+.dropdown__list{
+    position: absolute;
+    top: 102%;
+    background-color: $white;
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6);
+    z-index: 2001;
+    cursor: pointer;
+    
+}
+.dropdown__item{
+    border: 1px solid $border;
+    border-bottom: none;
+
+    padding: 7px 15px 4px;
+    &:first-child{
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+    }
+    &:last-child{
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-bottom: 1px solid $border;
+    }
+    &:hover{
+        transition: 
+            background-color $durAnim ease,
+            color $durAnim ease;
+        background-color: $lite;
+        color: $dark;
+    }
+}

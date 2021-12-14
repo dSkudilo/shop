@@ -1,0 +1,116 @@
+@import './fonts.scss';
+
+@import './nullstyle.scss';
+@import './vars';
+@import './mixins';
+
+//ui
+@import './ui/modal.scss';
+@import './ui/buttons.scss';
+@import './ui/form.scss';
+@import './ui/slider.scss';
+@import './ui/text.scss';
+@import './ui/checkbox.scss';
+@import './ui/counter.scss';
+@import './ui/dropdown.scss';
+@import './ui/loader.scss';
+@import './ui/input';
+@import './ui/rating.scss';
+
+//blocks
+@import './header.scss';
+@import './navbar.scss';
+@import './logo.scss';
+@import './basket.scss';
+@import './aside.scss';
+@import './auth.scss';
+@import './search.scss';
+@import './footer.scss';
+
+//app
+@import './app/smallCard.scss';
+@import './app/card.scss';
+@import './app/cardSlider.scss';
+//views
+
+//home
+@import './home/promo.scss';
+@import './home/tabs.scss';
+@import './home/tabsPaginate.scss';
+@import './home/deal.scss';
+
+//products
+@import './products/products.scss';
+@import './products/aside.scss';
+@import './products/productList.scss';
+@import './products/paginate.scss';
+
+//product
+@import './product/product.scss';
+@import './product/productSlider.scss';
+@import './product/options.scss';
+@import './product/optionsColors.scss';
+@import './product/description.scss';
+@import './product/comments.scss';
+@import './product/comment.scss';
+@import './product/commentCreate.scss';
+@import './product/related.scss';
+@import './product/relatedSlider.scss';
+@import './product/relatedCard.scss';
+
+//authorization
+@import './authorization/authorization.scss';
+
+[v-cloak] {
+    display: none;
+}
+
+html{
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+body{
+    font-family: 'Ubuntu', sans-serif;
+    height: 100%;
+    display: block !important;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.main{
+    flex: 1 0 auto;
+}
+.container{
+    margin:  0 auto;
+    max-width: $container;
+}
+.with-nav{
+    padding-top:$topPadding;
+}
+.with-aside{
+    padding-left:$sidePadding;
+    padding-right: $sidePadding;
+}
+.back-drop{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+}
+@media screen and (max-width:960px) {
+    .with-nav{
+        padding-top:$navHeight;
+    }
+    .with-aside{
+        padding-left:0;
+        padding-right: 0;
+    }
+}
