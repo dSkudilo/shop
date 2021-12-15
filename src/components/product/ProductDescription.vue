@@ -13,7 +13,7 @@
                 
             </li>
         </ul>
-        <div class="product-description__content text-gray">
+        <div class="product-description__content text-grey">
             <iframe 
                 v-if="pnt[currentStep].name === 'video'"
                 :src="pnt[currentStep].content" 

@@ -27,6 +27,11 @@
     height: 34px;
     border-radius: 100%;
     @include text(14px,$dark,20px,bold);
+    transition: color,background-color .3s ease;
+}
+.basket__counter_active{
+    background-color: $green;
+    color: $white;
 }
 @media screen and (max-width:960px) {
     .basket{

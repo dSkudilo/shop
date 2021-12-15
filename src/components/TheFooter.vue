@@ -4,25 +4,25 @@
             <div class="footer__top">
                 <img class="footer__logo" src="../assets/logo.png" alt="logo">
                 <h3 class="footer__title small-title">Styler</h3>
-                <p class="footer__about text-gray">LOREM IPSUM DOLOR SIT AMET CONSE CTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT.</p>
+                <p class="footer__about text-grey">LOREM IPSUM DOLOR SIT AMET CONSE CTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT.</p>
             </div>
             <ul class="footer__events">
                 <li class="footer__event">
                     <img src="../assets/footer/1-footer.jpg" alt="img" class="footer__img">
                     <h5 class="footer__name topic-white">LABORE ET DOLORE MAGNA</h5>
-                    <p class="footer__descr text-gray">LOREM IPSUM DOLOR SIT AMET CONSE CTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD.</p>
+                    <p class="footer__descr text-grey">LOREM IPSUM DOLOR SIT AMET CONSE CTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD.</p>
                     <p class="footer__date text-white">15 / 10 / 2014</p>
                 </li>
                 <li class="footer__event">
                     <img src="../assets/footer/2-footer.jpg" alt="img" class="footer__img">
                     <h5 class="footer__name topic-white">LABORE ET DOLORE MAGNA</h5>
-                    <p class="footer__descr text-gray">LOREM IPSUM DOLOR SIT AMET CONSE CTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD.</p>
+                    <p class="footer__descr text-grey">LOREM IPSUM DOLOR SIT AMET CONSE CTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD.</p>
                     <p class="footer__date text-white">15 / 10 / 2014</p>
                 </li>
                 <li class="footer__event">
                     <img src="../assets/footer/3-footer.jpg" alt="img" class="footer__img">
                     <h5 class="footer__name topic-white">LABORE ET DOLORE MAGNA</h5>
-                    <p class="footer__descr text-gray">LOREM IPSUM DOLOR SIT AMET CONSE CTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD.</p>
+                    <p class="footer__descr text-grey">LOREM IPSUM DOLOR SIT AMET CONSE CTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD.</p>
                     <p class="footer__date text-white">15 / 10 / 2014</p>
                 </li>
             </ul>
@@ -36,22 +36,22 @@
                         INFORMATIONEN
                     </li>
                     <li class="footer__item ">
-                        <a href="#" class="footer__link text-gray">NEUE ARTIKEL</a>
+                        <a href="#" class="footer__link text-grey">NEUE ARTIKEL</a>
                     </li>
                     <li class="footer__item ">
-                        <a href="#" class="footer__link text-gray">VERKAUFSHITS</a>
+                        <a href="#" class="footer__link text-grey">VERKAUFSHITS</a>
                     </li>
                     <li class="footer__item ">
-                        <a href="#" class="footer__link text-gray">UNSERE FILIALEN</a>
+                        <a href="#" class="footer__link text-grey">UNSERE FILIALEN</a>
                     </li>
                     <li class="footer__item ">
-                        <a href="#" class="footer__link text-gray">KONTAKT</a>
+                        <a href="#" class="footer__link text-grey">KONTAKT</a>
                     </li>
                     <li class="footer__item ">
-                        <a href="#" class="footer__link text-gray">SEITEN KONFIGURATION</a>
+                        <a href="#" class="footer__link text-grey">SEITEN KONFIGURATION</a>
                     </li>
                     <li class="footer__item ">
-                        <a href="#" class="footer__link text-gray">SITEMAP</a>
+                        <a href="#" class="footer__link text-grey">SITEMAP</a>
                     </li>
                 </ul>
                 <ul 
@@ -63,19 +63,19 @@
                         IHR KUNDENBEREICH
                     </li>
                     <li class="footer__item ">
-                        <a href="#" class="footer__link text-gray">IHRE BESTELLUNGEN</a>
+                        <a href="#" class="footer__link text-grey">IHRE BESTELLUNGEN</a>
                     </li>
                     <li class="footer__item ">
-                        <a href="#" class="footer__link text-gray">IHRE WARENRÜCKSENDUNGEN</a>
+                        <a href="#" class="footer__link text-grey">IHRE WARENRÜCKSENDUNGEN</a>
                     </li>
                     <li class="footer__item ">
-                        <a href="#" class="footer__link text-gray">IHRE RÜCKVERGÜTUNGEN</a>
+                        <a href="#" class="footer__link text-grey">IHRE RÜCKVERGÜTUNGEN</a>
                     </li>
                     <li class="footer__item ">
-                        <a href="#" class="footer__link text-gray">IHRE ADRESSEN</a>
+                        <a href="#" class="footer__link text-grey">IHRE ADRESSEN</a>
                     </li>
                     <li class="footer__item ">
-                        <a href="#" class="footer__link text-gray">IHRE PERSÖNLICHEN DATEN</a>
+                        <a href="#" class="footer__link text-grey">IHRE PERSÖNLICHEN DATEN</a>
                     </li>
                 </ul>
                 <ul 
@@ -87,22 +87,22 @@
                         KATEGORIEN
                     </li>
                     <li class="footer__item ">
-                        <a href="#" class="footer__link text-gray">DRESSES</a>
+                        <a href="#" class="footer__link text-grey">DRESSES</a>
                     </li>
                     <li class="footer__item ">
-                        <a href="#" class="footer__link text-gray">SKIRTS</a>
+                        <a href="#" class="footer__link text-grey">SKIRTS</a>
                     </li>
                     <li class="footer__item ">
-                        <a href="#" class="footer__link text-gray">OUTERWEAR</a>
+                        <a href="#" class="footer__link text-grey">OUTERWEAR</a>
                     </li>
                     <li class="footer__item ">
-                        <a href="#" class="footer__link text-gray">TOPS</a>
+                        <a href="#" class="footer__link text-grey">TOPS</a>
                     </li>
                     <li class="footer__item ">
-                        <a href="#" class="footer__link text-gray">BLAZERS</a>
+                        <a href="#" class="footer__link text-grey">BLAZERS</a>
                     </li>
                     <li class="footer__item ">
-                        <a href="#" class="footer__link text-gray">SHOES</a>
+                        <a href="#" class="footer__link text-grey">SHOES</a>
                     </li>
                 </ul>
                 <ul class="footer__soc">
@@ -134,7 +134,7 @@
         </div>
         <div class="footer__copyright">
             <div class="container">
-                <p class="text-gray">© 2021 E-COMMERCE SOFTWARE VON PRESTASHOP™</p>
+                <p class="text-grey">© 2021 E-COMMERCE SOFTWARE VON PRESTASHOP™</p>
             </div>
         </div>
     </footer>

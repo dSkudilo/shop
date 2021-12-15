@@ -32,6 +32,12 @@ const routes = [
     name:'auth',
     component:() => import("../views/Authorization.vue"),
     meta:{layout:'main',auth:false} 
+  },
+  {
+    path:'/cart',
+    name:'cart',
+    component:() => import("../views/Cart.vue"),
+    meta:{layout:'main',auth:true} 
   }
 ]
 const router = createRouter({

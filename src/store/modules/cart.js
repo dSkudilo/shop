@@ -59,6 +59,13 @@ export default {
       },
       cart(state) {
         return state.cart
+      },
+      length(state){
+        console.log(Object.values(state.cart).length)
+        if(Object.values(state.cart).length <= 0 ){
+          return 0 
+        }
+        return Object.values(state.cart).reduce((acc,i) => acc += i.number,0) 
       }
     }
   }

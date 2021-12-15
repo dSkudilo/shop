@@ -1,5 +1,5 @@
 <template>
-    <div class="text-gray">Оценка: {{floor(ratingValue) || currentRating +'.0'}}</div>
+    <div class="text-grey">Оценка: {{floor(ratingValue) || currentRating +'.0'}}</div>
 
     <div class="rating">
         <div class="rating__body">

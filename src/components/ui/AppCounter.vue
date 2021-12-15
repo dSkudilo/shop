@@ -1,6 +1,6 @@
 <template>
     <div class="counter__control">
-        <span class="counter__title text-gray">
+        <span class="counter__title text-grey">
             <slot></slot>
         </span>
         <div class="counter__btns">
@@ -28,7 +28,7 @@ export default {
     setup(props,{ emit }) {
         const counter = ref(0)
         const counterAdd = () => {
-            if(counter.value < props.number -100){
+            if(counter.value < props.number){
                 counter.value++
                 emit('counter',counter.value)
             }

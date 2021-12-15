@@ -1,7 +1,7 @@
 <template>
 
     <div class="colors">
-        <span class="text-gray colors__title">Colors</span>
+        <span class="text-grey colors__title">Colors</span>
         <div class="colors__list">
             <div class="colors__color" 
                 v-for="color in colors" :key="color"

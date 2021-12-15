@@ -43,6 +43,11 @@ $durText:.3s;
 }
 .slider__img{
     width: 100%;
+    
+    background-color: $grey;
+
+    min-height: calc(100vh - $navHeight);
+    // object-fit: contain;
 }
 .slider__logo{
     width: 81px;
@@ -94,6 +99,9 @@ $durText:.3s;
     &:hover{
         background-color: $darkPromo;
     }
+}
+.home__slider{
+    display: block !important;
 }
 @media screen and (max-width:700px) {
     .slider__logo{

@@ -7,11 +7,11 @@
                 @select="rate"
             />
             <h4 class="product-comment__name text-dark">{{ comment.name}} {{comment.secondName}}</h4>
-            <p class="product-comment__date text-gray">{{ comment.date }}</p>
+            <p class="product-comment__date text-grey">{{ comment.date }}</p>
         </div>
         <div class="product-comment__message">
             <h5 class="product-comment__title heading-dark">{{ comment.theme }}</h5>
-            <p class="product-comment__text text-gray">{{ comment.message }}</p>
+            <p class="product-comment__text text-grey">{{ comment.message }}</p>
         </div>
     </div>
 </template>

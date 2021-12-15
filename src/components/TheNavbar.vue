@@ -8,7 +8,7 @@
     >menu</button>
         <ul class="nav__list" 
             :class="{nav__list_hidden:!navFlag}" 
-            @click.stop
+            
         >
            <router-link 
                 :to="{name:'home'}"

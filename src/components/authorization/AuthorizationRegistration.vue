@@ -1,7 +1,7 @@
 <template>
   <div class="authorization-registration">
     <h2 class="authorization__title title-block">Создание учтной записи</h2>
-    <p class="authorization__text  text-gray">ДЛЯ РЕГИСТРАЦИИ УКАЖИТЕ ПОЖАЛУЙСТА СВОЙ АДРЕС ЭЛЕКТРОННОЙ ПОЧТЫ (E-MAIL)</p>
+    <p class="authorization__text  text-grey">ДЛЯ РЕГИСТРАЦИИ УКАЖИТЕ ПОЖАЛУЙСТА СВОЙ АДРЕС ЭЛЕКТРОННОЙ ПОЧТЫ (E-MAIL)</p>
     <form 
       class="authorization__form"
       @submit.prevent="registration"  

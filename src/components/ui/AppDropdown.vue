@@ -4,7 +4,7 @@
         @click="flag = false"
     ></div>
     <div class="dropdown__control">
-        <span class="dropdown__title text-gray">
+        <span class="dropdown__title text-grey">
             <slot></slot>
         </span>
         <button 

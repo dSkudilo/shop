@@ -3,13 +3,13 @@
         <h1 class="product-options__title">{{product.name}}</h1>
         <ul class="product-options__list">
             <li class="product-options__item">
-                <p class="product-options__text text-gray">Артикул <span>{{product.vendor}} 1111</span></p>
+                <p class="product-options__text text-grey">Артикул <span>{{product.vendor}} 1111</span></p>
             </li>
             <li class="product-options__item">
-                <p class="product-options__text text-gray">Состояние: <span>{{product.condition}}Новый товар</span></p>
+                <p class="product-options__text text-grey">Состояние: <span>{{product.condition}}Новый товар</span></p>
             </li>
             <li class="product-options__item">
-                <p class="product-options__text text-gray">Количество: <span>{{product.number}}</span></p>
+                <p class="product-options__text text-grey">Количество: <span>{{product.number}}</span></p>
             </li>
         </ul>
         <p class="product-options__price">Цена: {{currency(product.price)}}</p>

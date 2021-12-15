@@ -95,15 +95,37 @@ export default {
         onMounted( async () => {
             await store.dispatch('product/loadProduct',productId)
             await store.dispatch('comment/loadComments', productId)
-            // await store.dispatch('comment/sendComment',{
-            //     id:Date.now(),
-            //     productId:'-MoU42_KEueDerPDSC-x',
-            //     name:'Ahmed Samirov',
-            //     title:'Отзыв',
-            //     text:'CRAS AT TORTOR NIBH. SED BIBENDUM SCELERISQUE TELLUS NEC ACCUMSAN. CRAS MALESUADA MASSA LOREM. QUISQUE EU LIGULA VENENATIS, LUCTUS MI EU, ALIQUAM METUS. IN DOLOR PURUS, SOLLICITUDIN ET ANTE ID, GRAVIDA VEHICULA DOLOR. INTEGER VEL PHARETRA NUNC. SED VITAE ARCU ORNARE, BIBENDUM LIBERO NON, SOLLICITUDIN ENIM. NULLA FACILISI. SED NISI LECTUS, CONGUE QUIS DOLOR NON, CONVALLIS SCELERISQUE NULLA. FUSCE ID DIAM FINIBUS, PLACERAT LEO NEC, GRAVIDA DOLOR. MAECENAS DIGNISSIM EST UT ORCI MOLLIS, IN VULPUTATE EST HENDRERIT.',
-            //     date:Date.now(),
-            //     rate:3.3
+            await store.dispatch('comment/sendComment',{
+                id:Date.now(),
+                productId:'-MoU42_KEueDerPDSC-x',
+                name:'Ahmed Samirov',
+                title:'Отзыв',
+                text:'CRAS AT TORTOR NIBH. SED BIBENDUM SCELERISQUE TELLUS NEC ACCUMSAN. CRAS MALESUADA MASSA LOREM. QUISQUE EU LIGULA VENENATIS, LUCTUS MI EU, ALIQUAM METUS. IN DOLOR PURUS, SOLLICITUDIN ET ANTE ID, GRAVIDA VEHICULA DOLOR. INTEGER VEL PHARETRA NUNC. SED VITAE ARCU ORNARE, BIBENDUM LIBERO NON, SOLLICITUDIN ENIM. NULLA FACILISI. SED NISI LECTUS, CONGUE QUIS DOLOR NON, CONVALLIS SCELERISQUE NULLA. FUSCE ID DIAM FINIBUS, PLACERAT LEO NEC, GRAVIDA DOLOR. MAECENAS DIGNISSIM EST UT ORCI MOLLIS, IN VULPUTATE EST HENDRERIT.',
+                date:Date.now(),
+                rate:3.3
 
+            })
+            // await store.dispatch('product/sendProducts',{
+            //     brand:'gap',
+            //     category:'jeans',
+            //     colors:{
+            //         0:'red',
+            //         1:'blue'
+            //     },
+            //     discount:false,
+            //     id:1412512512,
+            //     imgs:['j1.png','j2.png','j3.png','j2.png'],
+            //     name:'super jeans',
+            //     number:12,
+            //     price:1488,
+            //     size:{
+            //         0:'s',
+            //         1:'m',
+            //         2:'l',
+            //         3:'xl',
+            //         4:'xxl',
+            //         5:'xxxl'
+            //     }
             // })
             loadFlag.value = false
         })
@@ -130,3 +152,6 @@ export default {
     }
 }
 </script>
+<style>
+
+</style>
