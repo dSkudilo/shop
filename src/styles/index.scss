@@ -61,6 +61,12 @@
 //authorization
 @import './authorization/authorization.scss';
 
+//cart
+@import './cart/cart.scss';
+@import './cart/empty.scss';
+@import './cart//list.scss';
+@import './cart/item.scss';
+
 [v-cloak] {
     display: none;
 }

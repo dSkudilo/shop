@@ -6,6 +6,10 @@
     @include text(45px,$white,1em,normal);
     text-transform: uppercase;
 }
+.small-title_dark{
+    @include text(45px,$darkPromo,1em,normal);
+    text-transform: uppercase;
+}
 .subtitle{
     @include text(36px,$darkPromo,1em,100);
     letter-spacing: .4em;

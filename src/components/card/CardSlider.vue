@@ -22,7 +22,7 @@ export default {
     setup() {
         const currentStep = ref(0)
         const getImgUrl = (pet) => {
-            const images = require.context('@/assets/products/', false, /\.png$/)
+            const images = require.context('@/assets/products/', false, /\.jpg$/)
             return images('./' + pet)
         }
         return{

@@ -18,6 +18,7 @@
             white:true
         }
         ]"
+        :minHeight="'90vh'"
     />
     <home-promo />
     <home-tabs 

@@ -4,16 +4,21 @@ export default {
     namespaced: true,
     state(){
         return {
-            products:[]
+            products:[],
+            productInCart:[]
         }
     },
     mutations: {
         setProducts(state,products){
             state.products = products
+        },
+        setProductsInCart(state,products){
+            state.productInCart.push(products)
         }
     },
     actions: {
         async sendProducts(_,payload){
+            
             try {
                 const { data } = await axios.post(`/products.json`,payload)
             } catch (error) {
@@ -21,8 +26,10 @@ export default {
             }
         },
         async loadProducts({ commit }){
+            console.log('sadasd')
             try {
                 const { data } = await axios.get(`/products.json`)
+                console.log(data)
                 commit('setProducts', transform(data))
                 
             } catch (error) {
@@ -36,11 +43,22 @@ export default {
             } catch (error) {
                 console.log(error)
             }
+        },
+        async loadProductInCart({ commit }, id){
+            try {
+                const { data } = await axios.get(`/products/${id}.json`)
+                commit('setProductsInCart', {...data,id:id})
+            } catch (error) {
+                console.log(error)
+            }
         }
     },
     getters: {
         products(state){
             return state.products
+        },
+        productInCart(state){
+            return state.productInCart
         }
     }
 }

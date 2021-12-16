@@ -14,7 +14,7 @@
         </ul>
         <p class="product-options__price">Цена: {{currency(product.price)}}</p>
         <div class="product-options__row">
-            <product-options-colors
+            <app-colors
                 :colors="product.colors"
                 @selectColor="selectColor"
             />
@@ -44,7 +44,6 @@
 </template>
 <script>
 import { ref } from '@vue/reactivity'
-import ProductOptionsColors from '@/components/product/productOptions/ProductOptionsColors.vue'
 import AppDropdown from '@/components/ui/AppDropdown.vue'
 import AppCounter from '@/components/ui/AppCounter.vue'
 import { currency } from '@/utils/currency'
@@ -67,7 +66,6 @@ export default {
     },
     components:{
         AppDropdown,
-        ProductOptionsColors,
         AppCounter
     }
 }

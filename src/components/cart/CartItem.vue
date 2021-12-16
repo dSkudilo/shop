@@ -1,0 +1,55 @@
+<template>
+    <div class="cart-item">
+        <button class="cart-item__delete">
+            <font-awesome-icon :icon="['fa','times-circle']" />
+        </button>
+        <!-- {{product}} -->
+        <div 
+            class="cart-item__photo"
+            @click="to"
+        >
+            <img
+                class="cart-item__img" 
+                :src="getImgUrl(product.imgs[0])" alt=""
+            >
+        </div>
+        <div class="cart-item__info">
+            <h3 class="topic-dark">{{product.name}}</h3>
+            <p class="text-grey">size:L</p>
+        </div>
+        <app-colors
+            class="cart-item__colors"
+            :colors="product.colors"
+            :id="product.id"
+        />
+        <app-counter
+            class="cart-item__counter"
+            :val="1"
+            :number="product.number"
+        >количество</app-counter>
+        <span class="cart-item__price topic-dark">
+            {{currency(product.price)}}
+        </span>
+    </div>
+</template>
+<script>
+import { currency } from '@/utils/currency.js'
+import { useRouter } from 'vue-router'
+export default {
+    props:['product','cart'],
+    setup({ product }) {
+        const getImgUrl = (pet) => {
+            const images = require.context('@/assets/products/', false, /\.jpg$/)
+            return images('./' + pet)
+        }
+        const router = useRouter()
+        const to = () => router.push({ name:'product',params:{ id:product.id }})
+        return{
+            getImgUrl,
+            currency,
+            to
+        }
+    },
+ 
+}
+</script>

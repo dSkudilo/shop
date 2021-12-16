@@ -25,16 +25,7 @@ export default {
             localStorage.setItem('cart', JSON.stringify(state.cart))
         }
       
-        
-        // state.cart[lockId] = p
-        
-        // if (!state.cart[productId]) {
-        //   state.cart[productId] = 0
-        // }
-  
-        // const count = state.cart[productId]
-        // state.cart[productId] = count + 1
-        // localStorage.setItem('cart', JSON.stringify(state.cart))
+
       },
       remove(state, productId) {
         const count = state.cart[productId]

@@ -23,10 +23,11 @@
 <script>
 import { ref } from '@vue/reactivity'
 export default {
-    props:['number'],
+    name:'app-counter',
+    props:['number','val'],
     emits:['counter'],
     setup(props,{ emit }) {
-        const counter = ref(0)
+        const counter = ref(props.val)
         const counterAdd = () => {
             if(counter.value < props.number){
                 counter.value++

@@ -8,7 +8,11 @@
                 slider__item_white:item.white    
             }"
         >
-            <img class="slider__img" :src="getImgUrl(item.img)" :alt="item.title"/>
+            <img class="slider__img" 
+                :src="getImgUrl(item.img)" 
+                :alt="item.title"
+                :style="{'min-height':minHeight}"
+            />
             <div 
                 class="slider__info"
                 :class="{'slider__info_middle':item.noLogo}"
@@ -44,7 +48,7 @@
 import { ref } from '@vue/reactivity'
 import { onMounted } from '@vue/runtime-core'
 export default {
-    props:['data'],
+    props:['data','minHeight'],
     setup(props) {
         const dataLength = ref(Object.keys(props.data).length - 1)
         const currentStep = ref(0)

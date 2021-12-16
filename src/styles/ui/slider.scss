@@ -43,11 +43,7 @@ $durText:.3s;
 }
 .slider__img{
     width: 100%;
-    
-    background-color: $grey;
-
-    min-height: calc(100vh - $navHeight);
-    // object-fit: contain;
+    background-color: $border;
 }
 .slider__logo{
     width: 81px;
