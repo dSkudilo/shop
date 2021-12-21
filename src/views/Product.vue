@@ -48,23 +48,20 @@ export default {
         const size = ref()
         const color = ref()
         const number = ref(0)
-        const selectSize = (s) => {
-            size.value = s
-        }
-        const selectColor = (c) => {
-            color.value = c
-        }
-        const counter = (n) => {
-            number.value = n
-        }
+
+        const selectSize = (s) => size.value = s
+        const selectColor = (c) => color.value = c
+        const counter = (n) => number.value = n
+        
         const opError = ref(null)
         const inCart = () => {
-            if(!size.value || !color.value || !number.value){
-                opError.value = 'Необходимо указать цвет, размер и количество для товара!'
+            console.log(size.value,color.value,number.value)
+            if(!size.value || !number.value){
+                opError.value = 'Необходимо указать размер и количество для товара!'
                 return
             }
             opError.value = null
- 
+            
             const product = {} 
         
             store.commit('cart/add',{
@@ -95,16 +92,16 @@ export default {
         onMounted( async () => {
             await store.dispatch('product/loadProduct',productId)
             await store.dispatch('comment/loadComments', productId)
-            await store.dispatch('comment/sendComment',{
-                id:Date.now(),
-                productId:'-MoU42_KEueDerPDSC-x',
-                name:'Ahmed Samirov',
-                title:'Отзыв',
-                text:'CRAS AT TORTOR NIBH. SED BIBENDUM SCELERISQUE TELLUS NEC ACCUMSAN. CRAS MALESUADA MASSA LOREM. QUISQUE EU LIGULA VENENATIS, LUCTUS MI EU, ALIQUAM METUS. IN DOLOR PURUS, SOLLICITUDIN ET ANTE ID, GRAVIDA VEHICULA DOLOR. INTEGER VEL PHARETRA NUNC. SED VITAE ARCU ORNARE, BIBENDUM LIBERO NON, SOLLICITUDIN ENIM. NULLA FACILISI. SED NISI LECTUS, CONGUE QUIS DOLOR NON, CONVALLIS SCELERISQUE NULLA. FUSCE ID DIAM FINIBUS, PLACERAT LEO NEC, GRAVIDA DOLOR. MAECENAS DIGNISSIM EST UT ORCI MOLLIS, IN VULPUTATE EST HENDRERIT.',
-                date:Date.now(),
-                rate:3.3
+            // await store.dispatch('comment/sendComment',{
+            //     id:Date.now(),
+            //     productId:'-MoU42_KEueDerPDSC-x',
+            //     name:'Ahmed Samirov',
+            //     title:'Отзыв',
+            //     text:'CRAS AT TORTOR NIBH. SED BIBENDUM SCELERISQUE TELLUS NEC ACCUMSAN. CRAS MALESUADA MASSA LOREM. QUISQUE EU LIGULA VENENATIS, LUCTUS MI EU, ALIQUAM METUS. IN DOLOR PURUS, SOLLICITUDIN ET ANTE ID, GRAVIDA VEHICULA DOLOR. INTEGER VEL PHARETRA NUNC. SED VITAE ARCU ORNARE, BIBENDUM LIBERO NON, SOLLICITUDIN ENIM. NULLA FACILISI. SED NISI LECTUS, CONGUE QUIS DOLOR NON, CONVALLIS SCELERISQUE NULLA. FUSCE ID DIAM FINIBUS, PLACERAT LEO NEC, GRAVIDA DOLOR. MAECENAS DIGNISSIM EST UT ORCI MOLLIS, IN VULPUTATE EST HENDRERIT.',
+            //     date:Date.now(),
+            //     rate:3.3
 
-            })
+            // })
             // await store.dispatch('product/sendProducts',{
             //     brand:'gap',
             //     category:'jeans',
@@ -128,6 +125,7 @@ export default {
             //     }
             // })
             loadFlag.value = false
+            //  window.scrollTo({ top: 0 })
         })
         return{
             product:computed(() => store.getters['product/products']),

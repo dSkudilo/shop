@@ -11,7 +11,7 @@
                         type="radio" 
                         :name="name" 
                         :checked="idx == initVal"
-                        @input="select(color)"
+                        @input="select(idx)"
                     >
                     <span :style="{background:color}"></span>
                 </label>
@@ -31,9 +31,9 @@ export default {
         },
     },
     emits:['selectColor'],
-    setup({ initVal },{ emit }) {
-        const select = (color) => {
-            emit('selectColor',color)
+    setup({ initVal,colors },{ emit }) {
+        const select = (colorId) => {
+            emit('selectColor',colorId)
         }
         onMounted(() => select(initVal))
         const name = Math.random() * 10000000

@@ -13,12 +13,11 @@ export default {
             state.products = products
         },
         setProductsInCart(state,products){
-            state.productInCart.push(products)
+            state.productInCart = products
         }
     },
     actions: {
         async sendProducts(_,payload){
-            
             try {
                 const { data } = await axios.post(`/products.json`,payload)
             } catch (error) {
@@ -44,10 +43,14 @@ export default {
                 console.log(error)
             }
         },
-        async loadProductInCart({ commit }, id){
+        async loadProductInCart({ commit }, ids){
             try {
-                const { data } = await axios.get(`/products/${id}.json`)
-                commit('setProductsInCart', {...data,id:id})
+                const products = []
+                for (const id of ids) {
+                    const { data } = await axios.get(`/products/${id}.json`)
+                    products.push({...data,id:id})
+                }
+                commit('setProductsInCart', products)
             } catch (error) {
                 console.log(error)
             }

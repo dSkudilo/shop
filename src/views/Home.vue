@@ -57,6 +57,7 @@ export default {
         onMounted( async () => {
             await store.dispatch('promo/loadPromo',currentCat.value)
             loadFlag.value = false
+            //  window.scrollTo({ top: 0 })
         })
         return{
             promo:computed(() => store.getters['promo/promo']),

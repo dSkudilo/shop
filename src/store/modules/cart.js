@@ -24,23 +24,30 @@ export default {
             state.cart[lockId] = product
             localStorage.setItem('cart', JSON.stringify(state.cart))
         }
-      
-
       },
       remove(state, productId) {
-        const count = state.cart[productId]
-  
+        const count = state.cart[productId].number
         if (typeof count === 'undefined') {
           return
         }
-  
         if (count <= 1) {
           delete state.cart[productId]
           localStorage.setItem('cart', JSON.stringify(state.cart))
           return
         }
-  
         state.cart[productId] = count - 1
+        localStorage.setItem('cart', JSON.stringify(state.cart))
+      },
+      delete(state,productId){
+        delete state.cart[productId]
+        localStorage.setItem('cart', JSON.stringify(state.cart))
+      },
+      counterUpdate(state,obj){
+        state.cart[obj.id].number = obj.val
+        if(state.cart[obj.id].number <= 0){
+          delete state.cart[obj.id]
+          localStorage.setItem('cart', JSON.stringify(state.cart))
+        }
         localStorage.setItem('cart', JSON.stringify(state.cart))
       }
     },
@@ -52,7 +59,6 @@ export default {
         return state.cart
       },
       length(state){
-        console.log(Object.values(state.cart).length)
         if(Object.values(state.cart).length <= 0 ){
           return 0 
         }

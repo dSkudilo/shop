@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory,createWebHashHistory } from 'vue-router'
 import store from '../store'
 
 
@@ -41,10 +41,13 @@ const routes = [
   }
 ]
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(),
   routes,
   linkActiveClass: 'active',
-  linkExactActiveClass: 'active'
+  linkExactActiveClass: 'active',
+  scrollBehavior() {
+    return { top:0 }
+  }
 })
 
 router.beforeEach((to, from, next) => {
@@ -66,7 +69,7 @@ router.beforeEach((to, from, next) => {
       return next('/auth?message=auth')
     }
   }
-
+  
   next()
 })
 

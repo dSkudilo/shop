@@ -6,12 +6,20 @@
     <cart-empty 
       v-if="!inCart" 
     />
-    <cart-list 
-      v-else
-      :products="products"
-      :cart="cart"
-    />
-    
+    <div 
+      class="cart__conten"
+      v-else  
+    >
+      <cart-list 
+        :products="products"
+        :cart="cart"
+        @updateCounterHandler="updateCounterHandler"
+        @deleteCartHandler="deleteCartHandler"
+      />
+      <cart-buy 
+        :price="costPayment"
+      />
+    </div>
   </section>
   <the-footer/>
 </template>
@@ -24,6 +32,7 @@ import { onMounted } from '@vue/runtime-core'
 
 import CartEmpty from '@/components/cart/CartEmpty.vue'
 import CartList from '@/components/cart/CartList.vue'
+import CartBuy from '@/components/cart/CartBuy.vue'
 
 
 export default {
@@ -33,32 +42,45 @@ export default {
     const cart = store.getters['cart/cart']
     const inCart = computed(() => store.getters['cart/length'])
 
-    const loadData = async (arr) => {
-      if(inCart) {  
-        for (const id of arr) {
-          await store.dispatch('product/loadProductInCart',id)
-        }
-      }
-        loadFlag.value = false
-        console.log('done')
-    }
-
+    const updateCounterHandler = (obj) => store.commit('cart/counterUpdate',obj)
+    const deleteCartHandler = (id) => store.commit('cart/delete',id)
+    
     onMounted(async () => {
+      //уникальные id
         let cartIds = Object.values(cart).map(e => e.options.productId)
         cartIds = [... new Set(cartIds)]
-        loadData(cartIds)   
+        if(inCart) {  
+          await store.dispatch('product/loadProductInCart',cartIds)
+        }
+        loadFlag.value = false
+  
     })
+    const products = computed(() => store.getters['product/productInCart'])
     return{
       loadFlag,
       inCart,
-      products:computed(() => store.getters['product/productInCart']),
-      cart
+      products,
+      cart,
+      updateCounterHandler,
+      deleteCartHandler,
+      costPayment:computed(() => {
+        const productsPrice = Object.values(products.value).reduce((acc,element) =>{
+          acc[element.id] = {price:element.price}
+          return acc
+        },{})
+
+        return Object.values(cart).reduce((acc,element) => {
+          acc += element.number * productsPrice[element.options.productId].price
+          return acc
+        },0)
+      })
     }
   },
   components:{
     TheFooter,
     CartEmpty,
-    CartList
+    CartList,
+    CartBuy
 
   }
 }

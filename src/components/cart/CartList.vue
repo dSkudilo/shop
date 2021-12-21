@@ -3,12 +3,15 @@
         <h2 class="cart-list__title title-block">Список покупок </h2>
         <div 
             class="cart__item"
-            v-for="c in cart"
+            v-for="(c,name) in cart"
             :key="c"
         >
             <cart-item 
                 :cart="c"
+                :productCartId="name"
                 :product="returnProductInCart(c)"
+                @updateCounterHandler="updateCounterHandler"
+                @deleteCartHandler="deleteCartHandler"
             />
       </div>
     </div>
@@ -17,12 +20,17 @@
 import CartItem from '@/components/cart/CartItem.vue'
 export default {
     props:['products','cart'],
-    setup({ products }) {
+    emits:['updateCounterHandler','deleteCartHandler'],
+    setup({ products }, { emit }) {
         const returnProductInCart = (cart) => Object.values(products).find(e =>
             e.id == cart.options.productId)
         
+        const updateCounterHandler = (obj) => emit('updateCounterHandler',obj)
+        const deleteCartHandler = (id) => emit('deleteCartHandler',id)
         return{
-            returnProductInCart
+            returnProductInCart,
+            updateCounterHandler,
+            deleteCartHandler
         }
     },
     components:{

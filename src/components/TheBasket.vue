@@ -15,17 +15,19 @@
 import { computed, ref } from '@vue/reactivity'
 import { useStore } from 'vuex'
 import { watch } from '@vue/runtime-core'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 export default {
     setup() {
         const store = useStore()
         const router = useRouter()
+        const route = useRoute()
         const counter = computed(() => store.getters['cart/length'])
         const animFlag = ref(false)
-
+        
         watch(counter, (ne,prev) => {
-            animFlag.value = true
+            if(route.name !== 'cart')
+                animFlag.value = true
         }) 
         const toCart = () => {
             animFlag.value = false

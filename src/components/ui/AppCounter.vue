@@ -25,19 +25,19 @@ import { ref } from '@vue/reactivity'
 export default {
     name:'app-counter',
     props:['number','val'],
-    emits:['counter'],
+    emits:['counterHandler'],
     setup(props,{ emit }) {
-        const counter = ref(props.val)
+        const counter = ref(props.val || 0)
         const counterAdd = () => {
             if(counter.value < props.number){
                 counter.value++
-                emit('counter',counter.value)
+                emit('counterHandler',counter.value)
             }
         }
         const counterMinus = () => {
             if(counter.value > 0){
                 counter.value--
-                emit('counter',counter.value)
+                emit('counterHandler',counter.value)
             }
         }
         return{
