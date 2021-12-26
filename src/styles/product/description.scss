@@ -1,6 +1,7 @@
 .product-description{
     display: flex;
     margin-bottom: 25px;
+    
 }
 .product-description__list{
     min-width: 170px;
@@ -12,6 +13,7 @@
 .product-description__item{
     padding: 15px 19px;
     border-bottom: 1px solid $border;
+    user-select: text;
     
     cursor: pointer;
     &:first-child{
@@ -39,6 +41,7 @@
     border: 1px solid $border;
     border-left:none;
     border-right: none;
+    user-select: text;
 }
 .product-description__video{
     width: 100%;

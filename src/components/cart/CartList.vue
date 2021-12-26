@@ -12,6 +12,7 @@
                 :product="returnProductInCart(c)"
                 @updateCounterHandler="updateCounterHandler"
                 @deleteCartHandler="deleteCartHandler"
+                @updateColorHandler="updateColorHandler"
             />
       </div>
     </div>
@@ -20,17 +21,19 @@
 import CartItem from '@/components/cart/CartItem.vue'
 export default {
     props:['products','cart'],
-    emits:['updateCounterHandler','deleteCartHandler'],
+    emits:['updateCounterHandler','deleteCartHandler','updateColorHandler'],
     setup({ products }, { emit }) {
         const returnProductInCart = (cart) => Object.values(products).find(e =>
             e.id == cart.options.productId)
         
         const updateCounterHandler = (obj) => emit('updateCounterHandler',obj)
         const deleteCartHandler = (id) => emit('deleteCartHandler',id)
+        const updateColorHandler = (obj) => emit('updateColorHandler',obj)
         return{
             returnProductInCart,
             updateCounterHandler,
-            deleteCartHandler
+            deleteCartHandler,
+            updateColorHandler
         }
     },
     components:{

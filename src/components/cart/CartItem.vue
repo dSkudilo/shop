@@ -25,6 +25,7 @@
             :colors="product.colors"
             :id="product.id"
             :initVal="cart.options.color"
+            @selectColor="updateColorHandler"
         />
         <app-counter
             class="cart-item__counter"
@@ -42,7 +43,7 @@ import { currency } from '@/utils/currency.js'
 import { useRouter } from 'vue-router'
 export default {
     props:['product','cart','productCartId'],
-    emits:['updateCounterHandler','deleteCartHandler'],
+    emits:['updateCounterHandler','deleteCartHandler','updateColorHandler'],
     setup({ product,productCartId }, { emit }) {
         const getImgUrl = (pet) => {
             const images = require.context('@/assets/products/', false, /\.jpg$/)
@@ -52,12 +53,14 @@ export default {
         const to = () => router.push({ name:'product',params:{ id:product.id }})
         const updateCounterHandler = (val) => emit('updateCounterHandler',{id:productCartId,val})
         const deleteCartHandler = (val) => emit('deleteCartHandler',productCartId)
+        const updateColorHandler = (color) => emit('updateColorHandler',{id:productCartId,color})
         return{
             getImgUrl,
             currency,
             to,
             updateCounterHandler,
-            deleteCartHandler
+            deleteCartHandler,
+            updateColorHandler
         }
     },
  

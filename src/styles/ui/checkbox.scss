@@ -7,6 +7,7 @@
     @include text(12px, $grey, 22px, 300);
     display: flex;
     align-items: center;
+    user-select: text;
 }
 .checkbox__real{
     width: 0;

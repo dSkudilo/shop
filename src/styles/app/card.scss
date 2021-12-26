@@ -91,10 +91,12 @@
 .card__name{
     @include text(14px,$grey,1.4,300);
     margin-bottom: 3px;
+    user-select: text;
 }
 .card__price{
     @include text(16px,$darkPromo,22px,bold);
     margin-bottom: 10px;
+    user-select: text;
 }
 .card__btn{
     opacity: 0;

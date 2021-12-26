@@ -5,14 +5,22 @@
     min-width: 195px;
     border-right: 1px solid $border;
 }
+.product-comment__name{
+    user-select: text;
+}
+.product-comment__date{
+    user-select: text;
+}
 .product-comment__message{
     padding:10px 15px;
 }
 .product-comment__title{
     margin-bottom: 10px;
+    user-select: text;
 }
 .product-comment__text{
     line-height: 1.4;
+    user-select: text;
 }
 @media screen and (max-width:640px) {
     .product-comment__text{

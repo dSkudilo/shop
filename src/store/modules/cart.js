@@ -49,6 +49,10 @@ export default {
           localStorage.setItem('cart', JSON.stringify(state.cart))
         }
         localStorage.setItem('cart', JSON.stringify(state.cart))
+      },
+      colorChange(state,obj){
+        state.cart[obj.id].options.color = obj.color
+        localStorage.setItem('cart', JSON.stringify(state.cart))
       }
     },
     getters: {

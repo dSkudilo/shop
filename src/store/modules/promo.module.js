@@ -16,7 +16,7 @@ export default {
         async send(_,payload){
             try {
                 const { data } = await axios.post(`/promo/${payload.category}.json`,payload.product)
-                console.log(data)
+                console.log(payload)
             } catch (error) {
                 console.log(error)
             }

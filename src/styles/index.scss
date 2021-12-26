@@ -84,6 +84,8 @@ body{
     font-family: 'Ubuntu', sans-serif;
     height: 100%;
     display: block !important;
+    user-select: none;
+    
 }
 .wrapper{
     display: flex;

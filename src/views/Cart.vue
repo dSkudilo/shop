@@ -15,6 +15,7 @@
         :cart="cart"
         @updateCounterHandler="updateCounterHandler"
         @deleteCartHandler="deleteCartHandler"
+        @updateColorHandler="updateColorHandler"
       />
       <cart-buy 
         :price="costPayment"
@@ -44,6 +45,7 @@ export default {
 
     const updateCounterHandler = (obj) => store.commit('cart/counterUpdate',obj)
     const deleteCartHandler = (id) => store.commit('cart/delete',id)
+    const updateColorHandler = (obj) => store.commit('cart/colorChange',obj)
     
     onMounted(async () => {
       //уникальные id
@@ -63,12 +65,12 @@ export default {
       cart,
       updateCounterHandler,
       deleteCartHandler,
+      updateColorHandler,
       costPayment:computed(() => {
         const productsPrice = Object.values(products.value).reduce((acc,element) =>{
           acc[element.id] = {price:element.price}
           return acc
         },{})
-
         return Object.values(cart).reduce((acc,element) => {
           acc += element.number * productsPrice[element.options.productId].price
           return acc

@@ -18,6 +18,7 @@
 .product-options__text{
     margin-bottom: 10px;
     text-align: center;
+    user-select: text;
     & span{
         background-color: #eee;
         padding: 5px 9px;
@@ -30,10 +31,12 @@
 .product-options__title{
     text-transform: uppercase;
     @include text(30px,$logoBg,30px,500);
+    user-select: text;
 }
 .product-options__price{
     margin-top: 20px;
-    @include text(35px,$dark,1.5,400)
+    @include text(35px,$dark,1.5,400);
+    user-select: text;
 }
 .product-options__row{
     width: 100%;

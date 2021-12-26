@@ -19,7 +19,7 @@ export default {
     props:['product'],
     setup(){
         const getImgUrl = (pet) => {
-            const images = require.context('@/assets/products/', false, /\.png$/)
+            const images = require.context('@/assets/products/', false, /\.jpg$/)
             return images('./' + pet)
         }
         return{ currency,getImgUrl }
