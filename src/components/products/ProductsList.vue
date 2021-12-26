@@ -7,7 +7,7 @@
                 :product="item"
             />
         </div>
-        <products-paginate />
+        <!-- <products-paginate /> -->
     </section>
 </template>
 <script>

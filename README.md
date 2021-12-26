@@ -1,2 +1,3 @@
 # shop
+https://try-v-some.web.app
 on development stage....

@@ -6,7 +6,6 @@
         >
             <font-awesome-icon :icon="['fa','times-circle']" />
         </button>
-        <!-- {{product}} -->
         <div 
             class="cart-item__photo"
             @click="to"

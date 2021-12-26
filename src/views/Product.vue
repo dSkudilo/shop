@@ -22,7 +22,7 @@
                 :comments="comments"
                 @rate="rate"
             />
-            <product-related />
+            <!-- <product-related /> -->
         </div>
         <the-footer />
     </div>
