@@ -42,61 +42,28 @@ export default {
         const store = useStore()
         const loadFlag = ref(true)
         const currentCat = ref('new in shop')
-        const changeCat = (cat) => {
-            currentCat.value = cat
-        }
+        const changeCat = (cat) => currentCat.value = cat
+        
+        watch(currentCat, async (cur) => loadProduct())
 
-         watch(currentCat, async (cur) => {
+        onMounted( async () => {   
+            loadProduct()
+            // await store.dispatch('promo/send',{
+            //     product:{
+            //         id:'-MqzmzyvvsrnbZ_sQlCJ'
+            //     },
+            //     category:'discounts'
+            // })
+        })
+        const loadProduct = async () => {
             loadFlag.value = true
             await store.dispatch('promo/loadPromo',currentCat.value)
-            setTimeout(() => {
-                loadFlag.value = false
-            },1000)
-        })
-
-        onMounted( async () => {
-            await store.dispatch('promo/loadPromo',currentCat.value)
+            const promoIds = computed(() => store.getters['promo/promoIds'])
+            await store.dispatch('product/loadProductDefinite',promoIds.value)
             loadFlag.value = false
-            // await store.dispatch('promo/send',{
-            //     id:Date.now(),
-            //     productId:'-MoU42_KEueDerPDSC-x',
-            //     name:'Ahmed Samirov',
-            //     title:'Отзыв',
-            //     text:'CRAS AT TORTOR NIBH. SED BIBENDUM SCELERISQUE TELLUS NEC ACCUMSAN. CRAS MALESUADA MASSA LOREM. QUISQUE EU LIGULA VENENATIS, LUCTUS MI EU, ALIQUAM METUS. IN DOLOR PURUS, SOLLICITUDIN ET ANTE ID, GRAVIDA VEHICULA DOLOR. INTEGER VEL PHARETRA NUNC. SED VITAE ARCU ORNARE, BIBENDUM LIBERO NON, SOLLICITUDIN ENIM. NULLA FACILISI. SED NISI LECTUS, CONGUE QUIS DOLOR NON, CONVALLIS SCELERISQUE NULLA. FUSCE ID DIAM FINIBUS, PLACERAT LEO NEC, GRAVIDA DOLOR. MAECENAS DIGNISSIM EST UT ORCI MOLLIS, IN VULPUTATE EST HENDRERIT.',
-            //     date:Date.now(),
-            //     rate:3.3
-
-            // })
-            // await store.dispatch('promo/send',{product:{
-            //     brand:'gap',
-            //     category:'jeans',
-            //     colors:{
-            //         0:'red',
-            //         1:'blue'
-            //     },
-            //     discount:false,
-            //     id:1412512512,
-            //     imgs:['t1.jpg','t2.jpg','t3.jpg'],
-            //     name:'super jeans',
-            //     new:true,
-            //     sale:true,
-            //     discount:0.17,
-            //     number:12,
-            //     price:1377,
-            //     size:{
-            //         0:'s',
-            //         1:'m',
-            //         2:'l',
-            //         3:'xl',
-            //         4:'xxl',
-            //         5:'xxxl'
-            //     }
-            //     },category:'salesLeaders'
-            // })
-            //  window.scrollTo({ top: 0 })
-        })
+        }
         return{
-            promo:computed(() => store.getters['promo/promo']),
+            promo:computed(() => store.getters['product/productDefinite']),
             loadFlag,
             changeCat
         }

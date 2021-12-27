@@ -1,15 +1,15 @@
 import axios from '../../axios/db'
-import {transform} from '../../utils/transform'
 export default {
     namespaced: true,
     state(){
         return {
-            promoProducts:[]
+            promoProducts:[],
+            promoIds:[]
         }
     },
     mutations: {
-        setPromo(state,promoProducts){
-            state.promoProducts = promoProducts
+        setPromo(state,promoIds){
+            state.promoIds = promoIds
         }
     },
     actions: {
@@ -21,17 +21,19 @@ export default {
             }
         },
         async loadPromo({ commit },payload){
-            try {
+            // try {
                 const { data } = await axios.get(`/promo/${payload}.json`)
-                commit('setPromo', transform(data))
-            } catch (error) {
-                console.log(error)
-            }
+                const ids = Object.values(data).map((element) => element.id)
+                commit('setPromo', ids)
+
+            // } catch (error) {
+            //     console.log(error)
+            // }
         }
     },
     getters: {
-        promo(state){
-            return state.promoProducts
+        promoIds(state){
+            return state.promoIds
         }
     }
 }

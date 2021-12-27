@@ -52,12 +52,12 @@ export default {
         let cartIds = Object.values(cart).map(e => e.options.productId)
         cartIds = [... new Set(cartIds)]
         if(inCart) {  
-          await store.dispatch('product/loadProductInCart',cartIds)
+          await store.dispatch('product/loadProductDefinite',cartIds)
         }
         loadFlag.value = false
   
     })
-    const products = computed(() => store.getters['product/productInCart'])
+    const products = computed(() => store.getters['product/productDefinite'])
     return{
       loadFlag,
       inCart,

@@ -12,7 +12,7 @@ export default {
         setProducts(state,products){
             state.products = products
         },
-        setProductsInCart(state,products){
+        setProductsDefinite(state,products){
             state.productInCart = products
         }
     },
@@ -43,14 +43,14 @@ export default {
                 console.log(error)
             }
         },
-        async loadProductInCart({ commit }, ids){
+        async loadProductDefinite({ commit }, ids){
             try {
                 const products = []
                 for (const id of ids) {
                     const { data } = await axios.get(`/products/${id}.json`)
                     products.push({...data,id:id})
                 }
-                commit('setProductsInCart', products)
+                commit('setProductsDefinite', products)
             } catch (error) {
                 console.log(error)
             }
@@ -60,7 +60,7 @@ export default {
         products(state){
             return state.products
         },
-        productInCart(state){
+        productDefinite(state){
             return state.productInCart
         }
     }
