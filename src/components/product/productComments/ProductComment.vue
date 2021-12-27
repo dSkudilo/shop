@@ -7,7 +7,7 @@
                 @select="rate"
             />
             <h4 class="product-comment__name text-dark">{{ comment.name}} {{comment.secondName}}</h4>
-            <p class="product-comment__date text-grey">{{ comment.date }}</p>
+            <p class="product-comment__date text-grey">{{ toDate(comment.date) }}</p>
         </div>
         <div class="product-comment__message">
             <h5 class="product-comment__title heading-dark">{{ comment.theme }}</h5>
@@ -17,6 +17,7 @@
 </template>
 <script>
 import AppRating from '@/components/ui/AppRating.vue'
+import { toDate } from '@/utils/date.js'
 export default {
     props:['comment'],
     emits:['rate'],
@@ -24,7 +25,8 @@ export default {
         const rate = rating => emit('rate',{commentId:comment.id,...rating})
         
         return{
-            rate
+            rate,
+            toDate
         }
     },
     components:{AppRating}
