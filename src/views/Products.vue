@@ -20,7 +20,7 @@
             white:true
         }
         ]"
-        :minHeight="'64vh'"
+        
     />
     <div class="products container">
         <products-aside

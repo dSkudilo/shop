@@ -3,10 +3,11 @@
     min-width: 23%;
     max-width: 260px;
     margin:0 1%;
-    border: 1px solid white;
-    background-color: white;
+    border: 1px solid $white;
+    background-color: $white;
     cursor: pointer;
     padding: 5px;
+    -webkit-tap-highlight-color: transparent;
     &:hover{
         transition: 
             transform .2s ease;
@@ -16,12 +17,12 @@
         & .card__shows-text{
             z-index: 100;
         }
-        & .slider__miniatures{
+        & .card-slider__miniatures{
             background-color: rgba(0,0,0,.35);
             transform: translateY(0%);
             opacity: 1;
         }
-        & .slider__slide{
+        & .card-slider__slide{
             width: 100%;
         }
         & .card__btn{
@@ -39,7 +40,7 @@
     transform: translate(-50%);
     padding:5px 10px 7px;
     background-color: rgba(0,0,0,.25);
-    @include text(16px,white,1,500);
+    @include text(16px,$white,1,500);
     z-index: -100;
     &:hover{
         background-color: rgba(0,0,0,.7);
@@ -52,7 +53,7 @@
     z-index: 100;
 }
 .card__sale{
-    @include text(13px, white,13px,bold);
+    @include text(13px, $white,13px,bold);
     text-transform: uppercase;
     background-color: $darkPromo;
     padding: 5px;
@@ -61,7 +62,7 @@
 .card__new{
     @include text(13px, $darkPromo,13px,bold);
     text-transform: uppercase;
-    background-color: white;
+    background-color: $white;
     padding: 5px;
     text-align: center;
 }
@@ -73,13 +74,13 @@
     border-radius: 100%;
     background-color: $darkPromo;
     width: 42px;
-    @include text(13px,white,41px, bold);
+    @include text(13px,$white,41px, bold);
     text-align:center;
 }
 .card__info{
     padding:10px;
-    background-color: white;
-    border: 2px solid white;
+    background-color: $white;
+    border: 2px solid $white;
     position: relative;
     width: 100%;
     z-index: 200;
@@ -109,19 +110,17 @@
     .card{
         min-width: 45%;
         margin:0 2.5%;
+        & .card-slider__miniatures{
+            display: none;
+        }
         &:hover{
             transform: scale(1);
-            padding: 0px;
             border-color: transparent;
             z-index: 300;
             & .card__shows-text{
                 z-index: 100;
             }
-            & .slider__miniatures{
-                background-color: white;
-                transform: translateY(0%);
-            }
-            & .slider__slide{
+            & .card-slider__slide{
                 width: 100%;
             }
             & .card__btn{
@@ -132,7 +131,7 @@
         }
     }
 }
-@media screen and (max-width:480px) {
+@media screen and (max-width:600px) {
     .card{
         min-width: 90%;
         margin:0 5%;

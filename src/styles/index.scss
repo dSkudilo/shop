@@ -85,7 +85,7 @@ body{
     height: 100%;
     display: block !important;
     user-select: none;
-    
+    -webkit-tap-highlight-color: transparent;
 }
 .wrapper{
     display: flex;

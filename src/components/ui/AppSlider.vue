@@ -11,7 +11,6 @@
             <img class="slider__img" 
                 :src="getImgUrl(item.img)" 
                 :alt="item.title"
-                :style="{'min-height':minHeight}"
             />
             <div 
                 class="slider__info"
@@ -48,7 +47,7 @@
 import { ref } from '@vue/reactivity'
 import { onMounted } from '@vue/runtime-core'
 export default {
-    props:['data','minHeight'],
+    props:['data'],
     setup(props) {
         const dataLength = ref(Object.keys(props.data).length - 1)
         const currentStep = ref(0)
@@ -61,7 +60,6 @@ export default {
                 currentStep.value = idx
             }
             
-            // delay()
         }
         onMounted(() =>{
             delay()

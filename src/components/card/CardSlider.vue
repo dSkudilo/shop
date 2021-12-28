@@ -1,11 +1,11 @@
 <template>
-    <div class="slider">
-        <img :src="getImgUrl(data.imgs[currentStep])" alt="product" class="slider__slide">
-        <ul class="slider__miniatures" @click.stop>
-            <li class="slider__miniatur" 
+    <div class="card-slider">
+        <img :src="getImgUrl(data.imgs[currentStep])" alt="product" class="card-slider__slide">
+        <ul class="card-slider__miniatures" @click.stop>
+            <li class="card-slider__miniatur" 
                 v-for="(img,id) in data.imgs"
                 :key="img"  
-                :class="{'slider__miniatur_active':id == currentStep}"  
+                :class="{'card-slider__miniatur_active':id == currentStep}"  
                 @click="currentStep = id"
                 v-show="id < 3"
             >

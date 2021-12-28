@@ -5,6 +5,7 @@ $durText:.3s;
 
 .slider{
     width: 100%;
+    height: 100%;
     position: relative;
 }
 .slider__item{
@@ -44,6 +45,7 @@ $durText:.3s;
 .slider__img{
     width: 100%;
     background-color: $border;
+    object-fit: contain;
 }
 .slider__logo{
     width: 81px;
