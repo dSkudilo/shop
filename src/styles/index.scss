@@ -16,6 +16,7 @@
 @import './ui/loader.scss';
 @import './ui/input';
 @import './ui/rating.scss';
+@import './ui/promoSlider.scss';
 
 //blocks
 @import './header.scss';
@@ -47,7 +48,6 @@
 
 //product
 @import './product/product.scss';
-@import './product/productSlider.scss';
 @import './product/options.scss';
 @import './product/optionsColors.scss';
 @import './product/description.scss';

@@ -1,24 +1,24 @@
 <template>
     <app-slider 
         :data="[
-        {
-            img:'mainSliderOne.jpg',
-            title:'Styler',
-            content:'GET UP TO 15% OFF'
-        },
-        {
-            img:'slide-2.jpg',
-            title:'Sale',
-            content:'GET UP TO 25% OFF'
-        },
-        {
-            img:'slide-3.jpg',
-            title:'New',
-            content:'GET UP TO 35% OFF',
-            white:true
-        }
+            {
+                img:'mainSliderOne.jpg',
+                title:'Styler',
+                content:'GET UP TO 15% OFF'
+            },
+            {
+                img:'slide-2.jpg',
+                title:'Sale',
+                content:'GET UP TO 25% OFF'
+            },
+            {
+                img:'slide-3.jpg',
+                title:'New',
+                content:'GET UP TO 35% OFF',
+                white:true
+            }
         ]"
-        :minHeight="'90vh'"
+        :full="true"
     />
     <home-promo />
     <home-tabs 

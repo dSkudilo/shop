@@ -1,24 +1,24 @@
 <template>
     <app-slider 
         :data="[
-        {
-            img:'productsSlide-2.jpg',
-            title:'Wolfskin',
-            noLogo:true,
-            white:true
-        },
-        {
-            img:'productsSlide-1.jpg',
-            title:'Wolfskin',
-            noLogo:true,
-            white:true
-        },
-        {
-            img:'productsSlide-3.jpg',
-            title:'Wolfskin',
-            noLogo:true,
-            white:true
-        }
+            {
+                img:'productsSlide-2.jpg',
+                title:'Wolfskin',
+                noLogo:true,
+                white:true
+            },
+            {
+                img:'productsSlide-1.jpg',
+                title:'Wolfskin',
+                noLogo:true,
+                white:true
+            },
+            {
+                img:'productsSlide-3.jpg',
+                title:'Wolfskin',
+                noLogo:true,
+                white:true
+            }
         ]"
         
     />
@@ -46,7 +46,6 @@ import ProductsAside from '@/components/products/ProductsAside.vue'
 import ProductsList from '@/components/products/ProductsList.vue'
 import AppSlider from '@/components/ui/AppSlider.vue'
 
-// import { compareArrs } from '@/utils/compareArrs'
 export default {
     setup() {
         const store = useStore()

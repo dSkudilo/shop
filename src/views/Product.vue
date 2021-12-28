@@ -6,8 +6,7 @@
     <div v-else>
         <product-slider
             :data="product.imgs"
-        />
-
+        /> 
         <div class="container product">
             <product-options 
                 :product="product"
@@ -34,10 +33,11 @@ import ProductOptions from '@/components/product/ProductOptions.vue'
 import ProductDescription from '@/components/product/ProductDescription.vue'
 import ProductComments from '@/components/product/productComments/ProductComments.vue'
 import ProductRelated from '@/components/product/productRelated/ProductRelated.vue'
-import ps from '@/components/product/ps.vue'
+
 import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
 import { computed, onMounted, ref } from '@vue/runtime-core'
+
 export default {
     setup() {
         const store = useStore()
@@ -145,8 +145,8 @@ export default {
         ProductDescription,
         ProductComments,
         ProductRelated,
-        ps,
         TheFooter
+
     }
 }
 </script>

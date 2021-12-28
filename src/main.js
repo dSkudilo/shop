@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTimesCircle,faCartPlus,faSearch,faLock,faCompass,faUserPlus,faBars,faArrowRight,faBan, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 
+
 const app = createApp(App)
 
 components.forEach(component => app.component(component.name,component))
