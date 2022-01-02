@@ -37,3 +37,11 @@
         margin:0 10px;
     }
 }
+@media screen and (max-width:480px) {
+    .promo-slider{
+        height: 100%;
+        & .swiper-pagination{
+            display: none;
+        }
+    }
+}

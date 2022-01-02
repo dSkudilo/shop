@@ -5,7 +5,9 @@
         :spaceBetween="0" 
         :slidesPerGroup="1" 
         :pagination='{"clickable": true}' 
-        :navigation="true">
+        :navigation="true"
+        class="product-slider"
+    >
     <swiper-slide
         v-for="(src,i) in data"    
         :key="i"

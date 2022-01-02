@@ -1,21 +1,26 @@
 .app-slider{
     position: relative;
-    .swiper {
+    & .swiper {
         width: 100%;
         height: inherit;
       }
-      .swiper-slide {
+    & .swiper-slide {
         background-position: center;
         background-size: cover;
         position: relative;
         z-index: -100;
       }
-      .swiper-slide img {
+    & .swiper-slide img {
         display: block;
         width: 100%;
         height: inherit;
         object-fit: cover;
       }
+    & .swiper-pagination-bullet{
+        background-color: $dark ;
+        width: 12.5px;
+        height: 12.5px;
+    }
 }
 .app-slider_full{
     height: 90vh;

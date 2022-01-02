@@ -21,6 +21,7 @@
 .product-comment__text{
     line-height: 1.4;
     user-select: text;
+    white-space: normal;
 }
 @media screen and (max-width:640px) {
     .product-comment__text{
@@ -29,6 +30,6 @@
 }
 @media screen and (max-width:500px) {
     .product-comment__info{
-        min-width:100px ; 
+        min-width:120px ; 
     }
 }

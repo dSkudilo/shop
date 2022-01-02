@@ -1,6 +1,9 @@
 <template>
     <div class="card-slider">
-        <img :src="getImgUrl(data.imgs[currentStep])" alt="product" class="card-slider__slide">
+        <img :src="getImgUrl(data.imgs[currentStep])" 
+            alt="product" 
+            class="card-slider__slide"
+        >
         <ul class="card-slider__miniatures" @click.stop>
             <li class="card-slider__miniatur" 
                 v-for="(img,id) in data.imgs"

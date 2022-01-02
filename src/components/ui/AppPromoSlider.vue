@@ -4,7 +4,7 @@
         
         :pagination='{"clickable": true}' 
         class="promo-slider"
-        :slidesPerView="4" 
+        :slidesPerView="slidesPerView" 
     >
         <swiper-slide 
             v-for="(product, i) in data"
@@ -28,6 +28,7 @@ import 'swiper/modules/pagination/pagination.min.css'
 import SwiperCore, {
   Pagination
 } from 'swiper';
+import { onBeforeMount, onBeforeUnmount, ref } from '@vue/runtime-core';
 
 SwiperCore.use([Pagination]);
 
@@ -42,8 +43,26 @@ export default {
             }
             return name + id
         }
+        const slidesPerView = ref(0)
+        const windowResizeHandler = () => {
+            if(window.innerWidth <= 480){
+                slidesPerView.value = 1
+            }else if(window.innerWidth <= 768){
+                slidesPerView.value = 2
+            }else if(window.innerWidth <= 1100){
+                slidesPerView.value = 3
+            }else{
+                slidesPerView.value = 4
+            }
+        }
+        onBeforeMount(() => {
+            windowResizeHandler()
+            window.addEventListener('resize', windowResizeHandler)
+        })
+        onBeforeUnmount(() => window.removeEventListener('resize', windowResizeHandler))
         return{
-            getClass
+            getClass,
+            slidesPerView
         }
     },
     components: {

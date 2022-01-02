@@ -7,7 +7,6 @@
                 :class="[{'rating__selected':isSelect},{'rating__active':!isSelect}]"
                 :style="{width:currentRating * 20  + '%'}"    
             >
-
             </div>
             <div 
                 class="rating__items"

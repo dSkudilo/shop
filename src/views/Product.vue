@@ -21,7 +21,7 @@
                 :comments="comments"
                 @rate="rate"
             />
-            <!-- <product-related /> -->
+       
         </div>
         <the-footer />
     </div>
@@ -32,7 +32,6 @@ import ProductSlider from '@/components/product/ProductSlider.vue'
 import ProductOptions from '@/components/product/ProductOptions.vue'
 import ProductDescription from '@/components/product/ProductDescription.vue'
 import ProductComments from '@/components/product/productComments/ProductComments.vue'
-import ProductRelated from '@/components/product/productRelated/ProductRelated.vue'
 
 import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
@@ -144,7 +143,6 @@ export default {
         ProductOptions,
         ProductDescription,
         ProductComments,
-        ProductRelated,
         TheFooter
 
     }
