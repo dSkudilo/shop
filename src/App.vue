@@ -6,14 +6,14 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import MainLayout from './layout/MainLayout.vue'
 export default {
-  setup() {
+  setup () {
     const route = useRoute()
 
     return {
       layout: computed(() => route.meta.layout)
     }
   },
-  components: {MainLayout}
+  components: { MainLayout }
 }
 </script>
 <style>

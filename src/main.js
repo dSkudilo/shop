@@ -6,15 +6,15 @@ import './styles/index.scss'
 import components from '@/components/ui'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faTimesCircle,faCartPlus,faSearch,faLock,faCompass,faUserPlus,faBars,faArrowRight,faBan, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
+import { faTimesCircle, faCartPlus, faSearch, faLock, faCompass, faUserPlus, faBars, faArrowRight, faBan, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 const app = createApp(App)
 
-components.forEach(component => app.component(component.name,component))
+components.forEach(component => app.component(component.name, component))
 
-library.add(faCartPlus,faSearch,faLock,faCompass,faUserPlus,faBars,faBan,faArrowRight,faArrowLeft,faTimesCircle)
+library.add(faCartPlus, faSearch, faLock, faCompass, faUserPlus, faBars, faBan, faArrowRight, faArrowLeft, faTimesCircle)
 app
-    .use(store)
-    .use(router)
-        .component("font-awesome-icon", FontAwesomeIcon)
-    .mount('#app')
+  .use(store)
+  .use(router)
+  .component('font-awesome-icon', FontAwesomeIcon)
+  .mount('#app')

@@ -10,16 +10,16 @@ baseAxios.defaults.params = {}
 
 baseAxios.interceptors.request.use(async config => {
   if (!store.getters['auth/isAuthenticated']) {
-    console.log('no-auth',store.getters['auth/isAuthenticated'])
+    console.log('no-auth', store.getters['auth/isAuthenticated'])
     return config
   }
 
   if (store.getters['auth/isExpired']) {
-    console.log('isExpired',store.getters['auth/isExpired'])
+    console.log('isExpired', store.getters['auth/isExpired'])
     await store.dispatch('auth/refresh')
   }
 
-  config.params['auth'] = store.getters['auth/token']
+  config.params.auth = store.getters['auth/token']
 
   return config
 })

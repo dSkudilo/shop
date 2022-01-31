@@ -6,8 +6,8 @@
                 <p class="home-deal__subtitle subtitle">Up to 30% off</p>
                 <button class="home-deal__btn">Shop now!</button>
             </div>
-            
+
         </div>
-        
+
     </section>
 </template>

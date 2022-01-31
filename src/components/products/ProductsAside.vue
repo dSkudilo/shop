@@ -1,17 +1,17 @@
 <template>
-<button 
+<button
     class="product-aside__open"
-    :class="{'product-aside__open_hidden':asideFlag}" 
-    @click="showAside"   
+    :class="{'product-aside__open_hidden':asideFlag}"
+    @click="showAside"
 >
     <font-awesome-icon :icon="['fa','compass']" />
 </button>
 
-    <aside 
+    <aside
         class="products-aside"
         :class="{'products-aside_show':asideFlag}"
     >
-        <button 
+        <button
             class="product-aside__close"
             @click="closeAside"
         >
@@ -37,26 +37,25 @@ import ProductsAsideChosen from './productsAside/ProductsAsideChosen.vue'
 import ProductsAsidePopular from './productsAside/ProductsAsidePopular.vue'
 
 export default {
-    props:['categories','brands','sizes','popular'],
-    emits:['changeFilter'],
-    setup(_,{emit}) {
-        const asideFlag = ref(false)
-        const showAside = () => {
-            asideFlag.value = true
-            document.body.classList.add('nowrap')
-        }
-        const closeAside = () => {
-            asideFlag.value = false
-            document.body.classList.remove('nowrap')
-        }
-        const changeFilter = (val) => {
-            emit('changeFilter',val)
-        }
-        return{
-            asideFlag,showAside,closeAside,changeFilter
-        }
-    },
-    components:{
-        ProductsAsideCatalog,ProductsAsideChosen,ProductsAsidePopular}
+  props: ['categories', 'brands', 'sizes', 'popular'],
+  emits: ['changeFilter'],
+  setup (_, { emit }) {
+    const asideFlag = ref(false)
+    const showAside = () => {
+      asideFlag.value = true
+      document.body.classList.add('nowrap')
+    }
+    const closeAside = () => {
+      asideFlag.value = false
+      document.body.classList.remove('nowrap')
+    }
+    const changeFilter = (val) => {
+      emit('changeFilter', val)
+    }
+    return {
+      asideFlag, showAside, closeAside, changeFilter
+    }
+  },
+  components: { ProductsAsideCatalog, ProductsAsideChosen, ProductsAsidePopular }
 }
 </script>

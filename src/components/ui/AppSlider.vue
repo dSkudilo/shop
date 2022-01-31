@@ -1,80 +1,67 @@
+
 <template>
-    <div class="slider">
-        <div class="slider__item" 
-            v-for="( item , idx ) in data" 
-            :key="item.id"
-            :class="{
-                slider__item_hidden: currentStep !== idx,
-                slider__item_white:item.white    
-            }"
+    <swiper
+        :spaceBetween="30"
+        :effect="'fade'"
+        :navigation="true"
+        :loop="true"
+        :pagination="{
+            'clickable': true
+        }"
+
+        :autoplay="{delay:5000}"
+        :class="['app-slider',{
+            'app-slider_full':full
+        }]">
+        <swiper-slide
+            v-for="( item , i) in data"
+            :key="i"
         >
-            <img class="slider__img" 
-                :src="getImgUrl(item.img)" 
+            <img
+                :src="getImgUrl(item.img)"
                 :alt="item.title"
+                class="app-slider__bg"
             />
-            <div 
-                class="slider__info"
-                :class="{'slider__info_middle':item.noLogo}"
-            >
-                <img 
-                    src="@/assets/logo.png" 
-                    alt="logo" 
-                    class="slider__logo"
+            <div :class="['app-slider__content',{
+                'app-slider__content_white':item.white
+            }]">
+                <img
+                    src="@/assets/logo.png"
+                    alt="logo"
+                    class="app-slider__logo"
                     v-if="!item.noLogo"
                 >
-                <h2 class="slider__title">{{item.title}}</h2>
-                <p class="slider__text">{{item.content}}</p>
+                <h2 class="app-slider__title">{{item.title}}</h2>
+                <p class="app-slider__text">{{item.content}}</p>
             </div>
-        </div>
-        <div class="slider__btns">
-            <label class="slider__btn"
-                v-for="(item, idx) in data" 
-                :key="item.id"
-            > 
-                <input 
-                    type="radio" 
-                    name="slider" 
-                    class="slider__real"
-                    :checked="idx == currentStep"
-                    @click="slider(idx)"
-                >
-                <span class="slider__fake"></span>
-            </label>
-        </div>
-    </div>
+
+        </swiper-slide>
+    </swiper>
 </template>
 <script>
-import { ref } from '@vue/reactivity'
-import { onMounted } from '@vue/runtime-core'
+import { Swiper, SwiperSlide } from 'swiper/vue/swiper-vue'
+import 'swiper/swiper.min.css'
+import SwiperCore, {
+  Autoplay
+} from 'swiper'
+SwiperCore.use([Autoplay])
 export default {
-    props:['data'],
-    setup(props) {
-        const dataLength = ref(Object.keys(props.data).length - 1)
-        const currentStep = ref(0)
-        const slider = (idx) => {
-            
-            if(currentStep.value == dataLength.value){
-              
-                currentStep.value = 0
-            }else{
-                currentStep.value = idx
-            }
-            
-        }
-        onMounted(() =>{
-            delay()
-        })
-        const delay = () => {
-            const nextStep = currentStep.value + 1
-            setTimeout(() => slider(nextStep),1000) 
-        }
-        const getImgUrl = (pet) => {
-            const images = require.context('@/assets/', false, /\.jpg$/)
-            return images('./' + pet)
-        }
-
-        return {currentStep,slider,getImgUrl,delay}
-    },
-    
+  props: ['data', 'full'],
+  setup () {
+    const getImgUrl = (pet) => {
+      const images = require.context('@/assets/', false, /\.jpg$/)
+      return images('./' + pet)
+    }
+    return {
+      getImgUrl
+    }
+  },
+  components: {
+    Swiper,
+    SwiperSlide
+  }
 }
 </script>
+<style scoped>
+
+</style>

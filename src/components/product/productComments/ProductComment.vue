@@ -19,16 +19,16 @@
 import AppRating from '@/components/ui/AppRating.vue'
 import { toDate } from '@/utils/date.js'
 export default {
-    props:['comment'],
-    emits:['rate'],
-    setup({ comment },{emit}) {
-        const rate = rating => emit('rate',{commentId:comment.id,...rating})
-        
-        return{
-            rate,
-            toDate
-        }
-    },
-    components:{AppRating}
+  props: ['comment'],
+  emits: ['rate'],
+  setup ({ comment }, { emit }) {
+    const rate = rating => emit('rate', { commentId: comment.id, ...rating })
+
+    return {
+      rate,
+      toDate
+    }
+  },
+  components: { AppRating }
 }
 </script>

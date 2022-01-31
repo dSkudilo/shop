@@ -8,18 +8,18 @@
             <div class="product-comments__inputs">
                 <div :class="['input-control',{'input-control_error':tError}]">
                     <label>Тема отзыва</label>
-                    <input 
-                        type="text" 
-                        v-model="theme" 
+                    <input
+                        type="text"
+                        v-model="theme"
                         @blur="tBlur"
                         autocomplete="off"
                     >
                     <small v-if="tError">{{ tError }}</small>
                 </div>
                 <div :class="['input-control',{'input-control_error':mError}]">
-                    <textarea 
-                        type="text" 
-                        v-model="message" 
+                    <textarea
+                        type="text"
+                        v-model="message"
                         @blur="mBlur"
                         autocomplete="off"
                         placeholder="Введите текст"
@@ -36,16 +36,16 @@ import { useCommentForm } from '@/use/comment-form'
 import { useStore } from 'vuex'
 import { computed } from '@vue/reactivity'
 export default {
-    setup(){
-        const store = useStore()
-        return{
-            isAuthenticated:computed(() => store.getters['auth/isAuthenticated']),
-            ...useCommentForm()
-        }
+  setup () {
+    const store = useStore()
+    return {
+      isAuthenticated: computed(() => store.getters['auth/isAuthenticated']),
+      ...useCommentForm()
     }
+  }
 }
 </script>
-    
+
 <style>
 
 </style>

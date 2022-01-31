@@ -8,7 +8,7 @@ const USER_KEY = 'shop-user'
 
 export default {
   namespaced: true,
-  state() {
+  state () {
     return {
       token: localStorage.getItem(TOKEN_KEY),
       refreshToken: localStorage.getItem(REFRESH_KEY),
@@ -17,11 +17,11 @@ export default {
     }
   },
   mutations: {
-    setUser(state, user) {
+    setUser (state, user) {
       state.user = user
       localStorage.setItem(USER_KEY, JSON.stringify(user))
     },
-    setToken(state, {refreshToken, idToken, expiresIn = '3600'}) {
+    setToken (state, { refreshToken, idToken, expiresIn = '3600' }) {
       const expiresDate = new Date(new Date().getTime() + Number(expiresIn) * 1000)
       state.token = idToken
       state.refreshToken = refreshToken
@@ -30,7 +30,7 @@ export default {
       localStorage.setItem(REFRESH_KEY, refreshToken)
       localStorage.setItem(EXPIRES_KEY, expiresDate.toString())
     },
-    logout(state) {
+    logout (state) {
       state.token = null
       state.refreshToken = null
       state.expiresDate = null
@@ -42,42 +42,41 @@ export default {
     }
   },
   actions: {
-    async login({ commit, dispatch }, payload) {
+    async login ({ commit, dispatch }, payload) {
       const url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.VUE_APP_FB_KEY}`
-      const {data} = await axios.post(url, {...payload, returnSecureToken: true})
+      const { data } = await axios.post(url, { ...payload, returnSecureToken: true })
       commit('setToken', data)
       await dispatch('getUser', data.localId)
     },
-    async signUp({ commit, dispatch }, payload) {
+    async signUp ({ commit, dispatch }, payload) {
       console.log(payload)
       try {
         const url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.VUE_APP_FB_KEY}`
-        const {data} = await axios.post(url, {...payload, returnSecureToken: true})
+        const { data } = await axios.post(url, { ...payload, returnSecureToken: true })
         commit('setToken', data)
         await dispatch('createUser', {
-          ...data,...payload
-      })
+          ...data, ...payload
+        })
       } catch (e) {
         console.log(e)
       }
-      
     },
-    async createUser({ commit }, payload) {
-      const {data} = await baseAxios.put(`/users/${payload.localId}.json`, {
+    async createUser ({ commit }, payload) {
+      const { data } = await baseAxios.put(`/users/${payload.localId}.json`, {
         role: 'user',
         email: payload.email,
-        name:payload.name,
-        secondName:payload.secondName
+        name: payload.name,
+        secondName: payload.secondName
       })
-      commit('setUser', {...data, id: payload.localId})
+      commit('setUser', { ...data, id: payload.localId })
     },
-    async getUser({ commit }, userId) {
-      const {data} = await baseAxios.get(`/users/${userId}.json`)
-      commit('setUser', {...data, id: userId})
+    async getUser ({ commit }, userId) {
+      const { data } = await baseAxios.get(`/users/${userId}.json`)
+      commit('setUser', { ...data, id: userId })
     },
-    async refresh({ state, commit }) {
+    async refresh ({ state, commit }) {
       try {
-        const {data} = await axios.post(`https://securetoken.googleapis.com/v1/token?key=${process.env.VUE_APP_FB_KEY}`, {
+        const { data } = await axios.post(`https://securetoken.googleapis.com/v1/token?key=${process.env.VUE_APP_FB_KEY}`, {
           grant_type: 'refresh_token',
           refresh_token: state.refreshToken
         })
@@ -92,22 +91,22 @@ export default {
     }
   },
   getters: {
-    token(state) {
+    token (state) {
       return state.token
     },
-    isAuthenticated(_, getters) {
-      return !!getters.token 
+    isAuthenticated (_, getters) {
+      return !!getters.token
     },
-    isAdmin(state) {
+    isAdmin (state) {
       return state.user.role === 'admin'
     },
-    isUser(_, getters) {
+    isUser (_, getters) {
       return !getters.isAdmin
     },
-    isExpired(state) {
+    isExpired (state) {
       return new Date() >= state.expiresDate
     },
-    user(state) {
+    user (state) {
       return state.user
     }
   }

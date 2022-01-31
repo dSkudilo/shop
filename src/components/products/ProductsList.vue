@@ -15,11 +15,11 @@
 import Card from '@/components/card/Card.vue'
 import ProductsPaginate from '@/components/products/ProductsPaginate.vue'
 export default {
-    props:['products'],
-    setup() {
-        return{
-        }
-    },
-    components:{Card,ProductsPaginate}
+  props: ['products'],
+  setup () {
+    return {
+    }
+  },
+  components: { Card, ProductsPaginate }
 }
 </script>

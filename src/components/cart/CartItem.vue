@@ -1,17 +1,17 @@
 <template>
     <div class="cart-item">
-        <button 
+        <button
             class="cart-item__delete"
             @click="deleteCartHandler"
         >
             <font-awesome-icon :icon="['fa','times-circle']" />
         </button>
-        <div 
+        <div
             class="cart-item__photo"
             @click="to"
         >
             <img
-                class="cart-item__img" 
+                class="cart-item__img"
                 :src="getImgUrl(product.imgs[0])" alt=""
             >
         </div>
@@ -41,27 +41,27 @@
 import { currency } from '@/utils/currency.js'
 import { useRouter } from 'vue-router'
 export default {
-    props:['product','cart','productCartId'],
-    emits:['updateCounterHandler','deleteCartHandler','updateColorHandler'],
-    setup({ product,productCartId }, { emit }) {
-        const getImgUrl = (pet) => {
-            const images = require.context('@/assets/products/', false, /\.jpg$/)
-            return images('./' + pet)
-        }
-        const router = useRouter()
-        const to = () => router.push({ name:'product',params:{ id:product.id }})
-        const updateCounterHandler = (val) => emit('updateCounterHandler',{id:productCartId,val})
-        const deleteCartHandler = (val) => emit('deleteCartHandler',productCartId)
-        const updateColorHandler = (color) => emit('updateColorHandler',{id:productCartId,color})
-        return{
-            getImgUrl,
-            currency,
-            to,
-            updateCounterHandler,
-            deleteCartHandler,
-            updateColorHandler
-        }
-    },
- 
+  props: ['product', 'cart', 'productCartId'],
+  emits: ['updateCounterHandler', 'deleteCartHandler', 'updateColorHandler'],
+  setup ({ product, productCartId }, { emit }) {
+    const getImgUrl = (pet) => {
+      const images = require.context('@/assets/products/', false, /\.jpg$/)
+      return images('./' + pet)
+    }
+    const router = useRouter()
+    const to = () => router.push({ name: 'product', params: { id: product.id } })
+    const updateCounterHandler = (val) => emit('updateCounterHandler', { id: productCartId, val })
+    const deleteCartHandler = (val) => emit('deleteCartHandler', productCartId)
+    const updateColorHandler = (color) => emit('updateColorHandler', { id: productCartId, color })
+    return {
+      getImgUrl,
+      currency,
+      to,
+      updateCounterHandler,
+      deleteCartHandler,
+      updateColorHandler
+    }
+  }
+
 }
 </script>

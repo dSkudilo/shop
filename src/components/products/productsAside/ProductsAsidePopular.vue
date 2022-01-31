@@ -2,8 +2,8 @@
     <h2 class="products-aside__title title-block">Популярное</h2>
     <ul class="products-aside__list">
 
-        <li 
-            v-for="product in popular" 
+        <li
+            v-for="product in popular"
             :key="product.id"
             class="products-aside__item"
         >
@@ -18,8 +18,8 @@
 import SmallCard from '@/components/smallCard/SmallCard.vue'
 
 export default {
-    props:['popular'],
+  props: ['popular'],
 
-    components:{SmallCard}
+  components: { SmallCard }
 }
 </script>

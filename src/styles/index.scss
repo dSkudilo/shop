@@ -16,6 +16,7 @@
 @import './ui/loader.scss';
 @import './ui/input';
 @import './ui/rating.scss';
+@import './ui/promoSlider.scss';
 
 //blocks
 @import './header.scss';
@@ -47,16 +48,13 @@
 
 //product
 @import './product/product.scss';
-@import './product/productSlider.scss';
 @import './product/options.scss';
 @import './product/optionsColors.scss';
 @import './product/description.scss';
 @import './product/comments.scss';
 @import './product/comment.scss';
 @import './product/commentCreate.scss';
-@import './product/related.scss';
-@import './product/relatedSlider.scss';
-@import './product/relatedCard.scss';
+@import './product/slider.scss';
 
 //authorization
 @import './authorization/authorization.scss';

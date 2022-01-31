@@ -1,16 +1,16 @@
-import {useField, useForm} from 'vee-validate'
+import { useField, useForm } from 'vee-validate'
 import * as yup from 'yup'
-import {computed, watch} from 'vue'
-import {useStore} from 'vuex'
-import {useRoute} from 'vue-router'
+import { computed, watch } from 'vue'
+import { useStore } from 'vuex'
+import { useRoute } from 'vue-router'
 
-export function useCommentForm() {
+export function useCommentForm () {
   const store = useStore()
   const route = useRoute()
 
-  const {handleSubmit, isSubmitting, submitCount} = useForm()
+  const { handleSubmit, isSubmitting, submitCount } = useForm()
 
-  const {value: theme, errorMessage: tError, handleBlur: tBlur} = useField(
+  const { value: theme, errorMessage: tError, handleBlur: tBlur } = useField(
     'theme',
     yup
       .string()
@@ -20,7 +20,7 @@ export function useCommentForm() {
 
   const MIN_LENGTH = 0
 
-  const {value: message, errorMessage: mError, handleBlur: mBlur} = useField(
+  const { value: message, errorMessage: mError, handleBlur: mBlur } = useField(
     'message',
     yup
       .string()
@@ -40,8 +40,7 @@ export function useCommentForm() {
   const onSubmit = handleSubmit(async values => {
     try {
       const productId = route.params.id
-      await store.dispatch('comment/sendComment',{productId,...values})
-      
+      await store.dispatch('comment/sendComment', { productId, ...values })
     } catch (e) {
     }
   })

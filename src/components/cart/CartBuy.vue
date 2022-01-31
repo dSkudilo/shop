@@ -11,12 +11,12 @@
 <script>
 import { currency } from '@/utils/currency'
 export default {
-    props:['price'],
-    setup(){
-        return{
-            currency
-        }
+  props: ['price'],
+  setup () {
+    return {
+      currency
     }
+  }
 }
 </script>
 

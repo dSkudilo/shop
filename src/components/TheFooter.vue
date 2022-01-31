@@ -27,7 +27,7 @@
                 </li>
             </ul>
             <div class="footer__info">
-                <ul 
+                <ul
                     class="footer__list"
                     @click="infFlag = !infFlag"
                     :class="{footer__list_show:infFlag}"
@@ -54,7 +54,7 @@
                         <a href="#" class="footer__link text-grey">SITEMAP</a>
                     </li>
                 </ul>
-                <ul 
+                <ul
                     class="footer__list"
                     @click="ihrFlag = !ihrFlag"
                     :class="{footer__list_show:ihrFlag}"
@@ -78,7 +78,7 @@
                         <a href="#" class="footer__link text-grey">IHRE PERSÖNLICHEN DATEN</a>
                     </li>
                 </ul>
-                <ul 
+                <ul
                     class="footer__list"
                     @click="katFlag = !katFlag"
                     :class="{footer__list_show:katFlag}"
@@ -128,7 +128,7 @@
                             <img src="" alt="google">
                         </a>
                     </li>
-                    
+
                 </ul>
             </div>
         </div>
@@ -142,13 +142,13 @@
 <script>
 import { ref } from '@vue/reactivity'
 export default {
-    setup() {
-        const infFlag = ref(false)
-        const ihrFlag = ref(false)
-        const katFlag = ref(false)
-        return{
-            infFlag,ihrFlag,katFlag
-        }
-    },
+  setup () {
+    const infFlag = ref(false)
+    const ihrFlag = ref(false)
+    const katFlag = ref(false)
+    return {
+      infFlag, ihrFlag, katFlag
+    }
+  }
 }
 </script>

@@ -9,7 +9,7 @@
             <li class="aside__item" @click="toggleSearch">
                 <font-awesome-icon :icon="['fa','search']" />
                 <the-search
-                     v-if="searchFlag" 
+                     v-if="searchFlag"
                 />
             </li>
             <li class="aside__item" @click="toggleAuth">
@@ -27,28 +27,28 @@ import { ref } from '@vue/reactivity'
 import TheAuth from './TheAuth.vue'
 import TheSearch from './TheSearch.vue'
 export default {
-    setup() {
-        const authFlag = ref(false)
-        const toggleAuth = () => {
-            authFlag.value = !authFlag.value
-        }
-        const searchFlag = ref(false)
-        const toggleSearch = () => {
-            searchFlag.value = !searchFlag.value
-        }
-        const optionsFlag = ref(false)
-        const toggleOptions = () => {
-            optionsFlag.value = !optionsFlag.value
-        }
-        const close = () => {
-            optionsFlag.value = false
-            authFlag.value = false
-            searchFlag.value = false
-        }
-        return{
-            toggleSearch,toggleAuth,authFlag,searchFlag,optionsFlag,toggleOptions,close
-        }
-    },
-    components:{ TheAuth,TheSearch }
+  setup () {
+    const authFlag = ref(false)
+    const toggleAuth = () => {
+      authFlag.value = !authFlag.value
+    }
+    const searchFlag = ref(false)
+    const toggleSearch = () => {
+      searchFlag.value = !searchFlag.value
+    }
+    const optionsFlag = ref(false)
+    const toggleOptions = () => {
+      optionsFlag.value = !optionsFlag.value
+    }
+    const close = () => {
+      optionsFlag.value = false
+      authFlag.value = false
+      searchFlag.value = false
+    }
+    return {
+      toggleSearch, toggleAuth, authFlag, searchFlag, optionsFlag, toggleOptions, close
+    }
+  },
+  components: { TheAuth, TheSearch }
 }
 </script>

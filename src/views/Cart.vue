@@ -1,23 +1,23 @@
 <template>
-  <app-loader 
+  <app-loader
     v-if="loadFlag"
   />
   <section class="cart container" v-else>
-    <cart-empty 
-      v-if="!inCart" 
+    <cart-empty
+      v-if="!inCart"
     />
-    <div 
+    <div
       class="cart__conten"
-      v-else  
+      v-else
     >
-      <cart-list 
+      <cart-list
         :products="products"
         :cart="cart"
         @updateCounterHandler="updateCounterHandler"
         @deleteCartHandler="deleteCartHandler"
         @updateColorHandler="updateColorHandler"
       />
-      <cart-buy 
+      <cart-buy
         :price="costPayment"
       />
     </div>
@@ -35,30 +35,28 @@ import CartEmpty from '@/components/cart/CartEmpty.vue'
 import CartList from '@/components/cart/CartList.vue'
 import CartBuy from '@/components/cart/CartBuy.vue'
 
-
 export default {
-  setup(){
+  setup () {
     const store = useStore()
     const loadFlag = ref(true)
     const cart = store.getters['cart/cart']
     const inCart = computed(() => store.getters['cart/length'])
 
-    const updateCounterHandler = (obj) => store.commit('cart/counterUpdate',obj)
-    const deleteCartHandler = (id) => store.commit('cart/delete',id)
-    const updateColorHandler = (obj) => store.commit('cart/colorChange',obj)
-    
+    const updateCounterHandler = (obj) => store.commit('cart/counterUpdate', obj)
+    const deleteCartHandler = (id) => store.commit('cart/delete', id)
+    const updateColorHandler = (obj) => store.commit('cart/colorChange', obj)
+
     onMounted(async () => {
-      //уникальные id
-        let cartIds = Object.values(cart).map(e => e.options.productId)
-        cartIds = [... new Set(cartIds)]
-        if(inCart) {  
-          await store.dispatch('product/loadProductDefinite',cartIds)
-        }
-        loadFlag.value = false
-  
+      // уникальные id
+      let cartIds = Object.values(cart).map(e => e.options.productId)
+      cartIds = [...new Set(cartIds)]
+      if (inCart) {
+        await store.dispatch('product/loadProductDefinite', cartIds)
+      }
+      loadFlag.value = false
     })
     const products = computed(() => store.getters['product/productDefinite'])
-    return{
+    return {
       loadFlag,
       inCart,
       products,
@@ -66,19 +64,19 @@ export default {
       updateCounterHandler,
       deleteCartHandler,
       updateColorHandler,
-      costPayment:computed(() => {
-        const productsPrice = Object.values(products.value).reduce((acc,element) =>{
-          acc[element.id] = {price:element.price}
+      costPayment: computed(() => {
+        const productsPrice = Object.values(products.value).reduce((acc, element) => {
+          acc[element.id] = { price: element.price }
           return acc
-        },{})
-        return Object.values(cart).reduce((acc,element) => {
+        }, {})
+        return Object.values(cart).reduce((acc, element) => {
           acc += element.number * productsPrice[element.options.productId].price
           return acc
-        },0)
+        }, 0)
       })
     }
   },
-  components:{
+  components: {
     TheFooter,
     CartEmpty,
     CartList,

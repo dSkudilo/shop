@@ -5,23 +5,22 @@
         </div>
         <div class="card__hashtags">
             <div
-                v-if="product.sale" 
+                v-if="product.sale"
                 class="card__sale">
                     sale!
             </div>
             <div
-                v-if="product.new" 
+                v-if="product.new"
                 class="card__new">
                     new
             </div>
         </div>
-        
         <div
-            v-if="product.discount" 
+            v-if="product.discount"
             class="card__discount">
                 {{percent(product.discount)}}
         </div>
-        <card-slider 
+        <card-slider
             :data="
                 {
                     imgs:product.imgs
@@ -48,15 +47,15 @@ import CardSlider from './CardSlider.vue'
 import { currency } from '../../utils/currency'
 import { percent } from '../../utils/percent'
 export default {
-    props:['id','product'],
-    setup(props) {
-        const product = ref(props.product)
-        return{
-            product,
-            currency,
-            percent
-        }
-    },
-    components:{CardSlider}
+  props: ['id', 'product'],
+  setup (props) {
+    const product = ref(props.product)
+    return {
+      product,
+      currency,
+      percent
+    }
+  },
+  components: { CardSlider }
 }
 </script>

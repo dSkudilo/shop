@@ -10,6 +10,6 @@ import TheLogo from './TheLogo.vue'
 import TheNavbar from './TheNavbar.vue'
 import TheBasket from './TheBasket.vue'
 export default {
-    components:{TheLogo,TheBasket,TheNavbar}
+  components: { TheLogo, TheBasket, TheNavbar }
 }
 </script>

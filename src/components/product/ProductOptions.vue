@@ -26,13 +26,13 @@
             </div>
             <app-counter
                 :number="product.number"
-                
+
                 @counterHandler="counter"
             >Количество</app-counter>
         </div>
         <div class="product-options__btn">
             <button
-                @click="$emit('inCart')" 
+                @click="$emit('inCart')"
                 class="dark-btn">
                 <font-awesome-icon :icon="['fa','cart-plus']" />
                 В корзину
@@ -49,25 +49,25 @@ import AppDropdown from '@/components/ui/AppDropdown.vue'
 import AppCounter from '@/components/ui/AppCounter.vue'
 import { currency } from '@/utils/currency'
 export default {
-    props:['product','cart','error'],
-    emits:['selectSize','selectColor','counter','inCart'],
-    setup(_,{ emit }) {
-        const colors = ref([{color:'#ce1f21'},{color:'#e04b34'},{color:'#435f9f'},{color:'#00aaf0'}])
-        const selectSize = (size) => emit('selectSize',size)
-        const selectColor = (color) => emit('selectColor',color)
-        const counter = (number) => emit('counter',number)
-        return{
-            colors,
-            selectSize,
-            selectColor,
-            counter,
-            currency,
-            
-        }
-    },
-    components:{
-        AppDropdown,
-        AppCounter
+  props: ['product', 'cart', 'error'],
+  emits: ['selectSize', 'selectColor', 'counter', 'inCart'],
+  setup (_, { emit }) {
+    const colors = ref([{ color: '#ce1f21' }, { color: '#e04b34' }, { color: '#435f9f' }, { color: '#00aaf0' }])
+    const selectSize = (size) => emit('selectSize', size)
+    const selectColor = (color) => emit('selectColor', color)
+    const counter = (number) => emit('counter', number)
+    return {
+      colors,
+      selectSize,
+      selectColor,
+      counter,
+      currency
+
     }
+  },
+  components: {
+    AppDropdown,
+    AppCounter
+  }
 }
 </script>

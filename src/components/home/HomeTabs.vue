@@ -1,33 +1,31 @@
 <template>
     <section class="container tabs">
-        <home-tabs-category 
+        <home-tabs-category
             @changeCat="changeCat"
         />
-        <app-loader 
+        <app-loader
             v-if="loadFlag"
         />
-        <home-tabs-slider 
+        <app-promo-slider
+            :data="promo"
             v-else
-            :promo="promo"
-            v-cloak
         />
     </section>
 </template>
 <script>
 import HomeTabsCategory from './homeTabs/HomeTabsCategory.vue'
-import HomeTabsSlider from './homeTabs/HomeTabsSlider.vue'
 export default {
-    props:['promo','loadFlag'],
-    emits:['changeCat'],
-    setup(_, { emit }){
-        const changeCat = (cat) => {
-            emit('changeCat',cat)
-        }
-        return{
-            changeCat
-        }
-    },
-    
-    components:{HomeTabsCategory,HomeTabsSlider}
+  props: ['promo', 'loadFlag'],
+  emits: ['changeCat'],
+  setup (_, { emit }) {
+    const changeCat = (cat) => {
+      emit('changeCat', cat)
+    }
+    return {
+      changeCat
+    }
+  },
+
+  components: { HomeTabsCategory }
 }
 </script>

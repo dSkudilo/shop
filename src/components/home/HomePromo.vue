@@ -21,7 +21,7 @@
                     <h3 class="promo__subtitle">New arrivals</h3>
                     <h2 class="promo__title">footwear</h2>
                 </div>
-            </li> 
+            </li>
         </ul>
     </section>
 </template>

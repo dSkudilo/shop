@@ -9,13 +9,13 @@ import auth from './modules/auth'
 import cart from './modules/cart'
 
 export default createStore({
-  state(){
-    return{}
+  state () {
+    return {}
   },
   mutations: {
   },
   actions: {
-    
+
   },
   modules: {
     promo,
