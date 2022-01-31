@@ -1,19 +1,19 @@
 <template>
-    <div>
-        <h2 class="products-aside__title title-block">Каталог</h2>
-        <products-aside-catalog-categories
-            :categories="categories"
-            @changeFilter="changeFilter"
-        />
-        <products-aside-catalog-brands
-            :brands="brands"
-            @changeFilter="changeFilter"
-        />
-        <products-aside-catalog-sizes
-            :sizes="sizes"
-            @changeFilter="changeFilter"
-        />
-    </div>
+  <div>
+    <h2 class="products-aside__title title-block">Каталог</h2>
+    <products-aside-catalog-categories
+      :categories="categories"
+      @changeFilter="changeFilter"
+    ></products-aside-catalog-categories>
+    <products-aside-catalog-brands
+      :brands="brands"
+      @changeFilter="changeFilter"
+    ></products-aside-catalog-brands>
+    <products-aside-catalog-sizes
+      :sizes="sizes"
+      @changeFilter="changeFilter"
+    ></products-aside-catalog-sizes>
+  </div>
 </template>
 <script>
 import ProductsAsideCatalogCategories from '@/components/products/productsAside/productAsideCatalog/ProductsAsideCatalogCategories.vue'

@@ -15,7 +15,7 @@ export default {
   actions: {
     async sendCategories (_, payload) {
       try {
-        const { data } = await axios.post('/categories.json', payload)
+        await axios.post('/categories.json', payload)
       } catch (error) {
         console.log(error)
       }

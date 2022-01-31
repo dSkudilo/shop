@@ -16,7 +16,6 @@
         >
         <small v-if="eError">{{ eError }}</small>
       </div>
-
       <div :class="['input-control',{'input-control_error':pError || isTooManyAttempts}]">
         <label>Пароль</label>
         <input
@@ -28,7 +27,6 @@
         <small v-if="pError">{{ pError }}</small>
         <small v-if="isTooManyAttempts">Слишком много попыток попробуйте позже</small>
       </div>
-
       <button
         :class="['authorization__btn', 'dark-btn',{'disabled':isTooManyAttempts}]"
         :disabled="isTooManyAttempts"
@@ -47,7 +45,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

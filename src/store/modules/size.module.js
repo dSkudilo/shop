@@ -15,7 +15,7 @@ export default {
   actions: {
     async sendSizes (_, payload) {
       try {
-        const { data } = await axios.post('/sizes.json', payload)
+        await axios.post('/sizes.json', payload)
       } catch (error) {
         console.log(error)
       }

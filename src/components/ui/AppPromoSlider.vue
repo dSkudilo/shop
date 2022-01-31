@@ -1,20 +1,19 @@
-
 <template>
-    <swiper
-      :pagination='{"clickable": true}'
-      class="promo-slider"
-      :slidesPerView="slidesPerView"
+  <swiper
+    :pagination='{"clickable": true}'
+    class="promo-slider"
+    :slidesPerView="slidesPerView"
+  >
+    <swiper-slide
+      v-for="(product, i) in data"
+      :key="i"
     >
-        <swiper-slide
-          v-for="(product, i) in data"
-          :key="i"
-        >
-            <card
-              :product="product"
-              :class="getClass('card_anime-',i)"
-            />
-        </swiper-slide>
-    </swiper>
+      <card
+        :product="product"
+        :class="getClass('card_anime-',i)"
+      />
+    </swiper-slide>
+  </swiper>
 </template>
 <script>
 
@@ -22,14 +21,9 @@ import Card from '@/components/card/Card.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue/swiper-vue'
 import 'swiper/swiper.min.css'
 import 'swiper/modules/pagination/pagination.min.css'
-
-import SwiperCore, {
-  Pagination
-} from 'swiper'
+import SwiperCore, { Pagination } from 'swiper'
 import { onBeforeMount, onBeforeUnmount, ref } from '@vue/runtime-core'
-
 SwiperCore.use([Pagination])
-
 export default {
   name: 'app-promo-slider',
   props: ['data'],

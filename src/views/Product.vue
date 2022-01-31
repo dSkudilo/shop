@@ -1,30 +1,30 @@
 <template>
-    <app-loader
-        v-if="loadFlag"
-        :style="{'height':'100vh'}"
-    />
-    <div v-else>
-        <product-slider
-            :data="product.imgs"
-        />
-        <div class="container product">
-            <product-options
-                :product="product"
-                :error="opError"
-                @selectSize="selectSize"
-                @selectColor="selectColor"
-                @counter="counter"
-                @inCart="inCart"
-            />
-            <product-description />
-            <product-comments
-                :comments="comments"
-                @rate="rate"
-            />
-
-        </div>
-        <the-footer />
+  <app-loader
+    v-if="loadFlag"
+    :style="{'height':'100vh'}"
+  ></app-loader>
+  <div v-else>
+    <product-slider
+      :data="product.imgs"
+    ></product-slider>
+    <div class="container product">
+      <product-options
+        :product="product"
+        :error="opError"
+        @selectSize="selectSize"
+        @selectColor="selectColor"
+        @counter="counter"
+        @inCart="inCart"
+      ></product-options>
+      <product-description />
+      <product-comments
+        :comments="comments"
+        @rate="rate"
+      ></product-comments>
     </div>
+    <the-footer>
+    </the-footer>
+  </div>
 </template>
 <script>
 import TheFooter from '@/components/TheFooter'
@@ -48,9 +48,9 @@ export default {
     const color = ref()
     const number = ref(0)
 
-    const selectSize = (s) => size.value = s
-    const selectColor = (c) => color.value = c
-    const counter = (n) => number.value = n
+    const selectSize = (s) => { size.value = s }
+    const selectColor = (c) => { color.value = c }
+    const counter = (n) => { number.value = n }
 
     const opError = ref(null)
     const inCart = () => {
@@ -60,8 +60,6 @@ export default {
         return
       }
       opError.value = null
-
-      const product = {}
 
       store.commit('cart/add', {
         number: number.value,

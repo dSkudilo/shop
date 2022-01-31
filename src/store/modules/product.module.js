@@ -19,7 +19,7 @@ export default {
   actions: {
     async sendProducts (_, payload) {
       try {
-        const { data } = await axios.post('/products.json', payload)
+        await axios.post('/products.json', payload)
       } catch (error) {
         console.log(error)
       }
@@ -28,7 +28,6 @@ export default {
       console.log('sadasd')
       try {
         const { data } = await axios.get('/products.json')
-        console.log(data)
         commit('setProducts', transform(data))
       } catch (error) {
         console.log(error)

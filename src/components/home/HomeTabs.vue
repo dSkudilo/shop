@@ -1,19 +1,19 @@
 <template>
-    <section class="container tabs">
-        <home-tabs-category
-            @changeCat="changeCat"
-        />
-        <app-loader
-            v-if="loadFlag"
-        />
-        <app-promo-slider
-            :data="promo"
-            v-else
-        />
-    </section>
+  <section class="container tabs">
+    <home-tabs-category
+      @changeCat="changeCat"
+    ></home-tabs-category>
+    <app-loader
+      v-if="loadFlag"
+    ></app-loader>
+    <app-promo-slider
+      :data="promo"
+      v-else
+    ></app-promo-slider>
+  </section>
 </template>
 <script>
-import HomeTabsCategory from './homeTabs/HomeTabsCategory.vue'
+import HomeTabsCategory from '@/components/home/homeTabs/HomeTabsCategory.vue'
 export default {
   props: ['promo', 'loadFlag'],
   emits: ['changeCat'],
@@ -25,7 +25,8 @@ export default {
       changeCat
     }
   },
-
-  components: { HomeTabsCategory }
+  components: {
+    HomeTabsCategory
+  }
 }
 </script>

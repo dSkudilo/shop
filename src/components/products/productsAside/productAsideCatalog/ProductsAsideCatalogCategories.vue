@@ -1,20 +1,19 @@
 <template>
-    <ul class="products-aside__list">
-        <li class="products-aside__item topic-dark products-aside__item_title">
-            KATEGORIEN
-        </li>
-        <li
-            class="products-aside__item"
-            v-for="cat in categories"
-            :key="cat.id"
-        >
-            <app-checkbox
-                :data="cat"
-                @changeValue="changeFilter"
-            />
-        </li>
-
-    </ul>
+  <ul class="products-aside__list">
+    <li class="products-aside__item topic-dark products-aside__item_title">
+      KATEGORIEN
+    </li>
+    <li
+      class="products-aside__item"
+      v-for="cat in categories"
+      :key="cat.id"
+    >
+      <app-checkbox
+        :data="cat"
+        @changeValue="changeFilter"
+      ></app-checkbox>
+    </li>
+  </ul>
 </template>
 
 <script>

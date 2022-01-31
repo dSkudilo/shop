@@ -33,7 +33,7 @@ export function useCommentForm () {
 
   watch(isTooManyAttempts, val => {
     if (val) {
-      setTimeout(() => submitCount.value = 0, 1500)
+      setTimeout(() => { submitCount.value = 0 }, 1500)
     }
   })
 

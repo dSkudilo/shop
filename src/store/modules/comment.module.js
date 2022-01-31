@@ -41,13 +41,11 @@ export default {
     async loadComments ({ commit }, id) {
       try {
         const { data } = await axios.get('/comments.json')
-        console.log(data)
         const res = transform(data)
         commit('setComments', res.reduce((acc, e) => {
-          if (e.productId == id) {
+          if (e.productId === id) {
             acc.push(e)
           }
-
           return acc
         }, []))
       } catch (error) {
@@ -64,7 +62,7 @@ export default {
     },
     async rate (_, payload) {
       try {
-        const { data } = await axios.patch(`/comments/${payload.commentId}/rating.json`, {
+        await axios.patch(`/comments/${payload.commentId}/rating.json`, {
           [payload.userId]: payload.rating
         })
       } catch (e) {
@@ -73,7 +71,7 @@ export default {
     },
     async rateFirst (_, payload) {
       try {
-        const { data } = await axios.put(`/comments/${payload.commentId}/rating.json`, {
+        await axios.put(`/comments/${payload.commentId}/rating.json`, {
           [payload.userId]: payload.rating
         })
       } catch (e) {
@@ -82,7 +80,7 @@ export default {
     },
     async rateDelete (_, payload) {
       try {
-        const { data } = await axios.delete(`/comments/${payload.commentId}/rating/${payload.userId}.json`)
+        await axios.delete(`/comments/${payload.commentId}/rating/${payload.userId}.json`)
       } catch (e) {
         console.log(e)
       }

@@ -1,17 +1,15 @@
 <template>
-    <ul class="tabs__titles">
-        <li
-            class="tabs__title"
-            v-for="(cat,id) in category"
-            :key="cat.name"
-            :class="{tab__title_active:currentCat == id}"
-            @click="selectCat(id)"
-
-        >
-            {{cat.title}}
-        </li>
-
-    </ul>
+  <ul class="tabs__titles">
+    <li
+      class="tabs__title"
+      v-for="(cat,id) in CATEGORY"
+      :key="cat.name"
+      :class="{tab__title_active:currentCat == id}"
+      @click="selectCat(id)"
+    >
+      {{cat.title}}
+    </li>
+  </ul>
 </template>
 <script>
 import { ref } from '@vue/reactivity'
@@ -19,7 +17,7 @@ import { watch } from '@vue/runtime-core'
 export default {
   emits: ['changeCat'],
   setup (_, { emit }) {
-    const category = ref([
+    const CATEGORY = ref([
       {
         title: 'Новинки',
         name: 'new in shop'
@@ -41,13 +39,13 @@ export default {
     const selectCat = (id) => {
       currentCat.value = id
     }
-    const getName = (id) => category.value[id].name
+    const getName = (id) => CATEGORY.value[id].name
 
     watch(currentCat, (cur) => {
       emit('changeCat', getName(cur))
     })
     return {
-      category,
+      CATEGORY,
       currentCat,
       selectCat
     }

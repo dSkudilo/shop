@@ -1,5 +1,4 @@
 export function toDate (d) {
-  console.log(date, new Date(date))
   const date = new Date(d)
   const yyyy = date.getFullYear().toString()
   const mm = (date.getMonth() + 1).toString()

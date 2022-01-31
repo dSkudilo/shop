@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import store from '../store'
 
 const routes = [
@@ -40,7 +40,7 @@ const routes = [
   }
 ]
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes,
   linkActiveClass: 'active',
   linkExactActiveClass: 'active',

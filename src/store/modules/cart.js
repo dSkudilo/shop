@@ -66,7 +66,10 @@ export default {
       if (Object.values(state.cart).length <= 0) {
         return 0
       }
-      return Object.values(state.cart).reduce((acc, i) => acc += i.number, 0)
+      return Object.values(state.cart).reduce((acc, i) => {
+        acc += i.number
+        return acc
+      }, 0)
     }
   }
 }

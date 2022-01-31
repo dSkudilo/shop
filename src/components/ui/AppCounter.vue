@@ -1,24 +1,24 @@
 <template>
-    <div class="counter__control">
-        <span class="counter__title text-grey">
-            <slot></slot>
-        </span>
-        <div class="counter__btns">
-            <button
-                :class="['counter__btn', 'grey-btn',{
-                    'grey-btn_disable':counter >= number
-                }]"
-                @click="counterAdd"
-            >+</button>
-            <button class="counter__btn grey-btn">{{counter}}</button>
-            <button
-                :class="['counter__btn', 'grey-btn',{
-                    'grey-btn_disable':counter <= 0
-                }]"
-                @click="counterMinus"
-            >-</button>
-        </div>
+  <div class="counter__control">
+    <span class="counter__title text-grey">
+      <slot></slot>
+    </span>
+    <div class="counter__btns">
+      <button
+        :class="['counter__btn', 'grey-btn',{
+          'grey-btn_disable':counter >= number
+        }]"
+        @click="counterAdd"
+      >+</button>
+      <button class="counter__btn grey-btn">{{counter}}</button>
+      <button
+        :class="['counter__btn', 'grey-btn',{
+            'grey-btn_disable':counter <= 0
+        }]"
+        @click="counterMinus"
+      >-</button>
     </div>
+  </div>
 </template>
 <script>
 import { ref } from '@vue/reactivity'

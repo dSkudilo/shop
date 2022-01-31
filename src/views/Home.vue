@@ -1,33 +1,36 @@
 <template>
-    <app-slider
-        :data="[
-            {
-                img:'mainSliderOne.jpg',
-                title:'Styler',
-                content:'GET UP TO 15% OFF'
-            },
-            {
-                img:'slide-2.jpg',
-                title:'Sale',
-                content:'GET UP TO 25% OFF'
-            },
-            {
-                img:'slide-3.jpg',
-                title:'New',
-                content:'GET UP TO 35% OFF',
-                white:true
-            }
-        ]"
-        :full="true"
-    />
-    <home-promo />
-    <home-tabs
-        :loadFlag="loadFlag"
-        :promo="promo"
-        @changeCat="changeCat"
-    />
-    <home-deal />
-    <the-footer />
+  <app-slider
+    :data="[
+      {
+        img:'mainSliderOne.jpg',
+        title:'Styler',
+        content:'GET UP TO 15% OFF'
+      },
+      {
+        img:'slide-2.jpg',
+        title:'Sale',
+        content:'GET UP TO 25% OFF'
+      },
+      {
+        img:'slide-3.jpg',
+        title:'New',
+        content:'GET UP TO 35% OFF',
+        white:true
+      }
+    ]"
+    :full="true"
+  ></app-slider>
+  <home-promo>
+  </home-promo>
+  <home-tabs
+    :loadFlag="loadFlag"
+    :promo="promo"
+    @changeCat="changeCat"
+  ></home-tabs>
+  <home-deal>
+  </home-deal>
+  <the-footer>
+  </the-footer>
 </template>
 <script>
 import { useStore } from 'vuex'
@@ -42,18 +45,12 @@ export default {
     const store = useStore()
     const loadFlag = ref(true)
     const currentCat = ref('new in shop')
-    const changeCat = (cat) => currentCat.value = cat
+    const changeCat = (cat) => { currentCat.value = cat }
 
     watch(currentCat, async (cur) => loadProduct())
 
     onMounted(async () => {
       loadProduct()
-      // await store.dispatch('promo/send',{
-      //     product:{
-      //         id:'-MqzmzyvvsrnbZ_sQlCJ'
-      //     },
-      //     category:'discounts'
-      // })
     })
     const loadProduct = async () => {
       loadFlag.value = true

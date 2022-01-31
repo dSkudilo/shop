@@ -1,11 +1,11 @@
 <template>
   <app-loader
     v-if="loadFlag"
-  />
+  ></app-loader>
   <section class="cart container" v-else>
     <cart-empty
       v-if="!inCart"
-    />
+    ></cart-empty>
     <div
       class="cart__conten"
       v-else
@@ -16,10 +16,10 @@
         @updateCounterHandler="updateCounterHandler"
         @deleteCartHandler="deleteCartHandler"
         @updateColorHandler="updateColorHandler"
-      />
+      ></cart-list>
       <cart-buy
         :price="costPayment"
-      />
+      ></cart-buy>
     </div>
   </section>
   <the-footer/>

@@ -1,26 +1,25 @@
 <template>
-    <div
-        :class="['input-control',{'input-control_error':error}]"
+  <div
+    :class="['input-control',{'input-control_error':error}]"
+  >
+    <label
+      v-if="label"
     >
-        <label
-            v-if="label"
-        >
-            {{label}}
-        </label>
-        <input
-            :type="type"
-            :placeholder="placeholder"
-            v-model="inputVal"
-            @blur="blur"
-            @input="input"
-            :autocomplete="autocomplete"
-        >
-        <small v-if="error">{{error}}</small>
-    </div>
+      {{label}}
+    </label>
+    <input
+      :type="type"
+      :placeholder="placeholder"
+      v-model="inputVal"
+      @blur="blur"
+      @input="input"
+      :autocomplete="autocomplete"
+    >
+    <small v-if="error">{{error}}</small>
+  </div>
 </template>
 <script>
-import { ref } from '@vue/reactivity'
-import { useField, useForm } from 'vee-validate'
+import { useField } from 'vee-validate'
 import * as yup from 'yup'
 export default {
   name: 'app-input',
@@ -58,8 +57,6 @@ export default {
     const input = () => {
       emit('input', inputVal.value)
     }
-    const some = ref('asdasdasdasdas')
-    // const {handleSubmit, isSubmitting, submitCount} = useForm()
     const { value: inputVal, errorMessage: error, handleBlur: blur } = useField(
       'inputVal',
       yup
@@ -67,9 +64,7 @@ export default {
         .trim()
         .required(props.requiredText)
         .min(props.minLength, props.minText + props.minLength + ' символов')
-
     )
-
     return {
       inputVal,
       input,

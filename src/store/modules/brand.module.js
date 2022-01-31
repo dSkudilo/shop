@@ -16,7 +16,7 @@ export default {
   actions: {
     async sendBrands (_, payload) {
       try {
-        const { data } = await axios.post('/brands.json', payload)
+        axios.post('/brands.json', payload)
       } catch (error) {
         console.log(error)
       }

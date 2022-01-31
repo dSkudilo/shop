@@ -1,20 +1,19 @@
-
 <template>
-    <swiper
-        :slidesPerView="slidesPerView"
-        :spaceBetween="0"
-        :slidesPerGroup="1"
-        :pagination='{"clickable": true}'
-        :navigation="true"
-        class="product-slider"
-    >
-    <swiper-slide
-        v-for="(src,i) in data"
-        :key="i"
-    >
-        <img :src="getImgUrl(src)" alt="">
-    </swiper-slide>
-    </swiper>
+  <swiper
+    :slidesPerView="slidesPerView"
+    :spaceBetween="0"
+    :slidesPerGroup="1"
+    :pagination='{"clickable": true}'
+    :navigation="true"
+    class="product-slider"
+  >
+  <swiper-slide
+    v-for="(src,i) in data"
+    :key="i"
+  >
+    <img :src="getImgUrl(src)" alt="slide">
+  </swiper-slide>
+  </swiper>
 </template>
 <script>
 import { Swiper, SwiperSlide } from 'swiper/vue/swiper-vue'
