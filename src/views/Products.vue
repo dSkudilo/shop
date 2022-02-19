@@ -23,13 +23,18 @@
 
   />
   <div class="products container">
-    <products-aside
-      :brands="brands"
-      :categories="categories"
-      :sizes="sizes"
-      :popular="popular"
-      @changeFilter="changeFilter"
-    ></products-aside>
+    <div
+      class="aside-wrap"
+    >
+      <products-aside
+        v-if="!asideFlag"
+        :brands="brands"
+        :categories="categories"
+        :sizes="sizes"
+        :popular="popular"
+        @changeFilter="changeFilter"
+      ></products-aside>
+    </div>
     <app-loader v-if="loadProducts">
     </app-loader>
     <products-list
@@ -105,6 +110,7 @@ export default {
     })
     return {
       loadProducts,
+      loadAside,
       categories: computed(() => store.getters['category/categories']),
       brands: computed(() => store.getters['brand/brands']),
       sizes: computed(() => store.getters['size/sizes']),
@@ -117,3 +123,9 @@ export default {
   components: { ProductsAside, ProductsList, AppSlider }
 }
 </script>
+<style scoped>
+  .aside-wrap{
+    width: 300px;
+    height: 100vh;
+  }
+</style>

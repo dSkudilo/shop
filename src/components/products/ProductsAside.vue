@@ -1,11 +1,11 @@
 <template>
   <button
-      class="product-aside__open"
-      :class="{'product-aside__open_hidden':asideFlag}"
-      @click="showAside"
+    class="product-aside__open"
+    :class="{'product-aside__open_hidden':asideFlag}"
+    @click="showAside"
   >
-      <font-awesome-icon :icon="['fa','compass']">
-      </font-awesome-icon>
+    <font-awesome-icon :icon="['fa','compass']">
+    </font-awesome-icon>
   </button>
   <aside
     class="products-aside"
