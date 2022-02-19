@@ -2,15 +2,15 @@
   <div class="authorization-registration">
     <h2 class="authorization__title title-block">Создание учтной записи</h2>
     <p class="authorization__text  text-grey">ДЛЯ РЕГИСТРАЦИИ УКАЖИТЕ ПОЖАЛУЙСТА СВОЙ АДРЕС ЭЛЕКТРОННОЙ ПОЧТЫ (E-MAIL)</p>
-    <form 
+    <form
       class="authorization__form"
-      @submit.prevent="registration"  
+      @submit.prevent="registration"
     >
       <div :class="['input-control',{'input-control_error':nError}]">
         <label>Имя</label>
-        <input 
-            type="text" 
-            v-model="name" 
+        <input
+            type="text"
+            v-model="name"
             @blur="nBlur"
             autocomplete="new-password"
         >
@@ -19,9 +19,9 @@
 
       <div :class="['input-control',{'input-control_error':sError}]">
         <label>Фамилия</label>
-        <input 
-            type="text"  
-            v-model="secondName" 
+        <input
+            type="text"
+            v-model="secondName"
             @blur="sBlur"
             autocomplete="new-password"
         >
@@ -30,9 +30,9 @@
 
       <div :class="['input-control',{'input-control_error':eError}]">
         <label>Email</label>
-        <input 
-            type="email" 
-            v-model="email" 
+        <input
+            type="email"
+            v-model="email"
             @blur="eBlur"
             autocomplete="new-password"
         >
@@ -41,9 +41,9 @@
 
       <div :class="['input-control',{'input-control_error':pError}]">
         <label>Пароль</label>
-        <input 
-            type="password" 
-            v-model="password" 
+        <input
+            type="password"
+            v-model="password"
             @blur="pBlur"
             autocomplete="new-password"
         >
@@ -57,14 +57,13 @@
 <script>
 
 import { useLoginForm } from '@/use/login-form'
-import {useField} from 'vee-validate'
+import { useField } from 'vee-validate'
 import * as yup from 'yup'
 export default {
-  emits:['registration'],
-  setup(_,{ emit }){
-
+  emits: ['registration'],
+  setup (_, { emit }) {
     const registration = () => {
-      emit('registration',{
+      emit('registration', {
         name: name.value,
         secondName: secondName.value,
         email: email.value,
@@ -77,9 +76,9 @@ export default {
       eError,
       pError,
       eBlur,
-      pBlur,
+      pBlur
     } = useLoginForm()
-    const {value: name, errorMessage: nError, handleBlur: nBlur} = useField(
+    const { value: name, errorMessage: nError, handleBlur: nBlur } = useField(
       'name',
       yup
         .string()
@@ -87,14 +86,14 @@ export default {
         .required('Пожалуйста укажите имя')
     )
 
-    const {value: secondName, errorMessage: sError, handleBlur: sBlur} = useField(
+    const { value: secondName, errorMessage: sError, handleBlur: sBlur } = useField(
       'secondName',
       yup
         .string()
         .trim()
         .required('Пожалуйста укажите фамилию')
     )
-    return{
+    return {
       registration,
       name,
       secondName,
@@ -107,12 +106,8 @@ export default {
       eError,
       pError,
       eBlur,
-      pBlur,
+      pBlur
     }
   }
 }
 </script>
-
-<style>
-
-</style>

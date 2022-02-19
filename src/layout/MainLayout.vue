@@ -1,19 +1,21 @@
 <template>
-    <the-header />
-    <the-aside />
+    <the-header>
+    </the-header>
+    <the-aside>
+    </the-aside>
     <div class="with-nav with-aside wrapper">
-        <main class="main">
-            <router-view />
-        </main>
-        
+      <main class="main">
+        <router-view />
+      </main>
     </div>
-    
 </template>
 <script>
-import TheHeader from '../components/TheHeader.vue'
-import TheAside from '../components/TheAside.vue'
-import TheFooter from '../components/TheFooter.vue'
+import TheHeader from '@/components/TheHeader.vue'
+import TheAside from '@/components/TheAside.vue'
 export default {
-    components:{TheHeader,TheAside,TheFooter}
+  components: {
+    TheHeader,
+    TheAside
+  }
 }
 </script>

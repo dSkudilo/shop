@@ -1,11 +1,11 @@
 .card-slider{
-    width: 100%;
     position: relative;
+    padding-bottom: 150%;
 }
 .card-slider__slide{
+    position: absolute;
     width: 100%;
-    background-color: $lite;
-    object-fit: cover;
+    height: 100%;
 }
 .card-slider__miniatures{
     width: 100%;

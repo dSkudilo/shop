@@ -1,0 +1,7 @@
+.product-slider{
+    & .swiper-pagination-bullet{
+        background-color: $dark ;
+        width: 12.5px;
+        height: 12.5px;
+    }
+}

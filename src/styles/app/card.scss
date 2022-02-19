@@ -103,9 +103,7 @@
     opacity: 0;
     @include linkBtn($dark);
 }
-@media screen {
-    
-}
+
 @media screen and (max-width:768px) {
     .card{
         min-width: 45%;
@@ -113,8 +111,13 @@
         & .card-slider__miniatures{
             display: none;
         }
+        & .card__btn{
+            opacity: 0;
+            height: 0;
+            width: 0;
+        }
         &:hover{
-            transform: scale(1);
+            transform: none;
             border-color: transparent;
             z-index: 300;
             & .card__shows-text{
@@ -129,6 +132,7 @@
                 width: 0;
             }
         }
+
     }
 }
 @media screen and (max-width:600px) {
