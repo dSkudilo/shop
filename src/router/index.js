@@ -37,6 +37,27 @@ const routes = [
     name: 'cart',
     component: () => import('../views/Cart.vue'),
     meta: { layout: 'main', auth: true }
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: () => import('../views/admin/Admin.vue'),
+    meta: {
+      admin: true,
+      layout: 'admin'
+    },
+    children: [
+      {
+        path: 'products',
+        name: 'adminProducts',
+        component: () => import('../views/admin/Products.vue')
+      },
+      {
+        path: 'product/:id',
+        name: 'adminProduct',
+        component: () => import('../views/admin/Product.vue')
+      }
+    ]
   }
 ]
 const router = createRouter({

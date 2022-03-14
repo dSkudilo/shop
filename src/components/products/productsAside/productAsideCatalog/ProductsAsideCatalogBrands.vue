@@ -10,7 +10,7 @@
     >
       <app-checkbox
         :data="brand"
-        @changeValue="changeFilter"
+        @changeValueHandler="changeFilter"
       ></app-checkbox>
     </li>
   </ul>
@@ -19,10 +19,10 @@
 <script>
 export default {
   props: ['brands'],
-  emits: ['changeFilter'],
+  emits: ['changeFilterHandler'],
   setup (_, { emit }) {
     const changeFilter = (val) => {
-      emit('changeFilter', {
+      emit('changeFilterHandler', {
         cat: 'brand',
         ...val
       })

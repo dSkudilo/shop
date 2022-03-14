@@ -9,7 +9,7 @@
       </div>
       <div
         class="rating__items"
-        @input="setRating"
+        @input="setRatingHandler"
       >
         <input
           v-for="idx in 5"
@@ -30,7 +30,7 @@ import { floor } from '@/utils/floor.js'
 import { onMounted } from '@vue/runtime-core'
 export default {
   props: ['rating', 'id'],
-  emits: ['select'],
+  emits: ['selectHandler'],
   name: 'app-rating',
   setup (props, { emit }) {
     const store = useStore()
@@ -44,7 +44,7 @@ export default {
     const currentRating = ref(ratingValue.value)
     const isSelect = ref(false)
     const userId = store.getters['auth/user'].id
-    const setRating = (e) => {
+    const setRatingHandler = (e) => {
       if (!store.getters['auth/isAuthenticated']) {
         alert('Для того чтобы оставить рйтинг вам нужно зарегистрироваться')
         return
@@ -54,7 +54,7 @@ export default {
         delete rating.value[userId]
         currentRating.value = ratingValue.value
         isSelect.value = false
-        emit('select', {
+        emit('selectHandler', {
           delete: true,
           rating: currentRating.value,
           userId
@@ -68,7 +68,7 @@ export default {
         }
       }
       currentRating.value = e.target.value
-      emit('select', {
+      emit('selectHandler', {
         rating: currentRating.value,
         userId
       })
@@ -81,7 +81,7 @@ export default {
       }
     })
     return {
-      setRating,
+      setRatingHandler,
       currentRating,
       isSelect,
       ratingValue,

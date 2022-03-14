@@ -1,6 +1,6 @@
 <template>
   <nav class="nav"
-    @click="showMobileHandler"
+    @click="showMobile"
   >
     <button
       class="nav__menu"
@@ -23,7 +23,7 @@
             :active="isActive"
             :href="href"
             class="nav__link">
-            Главная
+            Товары
           </a>
         </li>
       </router-link>
@@ -41,7 +41,7 @@
             :active="isActive"
             :href="href"
             class="nav__link">
-            Магазин
+            Категории
           </a>
         </li>
       </router-link>
@@ -59,7 +59,43 @@
             :active="isActive"
             :href="href"
             class="nav__link">
-            О нас
+            Промо
+          </a>
+        </li>
+        <li
+          class="nav__item"
+          :class="{'nav__item_active':isActive}"
+          @click="navigate"
+        >
+          <a
+            :active="isActive"
+            :href="href"
+            class="nav__link">
+            Бренды
+          </a>
+        </li>
+        <li
+          class="nav__item"
+          :class="{'nav__item_active':isActive}"
+          @click="navigate"
+        >
+          <a
+            :active="isActive"
+            :href="href"
+            class="nav__link">
+            Размеры
+          </a>
+        </li>
+        <li
+          class="nav__item"
+          :class="{'nav__item_active':isActive}"
+          @click="navigate"
+        >
+          <a
+            :active="isActive"
+            :href="href"
+            class="nav__link">
+            Пользователи
           </a>
         </li>
       </router-link>
@@ -71,11 +107,11 @@ import { ref } from '@vue/reactivity'
 export default {
   setup () {
     const navFlag = ref(false)
-    const showMobileHandler = () => {
+    const showMobile = () => {
       navFlag.value = !navFlag.value
     }
     return {
-      showMobileHandler, navFlag
+      showMobile, navFlag
     }
   }
 }

@@ -2,13 +2,13 @@
   <component
     :is="layout + '-layout'"
     v-if="layout"
-    [v-cloak]
-  />
+  ></component>
 </template>
 <script>
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import MainLayout from './layout/MainLayout.vue'
+import AdminLayout from './layout/AdminLayout.vue'
 export default {
   setup () {
     const route = useRoute()
@@ -17,7 +17,7 @@ export default {
       layout: computed(() => route.meta.layout)
     }
   },
-  components: { MainLayout }
+  components: { MainLayout, AdminLayout }
 }
 </script>
 <style>

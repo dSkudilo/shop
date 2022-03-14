@@ -60,10 +60,10 @@ import { useLoginForm } from '@/use/login-form'
 import { useField } from 'vee-validate'
 import * as yup from 'yup'
 export default {
-  emits: ['registration'],
+  emits: ['registrationHandler'],
   setup (_, { emit }) {
     const registration = () => {
-      emit('registration', {
+      emit('registrationHandler', {
         name: name.value,
         secondName: secondName.value,
         email: email.value,

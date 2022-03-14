@@ -44,7 +44,7 @@ import { currency } from '../../utils/currency'
 import { percent } from '../../utils/percent'
 export default {
   props: ['id', 'product'],
-  setup (props) {
+  setup () {
     return {
       currency,
       percent

@@ -18,11 +18,11 @@ import { ref } from '@vue/reactivity'
 export default {
   name: 'app-checkbox',
   props: ['data'],
-  emits: ['changeValue'],
+  emits: ['changeValueHandler'],
   setup (props, { emit }) {
     const checkboxValue = ref('')
     const changeValue = () => {
-      emit('changeValue', {
+      emit('changeValueHandler', {
         type: props.data.type,
         value: checkboxValue.value
       })

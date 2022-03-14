@@ -11,15 +11,15 @@
       <product-options
         :product="product"
         :error="opError"
-        @selectSize="selectSize"
-        @selectColor="selectColor"
-        @counter="counter"
+        @selectSizeHandler="selectSizeHandler"
+        @selectColorHandler="selectColorHandler"
+        @changeCounterHandler="changeCounterHandler"
         @inCart="inCart"
       ></product-options>
       <product-description />
       <product-comments
         :comments="comments"
-        @rate="rate"
+        @changeRateHandler="changeRateHandler"
       ></product-comments>
     </div>
     <the-footer>
@@ -48,9 +48,9 @@ export default {
     const color = ref()
     const number = ref(0)
 
-    const selectSize = (s) => { size.value = s }
-    const selectColor = (c) => { color.value = c }
-    const counter = (n) => { number.value = n }
+    const selectSizeHandler = (s) => { size.value = s }
+    const selectColorHandler = (c) => { color.value = c }
+    const changeCounterHandler = (n) => { number.value = n }
 
     const opError = ref(null)
     const inCart = () => {
@@ -71,7 +71,7 @@ export default {
       })
     }
 
-    const rate = async val => {
+    const changeRateHandler = async val => {
       if (val.first) {
         await store.dispatch('comment/rateFirst', { ...val })
         return
@@ -125,12 +125,12 @@ export default {
       product: computed(() => store.getters['product/products']),
       comments: computed(() => store.getters['comment/comments']),
       loadFlag,
-      selectSize,
-      selectColor,
-      counter,
+      selectSizeHandler,
+      selectColorHandler,
+      changeCounterHandler,
       opError,
       inCart,
-      rate
+      changeRateHandler
     }
   },
   components: {

@@ -15,7 +15,7 @@
       >
         <product-comment
           :comment="comment"
-          @rate="rate"
+          @changeRateHandler="changeRateHandler"
         ></product-comment>
       </li>
     </ul>
@@ -27,11 +27,11 @@ import ProductComment from '@/components/product/productComments/ProductComment.
 import ProductCommentCreate from '@/components/product/productComments/ProductCommentCreate.vue'
 export default {
   props: ['comments'],
-  emits: ['rate'],
+  emits: ['changeRateHandler'],
   setup (_, { emit }) {
-    const rate = (val) => emit('rate', val)
+    const changeRateHandler = (val) => emit('changeRateHandler', val)
     return {
-      rate
+      changeRateHandler
     }
   },
   components: {

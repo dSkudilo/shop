@@ -66,6 +66,9 @@
 @import './cart/item.scss';
 @import './cart/buy.scss';
 
+//admin
+@import './admin/admin.scss';
+
 [v-cloak] {
     display: none;
 }

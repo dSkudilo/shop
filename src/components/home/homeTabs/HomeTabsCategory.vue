@@ -5,7 +5,7 @@
       v-for="(cat,id) in CATEGORY"
       :key="cat.name"
       :class="{tab__title_active:currentCat == id}"
-      @click="selectCat(id)"
+      @click="selectCategoryHandler(id)"
     >
       {{cat.title}}
     </li>
@@ -15,7 +15,7 @@
 import { ref } from '@vue/reactivity'
 import { watch } from '@vue/runtime-core'
 export default {
-  emits: ['changeCat'],
+  emits: ['changeCategoryHandler'],
   setup (_, { emit }) {
     const CATEGORY = ref([
       {
@@ -36,18 +36,18 @@ export default {
       }
     ])
     const currentCat = ref(0)
-    const selectCat = (id) => {
+    const selectCategoryHandler = (id) => {
       currentCat.value = id
     }
     const getName = (id) => CATEGORY.value[id].name
 
     watch(currentCat, (cur) => {
-      emit('changeCat', getName(cur))
+      emit('changeCategoryHandler', getName(cur))
     })
     return {
       CATEGORY,
       currentCat,
-      selectCat
+      selectCategoryHandler
     }
   }
 }

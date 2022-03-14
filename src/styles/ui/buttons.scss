@@ -54,7 +54,7 @@ $durAnim:.3s;
 }
 
 .facebook{
-    @include linkBtn($facebook);
+    @include linkBtn($blue);
 }
 .google{
     @include linkBtn($google);

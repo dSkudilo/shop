@@ -3,15 +3,15 @@
     <h2 class="products-aside__title title-block">Каталог</h2>
     <products-aside-catalog-categories
       :categories="categories"
-      @changeFilter="changeFilter"
+      @changeFilterHandler="changeFilterHandler"
     ></products-aside-catalog-categories>
     <products-aside-catalog-brands
       :brands="brands"
-      @changeFilter="changeFilter"
+      @changeFilterHandler="changeFilterHandler"
     ></products-aside-catalog-brands>
     <products-aside-catalog-sizes
       :sizes="sizes"
-      @changeFilter="changeFilter"
+      @changeFilterHandler="changeFilterHandler"
     ></products-aside-catalog-sizes>
   </div>
 </template>
@@ -21,13 +21,13 @@ import ProductsAsideCatalogBrands from '@/components/products/productsAside/prod
 import ProductsAsideCatalogSizes from '@/components/products/productsAside/productAsideCatalog/ProductsAsideCatalogSizes.vue'
 export default {
   props: ['categories', 'brands', 'sizes'],
-  emits: ['changeFilter'],
+  emits: ['changeFilterHandler'],
   setup (_, { emit }) {
-    const changeFilter = (val) => {
-      emit('changeFilter', { ...val })
+    const changeFilterHandler = (val) => {
+      emit('changeFilterHandler', { ...val })
     }
     return {
-      changeFilter
+      changeFilterHandler
     }
   },
   components: {

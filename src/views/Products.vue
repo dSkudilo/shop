@@ -1,46 +1,44 @@
 <template>
-  <app-slider
-    :data="[
-      {
-        img:'productsSlide-2.jpg',
-        title:'Wolfskin',
-        noLogo:true,
-        white:true
-      },
-      {
-        img:'productsSlide-1.jpg',
-        title:'Wolfskin',
-        noLogo:true,
-        white:true
-      },
-      {
-        img:'productsSlide-3.jpg',
-        title:'Wolfskin',
-        noLogo:true,
-        white:true
-      }
-    ]"
-
-  />
-  <div class="products container">
-    <div
-      class="aside-wrap"
-    >
+  <div class="products">
+    <div class="app-slider__wrap">
+      <app-slider
+        :data="[
+          {
+            img:'productsSlide-2.jpg',
+            title:'Wolfskin',
+            noLogo:true,
+            white:true
+          },
+          {
+            img:'productsSlide-1.jpg',
+            title:'Wolfskin',
+            noLogo:true,
+            white:true
+          },
+          {
+            img:'productsSlide-3.jpg',
+            title:'Wolfskin',
+            noLogo:true,
+            white:true
+          }
+        ]"
+      ></app-slider>
+    </div>
+    <div class="products-wrapper container">
       <products-aside
-        v-if="!asideFlag"
         :brands="brands"
         :categories="categories"
         :sizes="sizes"
         :popular="popular"
-        @changeFilter="changeFilter"
+        @changeFilterHandler="changeFilterHandler"
       ></products-aside>
+      <app-loader v-if="loadProducts">
+      </app-loader>
+      <products-list
+        v-else
+        :products="products"
+      ></products-list>
     </div>
-    <app-loader v-if="loadProducts">
-    </app-loader>
-    <products-list
-      v-else
-      :products="products"
-    ></products-list>
   </div>
 </template>
 <script>
@@ -57,9 +55,8 @@ export default {
 
     const filterVal = ref({})
     const loadProducts = ref(true)
-    const loadAside = ref(true)
 
-    const changeFilter = (val) => {
+    const changeFilterHandler = (val) => {
       if (!filterVal.value[val.cat]) {
         filterVal.value[val.cat] = []
       }
@@ -74,7 +71,7 @@ export default {
       }
     }
 
-    function compareArrs (val, arr) {
+    function compareArrsHandler (val, arr) {
       if (typeof val === 'object') {
         return val.reduce((acc, p) => {
           if (arr.includes(p)) { acc = true }
@@ -91,7 +88,7 @@ export default {
         products = products.filter(p => {
           const category = filterVal.value[k]
           if (category) {
-            return compareArrs(p[k], category)
+            return compareArrsHandler(p[k], category)
           }
           return p
         })
@@ -104,19 +101,17 @@ export default {
       await store.dispatch('brand/loadBrands')
       await store.dispatch('size/loadSizes')
       await store.dispatch('promo/loadPromo', 'popular')
-      loadAside.value = false
       await store.dispatch('product/loadProducts')
       loadProducts.value = false
     })
     return {
       loadProducts,
-      loadAside,
       categories: computed(() => store.getters['category/categories']),
       brands: computed(() => store.getters['brand/brands']),
       sizes: computed(() => store.getters['size/sizes']),
       popular: computed(() => store.getters['promo/promo']),
       products,
-      changeFilter
+      changeFilterHandler
 
     }
   },
@@ -124,8 +119,4 @@ export default {
 }
 </script>
 <style scoped>
-  .aside-wrap{
-    width: 300px;
-    height: 100vh;
-  }
 </style>

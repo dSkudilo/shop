@@ -17,7 +17,7 @@
         class="dropdown__item"
         v-for="item in data"
         :key="item"
-        @click="select(item)"
+        @click="selectHandler(item)"
       >
         {{item}}
       </li>
@@ -27,20 +27,21 @@
 <script>
 import { ref } from '@vue/reactivity'
 export default {
+  name: 'app-dropdown',
   props: ['data'],
-  emits: ['select'],
+  emits: ['selectHandler'],
   setup (_, { emit }) {
     const content = ref('Выберите размер')
     const flag = ref(false)
-    const select = (item) => {
+    const selectHandler = (item) => {
       content.value = item
       flag.value = false
-      emit('select', item)
+      emit('selectHandler', item)
     }
     return {
       flag,
       content,
-      select
+      selectHandler
     }
   }
 }

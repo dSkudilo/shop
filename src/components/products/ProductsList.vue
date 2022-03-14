@@ -5,9 +5,9 @@
         v-for="item in products"
         :key="item"
         :product="item"
-      />
+      ></card>
     </div>
-    <products-paginate />
+    <products-paginate></products-paginate>
   </section>
 </template>
 <script>

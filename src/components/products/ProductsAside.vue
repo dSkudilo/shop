@@ -2,7 +2,7 @@
   <button
     class="product-aside__open"
     :class="{'product-aside__open_hidden':asideFlag}"
-    @click="showAside"
+    @click="showAsideHandler"
   >
     <font-awesome-icon :icon="['fa','compass']">
     </font-awesome-icon>
@@ -13,7 +13,7 @@
   >
     <button
       class="product-aside__close"
-      @click="closeAside"
+      @click="closeAsideHandler"
     >
       <font-awesome-icon :icon="['fa','ban']">
       </font-awesome-icon>
@@ -22,7 +22,7 @@
       :categories="categories"
       :brands="brands"
       :sizes="sizes"
-      @changeFilter="changeFilter"
+      @changeFilterHandler="changeFilterHandler"
     ></products-aside-catalog>
     <products-aside-chosen>
     </products-aside-chosen>
@@ -39,25 +39,25 @@ import ProductsAsidePopular from '@/components/products/productsAside/ProductsAs
 
 export default {
   props: ['categories', 'brands', 'sizes', 'popular'],
-  emits: ['changeFilter'],
+  emits: ['changeFilterHandler'],
   setup (_, { emit }) {
     const asideFlag = ref(false)
-    const showAside = () => {
+    const showAsideHandler = () => {
       asideFlag.value = true
       document.body.classList.add('nowrap')
     }
-    const closeAside = () => {
+    const closeAsideHandler = () => {
       asideFlag.value = false
       document.body.classList.remove('nowrap')
     }
-    const changeFilter = (val) => {
-      emit('changeFilter', val)
-    }
+    const changeFilterHandler = (val) =>
+      emit('changeFilterHandler', val)
+
     return {
       asideFlag,
-      showAside,
-      closeAside,
-      changeFilter
+      showAsideHandler,
+      closeAsideHandler,
+      changeFilterHandler
     }
   },
   components: {

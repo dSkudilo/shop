@@ -8,14 +8,14 @@
         :class="['counter__btn', 'grey-btn',{
           'grey-btn_disable':counter >= number
         }]"
-        @click="counterAdd"
+        @click="addCounterHandler"
       >+</button>
       <button class="counter__btn grey-btn">{{counter}}</button>
       <button
         :class="['counter__btn', 'grey-btn',{
             'grey-btn_disable':counter <= 0
         }]"
-        @click="counterMinus"
+        @click="removeCounterHandler"
       >-</button>
     </div>
   </div>
@@ -28,13 +28,13 @@ export default {
   emits: ['counterHandler'],
   setup (props, { emit }) {
     const counter = ref(props.val || 0)
-    const counterAdd = () => {
+    const addCounterHandler = () => {
       if (counter.value < props.number) {
         counter.value++
         emit('counterHandler', counter.value)
       }
     }
-    const counterMinus = () => {
+    const removeCounterHandler = () => {
       if (counter.value > 0) {
         counter.value--
         emit('counterHandler', counter.value)
@@ -42,8 +42,8 @@ export default {
     }
     return {
       counter,
-      counterAdd,
-      counterMinus
+      addCounterHandler,
+      removeCounterHandler
     }
   }
 }

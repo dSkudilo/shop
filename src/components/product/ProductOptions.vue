@@ -16,24 +16,25 @@
     <div class="product-options__row">
       <app-colors
         :colors="product.colors"
-        @selectColor="selectColor"
+        @selectColorHandler="selectColorHandler"
       ></app-colors>
       <div class="product-options__dropdown">
         <app-dropdown
           :data="product.size"
-          @select="selectSize"
+          @selectHandler="selectSizeHandler"
         >Размер</app-dropdown>
       </div>
       <app-counter
         :number="product.number"
-        @counterHandler="counter"
+        @counterHandler="changeCounterHandler"
       >Количество</app-counter>
     </div>
     <div class="product-options__btn">
       <button
         @click="$emit('inCart')"
         class="dark-btn">
-        <font-awesome-icon :icon="['fa','cart-plus']" />
+        <font-awesome-icon :icon="['fa','cart-plus']">
+        </font-awesome-icon>
         В корзину
       </button>
       <p class="product-options__error" v-if="error">
@@ -43,26 +44,20 @@
   </section>
 </template>
 <script>
-import AppDropdown from '@/components/ui/AppDropdown.vue'
-import AppCounter from '@/components/ui/AppCounter.vue'
 import { currency } from '@/utils/currency'
 export default {
   props: ['product', 'cart', 'error'],
-  emits: ['selectSize', 'selectColor', 'counter', 'inCart'],
+  emits: ['selectSizeHandler', 'selectColorHandler', 'changeCounterHandler', 'inCart'],
   setup (_, { emit }) {
-    const selectSize = (size) => emit('selectSize', size)
-    const selectColor = (color) => emit('selectColor', color)
-    const counter = (number) => emit('counter', number)
+    const selectSizeHandler = (size) => emit('selectSizeHandler', size)
+    const selectColorHandler = (color) => emit('selectColorHandler', color)
+    const changeCounterHandler = (number) => emit('changeCounterHandler', number)
     return {
-      selectSize,
-      selectColor,
-      counter,
+      selectSizeHandler,
+      selectColorHandler,
+      changeCounterHandler,
       currency
     }
-  },
-  components: {
-    AppDropdown,
-    AppCounter
   }
 }
 </script>

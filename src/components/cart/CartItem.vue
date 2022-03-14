@@ -25,7 +25,7 @@
       :colors="product.colors"
       :id="product.id"
       :initVal="cart.options.color"
-      @selectColor="updateColorHandler"
+      @selectColorHandler="updateColorHandler"
     ></app-colors>
     <app-counter
       class="cart-item__counter"

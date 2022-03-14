@@ -5,7 +5,7 @@ import AppCounter from '@/components/ui/AppCounter.vue'
 import AppColors from '@/components/ui/AppColors.vue'
 import AppPromoSlider from '@/components/ui/AppPromoSlider.vue'
 import AppRating from '@/components/ui/AppRating.vue'
-
+import AppDropdown from '@/components/ui/AppDropdown.vue'
 export default [
   AppLoader,
   AppCheckbox,
@@ -13,5 +13,6 @@ export default [
   AppCounter,
   AppColors,
   AppPromoSlider,
-  AppRating
+  AppRating,
+  AppDropdown
 ]

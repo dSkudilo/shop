@@ -1,6 +1,6 @@
 <template>
   <div class="basket"
-    @click="toCart"
+    @click="toCartHandler"
   >
     <font-awesome-icon :icon="['fa','cart-plus']">
     </font-awesome-icon>
@@ -28,14 +28,14 @@ export default {
     watch(counter, (ne, prev) => {
       if (route.name !== 'cart') { animFlag.value = true }
     })
-    const toCart = () => {
+    const toCartHandler = () => {
       animFlag.value = false
       router.push('/cart')
     }
     return {
       counter,
       animFlag,
-      toCart
+      toCartHandler
     }
   }
 }

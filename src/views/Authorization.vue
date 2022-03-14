@@ -4,11 +4,12 @@
     <div class="authorization__content">
       <div class="authorization__card">
         <authorization-registration
-          @registration="registration"
-        />
+          @registrationHandler="registrationHandler"
+        ></authorization-registration>
       </div>
       <div class="authorization__card">
-        <authorization-login />
+        <authorization-login>
+        </authorization-login>
       </div>
     </div>
   </div>
@@ -23,7 +24,7 @@ export default {
   setup () {
     const router = useRouter()
     const store = useStore()
-    const registration = async (obj) => {
+    const registrationHandler = async (obj) => {
       try {
         await store.dispatch('auth/signUp', {
           name: obj.name,
@@ -37,7 +38,7 @@ export default {
       }
     }
     return {
-      registration
+      registrationHandler
     }
   },
   components: {

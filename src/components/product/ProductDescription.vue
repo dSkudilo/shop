@@ -20,8 +20,7 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
         class="product-description__video"
-      >
-      </iframe>
+      ></iframe>
       <p v-else>{{PNT[currentStep].content}}</p>
     </div>
   </section>

@@ -1,0 +1,50 @@
+.admin-list{
+}
+.admin-list__item{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin:0 10px;
+  padding: 10px;
+  &:hover {
+    &::before{
+      content: '';
+      position: absolute;
+      display: block;
+      background-color: rgba($color: $dark, $alpha: .2);
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-radius: 20px;
+      transition: background-color .3s ease;
+      cursor: pointer;
+      z-index: 1;
+    }
+  }
+}
+.admin-list__imgs{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 330px;
+}
+.admin-list__img{
+  display: block;
+  width: 100px;
+  height: 150px;
+  object-fit: contain;
+  margin: 5px;
+  z-index: 100;
+  cursor: zoom-in;
+  background-color: $img-bg;
+  &:hover{
+    transform: scale(2);
+    z-index: 150;
+    border: 3px solid $lite;
+  }
+}
+.admin-list__line{
+  display: flex;
+}

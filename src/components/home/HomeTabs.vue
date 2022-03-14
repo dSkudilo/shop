@@ -1,7 +1,7 @@
 <template>
   <section class="container tabs">
     <home-tabs-category
-      @changeCat="changeCat"
+      @changeCategoryHandler="changeCategoryHandler"
     ></home-tabs-category>
     <app-loader
       v-if="loadFlag"
@@ -16,13 +16,13 @@
 import HomeTabsCategory from '@/components/home/homeTabs/HomeTabsCategory.vue'
 export default {
   props: ['promo', 'loadFlag'],
-  emits: ['changeCat'],
+  emits: ['changeCategoryHandler'],
   setup (_, { emit }) {
-    const changeCat = (cat) => {
-      emit('changeCat', cat)
+    const changeCategoryHandler = (cat) => {
+      emit('changeCategoryHandler', cat)
     }
     return {
-      changeCat
+      changeCategoryHandler
     }
   },
   components: {

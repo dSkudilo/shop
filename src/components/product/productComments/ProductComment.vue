@@ -4,7 +4,7 @@
       <app-rating
         :rating="comment.rating || 0"
         :id="comment.id"
-        @select="rate"
+        @selectHandler="changeRateHandler"
       ></app-rating>
       <h4 class="product-comment__name text-dark">{{ comment.name}} {{comment.secondName}}</h4>
       <p class="product-comment__date text-grey">{{ toDate(comment.date) }}</p>
@@ -19,11 +19,11 @@
 import { toDate } from '@/utils/date.js'
 export default {
   props: ['comment'],
-  emits: ['rate'],
+  emits: ['changeRateHandler'],
   setup (props, { emit }) {
-    const rate = rating => emit('rate', { commentId: props.comment.id, ...rating })
+    const changeRateHandler = rating => emit('changeRateHandler', { commentId: props.comment.id, ...rating })
     return {
-      rate,
+      changeRateHandler,
       toDate
     }
   }
