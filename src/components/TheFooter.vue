@@ -119,14 +119,14 @@
               </div>
             </li>
             <li class="footer__item footer__item_btns">
-              <a href="#" class="small-social">
-                <img src="" alt="facebook">
+              <a href="https://ru-ru.facebook.com/" class="small-social">
+                <img src="../assets/footer/media-icons/facebook-brands.svg" alt="facebook">
               </a>
-              <a href="#" class="small-social">
-                <img src="" alt="tw">
+              <a href="https://twitter.com/?lang=ru" class="small-social">
+                <img src="../assets/footer/media-icons/twitter-brands.svg" alt="tw">
               </a>
-              <a href="#" class="small-social">
-                <img src="" alt="google">
+              <a href="https://www.google.ru/" class="small-social">
+                <img src="../assets/footer/media-icons/google-brands.svg" alt="google" >
               </a>
             </li>
           </ul>

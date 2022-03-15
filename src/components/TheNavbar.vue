@@ -46,7 +46,7 @@
         </li>
       </router-link>
       <router-link
-        :to="{name:'about'}"
+        :to="{name:'auth'}"
         custom
         v-slot="{href, navigate, isActive}"
       >
@@ -59,7 +59,7 @@
             :active="isActive"
             :href="href"
             class="nav__link">
-            О нас
+            Авторизация(временно)
           </a>
         </li>
       </router-link>
