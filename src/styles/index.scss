@@ -67,7 +67,8 @@
 @import './cart/buy.scss';
 
 //admin
-@import './admin/admin.scss';
+@import './admin/products/products.scss';
+@import './admin/products/empty.scss';
 
 [v-cloak] {
     display: none;

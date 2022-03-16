@@ -1,48 +1,48 @@
 <template>
-  <li class="admin-list__item">
+  <li class="admin-products__list-item">
     <div
-      class="admin-list__imgs"
+      class="admin-products__list-imgs"
     >
       <img
         v-for="(img,id) in product.imgs"
         :key="id"
-        class="admin-list__img"
+        class="admin-products__list-img"
         :src="getImgUrl(img)"
         :alt="id"
       >
     </div>
-    <div class="admin-list__info">
+    <div class="admin-products__list-info">
       <p class="topic-darck">Id: 38</p>
       <p class="topic-darck">Название: Some shit</p>
       <p class="topic-darck">Бренд: Some shit</p>
       <p class="topic-darck">Категория: Some shit</p>
       <p class="topic-darck">Кол-во: 67</p>
         <ul
-          class="admin-list__line"
+          class="admin-products__list-line"
         >
           <li
-            class="admin-list__point text-grey">
+            class="admin-products__list-point text-grey">
             Размеры:
           </li>
           <li
-            class="admin-list__point text-grey"
+            class="admin-products__list-point text-grey"
             v-for="(size,id) in 5"
             :key="id"
           >{{id}}</li>
         </ul>
     </div>
-    <div class="admin-list__colors">
+    <div class="admin-products__list-colors">
       <ul
         v-for="(color,id) in 4"
         :key="id"
-        class="admin-list__line"
+        class="admin-products__list-line"
       >
         <li
-          class="admin-list__point"
+          class="admin-products__list-point"
         >red</li>
       </ul>
     </div>
-    <div class="admin-list__meta">
+    <div class="admin-products__list-meta">
       <p class="topic-darck">New: true</p>
       <p class="topic-darck">Скидка: нету</p>
       <p class="topic-darck">Распродажа: не участвует</p>

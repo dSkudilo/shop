@@ -3,34 +3,73 @@
   <app-loader
     v-if="loadFlag"
   ></app-loader>
-  <products-list
+  <div
     v-else
-    :products="products"
-  ></products-list>
+    class="admin-products__content">
+    <div class="input-control">
+      <label>Поиск товара по названию или ID</label>
+      <input
+        type="text"
+        v-model="searchValue"
+      >
+      {{searchValue}}
+    </div>
+    <products-not-found
+      v-if="!filterProducts.length"
+    ></products-not-found>
+    <products-list
+      v-else
+      :products="filterProducts"
+    ></products-list>
+  </div>
 </template>
 
 <script>
 import ProductsList from '@/components/admin/products/ProductsList.vue'
+import ProductsNotFound from '@/components/admin/products/ProductsNotFound.vue'
 import { useStore } from 'vuex'
-import { computed, onMounted, ref } from '@vue/runtime-core'
+import { computed, onMounted, ref, watch } from '@vue/runtime-core'
+import { debounce } from '@/utils/debounce.js'
 export default {
   setup () {
     const store = useStore()
     const loadFlag = ref(true)
-
+    const searchValue = ref('')
+    const products = computed(() => store.getters['product/products'])
+    const filterProducts = ref()
     onMounted(async () => {
       loadFlag.value = true
       await store.dispatch('product/loadProducts')
       loadFlag.value = false
+      filterProducts.value = products.value
+    })
+    const searchProductsHandler = debounce((searchValue) => {
+      filterProducts.value = []
+      if (!searchValue) {
+        filterProducts.value = products.value
+        return
+      }
+      Object.values(products.value).forEach(val => {
+        if (val.id.toLowerCase().includes(searchValue.toLowerCase()) || val.name.toLowerCase().includes(searchValue.toLowerCase())) {
+          filterProducts.value.push(val)
+        }
+      })
+    }, 1500)
+
+    watch(searchValue, () => {
+      searchProductsHandler(searchValue.value)
     })
     return {
       store,
       loadFlag,
-      products: computed(() => store.getters['product/products'])
+      searchValue,
+      filterProducts,
+      products
     }
   },
   components: {
-    ProductsList
+    ProductsList,
+    ProductsNotFound
   }
 }
 </script>

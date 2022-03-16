@@ -1,5 +1,5 @@
 <template>
-  <ul class="admin-list">
+  <ul class="admin-products__list">
     <products-item
       v-for="product in products"
       :key="product.id"
