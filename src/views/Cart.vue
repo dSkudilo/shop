@@ -1,8 +1,9 @@
 <template>
+<div class="cart">
   <app-loader
     v-if="loadFlag"
   ></app-loader>
-  <section class="cart container" v-else>
+  <section class="container" v-else>
     <cart-empty
       v-if="!inCart"
     ></cart-empty>
@@ -22,7 +23,8 @@
       ></cart-buy>
     </div>
   </section>
-  <the-footer/>
+</div>
+  <the-footer></the-footer>
 </template>
 
 <script>

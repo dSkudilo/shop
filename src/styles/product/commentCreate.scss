@@ -13,3 +13,12 @@
 .product-comments__inputs{
     width: 100%;
 }
+
+@media screen and (max-width:520px) {
+    .product-comments__form{
+        flex-direction: column;
+    }
+    .product-comments__add{
+        margin: 26px 0px 0 0;
+    }
+}

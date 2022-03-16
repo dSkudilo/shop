@@ -18,3 +18,13 @@
 .cart-buy__btn{
     width: 180px; 
 }
+
+@media screen and (max-width:600px) {
+    .cart-buy{
+        flex-direction: column;
+        align-items: center;
+    }
+    .cart-buy__info{
+        margin-bottom: 20px;
+    }
+}

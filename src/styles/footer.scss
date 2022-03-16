@@ -67,7 +67,10 @@
     margin-top: 30px;
     & a{
         padding: 7px;
-        // background-color:  ;
+        & img {
+            width: 33px;
+            height: 33px;
+        }
     }
 }
 .footer__link{

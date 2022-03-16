@@ -1,3 +1,3 @@
 # shop
-https://try-v-some.web.app
+https://west-point-d188c.web.app
 on development stage....

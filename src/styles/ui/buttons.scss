@@ -30,7 +30,9 @@ $durAnim:.3s;
         background-color: $border;
         color: $white;
     }
-
+}
+.grey-btn_no-events {
+  pointer-events: none;
 }
 .grey-btn_disable{
     background-color: $border;

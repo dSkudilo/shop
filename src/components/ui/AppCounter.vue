@@ -10,7 +10,7 @@
         }]"
         @click="addCounterHandler"
       >+</button>
-      <button class="counter__btn grey-btn">{{counter}}</button>
+      <div class="counter__btn grey-btn grey-btn_no-events">{{counter}}</div>
       <button
         :class="['counter__btn', 'grey-btn',{
             'grey-btn_disable':counter <= 0
