@@ -5,17 +5,28 @@ import brand from './modules/brand.module'
 import size from './modules/size.module'
 import product from './modules/product.module'
 import comment from './modules/comment.module'
-import auth from './modules/auth'
-import cart from './modules/cart'
+import auth from './modules/auth.module'
+import cart from './modules/cart.module'
 
 export default createStore({
   state () {
-    return {}
+    return {
+      messeage: null
+    }
   },
   mutations: {
+    setMessage (state, message) {
+      state.message = message
+    },
+    clearMessage (state) {
+      state.message = null
+    }
   },
   actions: {
-
+    setMessage ({ commit }, message) {
+      commit('setMessage', message)
+      setTimeout(() => commit('clearMessage'), 3000)
+    }
   },
   modules: {
     promo,

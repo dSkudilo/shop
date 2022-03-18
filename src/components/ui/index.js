@@ -6,6 +6,7 @@ import AppColors from '@/components/ui/AppColors.vue'
 import AppPromoSlider from '@/components/ui/AppPromoSlider.vue'
 import AppRating from '@/components/ui/AppRating.vue'
 import AppDropdown from '@/components/ui/AppDropdown.vue'
+import AppMessage from '@/components/ui/AppMessage.vue'
 export default [
   AppLoader,
   AppCheckbox,
@@ -14,5 +15,6 @@ export default [
   AppColors,
   AppPromoSlider,
   AppRating,
-  AppDropdown
+  AppDropdown,
+  AppMessage
 ]

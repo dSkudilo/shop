@@ -43,10 +43,18 @@ export default {
   },
   actions: {
     async login ({ commit, dispatch }, payload) {
-      const url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.VUE_APP_FB_KEY}`
-      const { data } = await axios.post(url, { ...payload, returnSecureToken: true })
-      commit('setToken', data)
-      await dispatch('getUser', data.localId)
+      try {
+        const url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.VUE_APP_FB_KEY}`
+        const { data } = await axios.post(url, { ...payload, returnSecureToken: true })
+        commit('setToken', data)
+        await dispatch('getUser', data.localId)
+      } catch (error) {
+        dispatch('setMessage', {
+          value: 'Email или пароль не совпадают !',
+          type: 'danger'
+        }, { root: true })
+        throw Error
+      }
     },
     async signUp ({ commit, dispatch }, payload) {
       console.log(payload)
@@ -57,8 +65,16 @@ export default {
         await dispatch('createUser', {
           ...data, ...payload
         })
-      } catch (e) {
-        console.log(e)
+        dispatch('setMessage', {
+          value: 'Регистрация прошла успешно !',
+          type: 'primary'
+        }, { root: true })
+      } catch (error) {
+        dispatch('setMessage', {
+          value: error.message,
+          type: 'danger'
+        }, { root: true })
+        throw Error
       }
     },
     async createUser ({ commit }, payload) {
@@ -70,11 +86,22 @@ export default {
       })
       commit('setUser', { ...data, id: payload.localId })
     },
-    async getUser ({ commit }, userId) {
-      const { data } = await baseAxios.get(`/users/${userId}.json`)
-      commit('setUser', { ...data, id: userId })
+    async getUser ({ commit, dispatch }, userId) {
+      try {
+        const { data } = await baseAxios.get(`/users/${userId}.json`)
+        commit('setUser', { ...data, id: userId })
+        dispatch('setMessage', {
+          value: 'Добро пожаловать ' + data.email + ' !',
+          type: 'primary'
+        }, { root: true })
+      } catch (error) {
+        dispatch('setMessage', {
+          value: error.message,
+          type: 'danger'
+        }, { root: true })
+      }
     },
-    async refresh ({ state, commit }) {
+    async refresh ({ state, commit, dispatch }) {
       try {
         const { data } = await axios.post(`https://securetoken.googleapis.com/v1/token?key=${process.env.VUE_APP_FB_KEY}`, {
           grant_type: 'refresh_token',
@@ -85,8 +112,11 @@ export default {
           idToken: data.id_token,
           expiresIn: data.expires_in
         })
-      } catch (e) {
-        console.log('Error:', e.message)
+      } catch (error) {
+        dispatch('setMessage', {
+          value: error.message,
+          type: 'danger'
+        }, { root: true })
       }
     }
   },

@@ -17,31 +17,39 @@ export default {
     }
   },
   actions: {
-    async sendProducts (_, payload) {
+    async sendProducts ({ dispatch }, payload) {
       try {
         await axios.post('/products.json', payload)
       } catch (error) {
-        console.log(error)
+        dispatch('setMessage', {
+          value: error.message,
+          type: 'danger'
+        }, { root: true })
       }
     },
-    async loadProducts ({ commit }) {
-      console.log('sadasd')
+    async loadProducts ({ commit, dispatch }) {
       try {
         const { data } = await axios.get('/products.json')
         commit('setProducts', transform(data))
       } catch (error) {
-        console.log(error)
+        dispatch('setMessage', {
+          value: 'Не удалось загрузить товары !',
+          type: 'danger'
+        }, { root: true })
       }
     },
-    async loadProduct ({ commit }, id) {
+    async loadProduct ({ commit, dispatch }, id) {
       try {
         const { data } = await axios.get(`/products/${id}.json`)
         commit('setProducts', data)
       } catch (error) {
-        console.log(error)
+        dispatch('setMessage', {
+          value: 'Не удалось загрузить товар !',
+          type: 'danger'
+        }, { root: true })
       }
     },
-    async loadProductDefinite ({ commit }, ids) {
+    async loadProductDefinite ({ commit, dispatch }, ids) {
       try {
         const products = []
         for (const id of ids) {
@@ -50,7 +58,10 @@ export default {
         }
         commit('setProductsDefinite', products)
       } catch (error) {
-        console.log(error)
+        dispatch('setMessage', {
+          value: 'Не удалось загрузить товар !',
+          type: 'danger'
+        }, { root: true })
       }
     }
   },

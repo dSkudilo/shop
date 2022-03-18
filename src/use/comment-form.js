@@ -37,10 +37,11 @@ export function useCommentForm () {
     }
   })
 
-  const onSubmit = handleSubmit(async values => {
+  const onSubmit = handleSubmit(async (values, { resetForm }) => {
     try {
       const productId = route.params.id
       await store.dispatch('comment/sendComment', { productId, ...values })
+      resetForm()
     } catch (e) {
     }
   })

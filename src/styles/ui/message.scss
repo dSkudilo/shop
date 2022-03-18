@@ -1,0 +1,46 @@
+.message{
+  position: fixed;
+  bottom: 0px;
+  right: 10px;
+  z-index: 1000;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid transparent;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  border-bottom: none;
+  cursor: pointer;
+  transform: translateY(+100%);
+}
+.message_show{
+  transform: translateY(0);
+  transition: transform .3s ease;
+}
+.message__close{
+  position: absolute;
+  top: 0px;
+  right: 5px;
+  font-size: 20px;
+}
+.alert__text{
+  margin-top: 5px;
+  font-size: .75rem;
+}
+.message_primary {
+  color: $primary-color;
+  border-color: $green;
+  background-color: $primary-bg;
+}
+
+.message_danger {
+  color: $danger-color;
+  border-color: $red;
+  background-color: $danger-bg;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: transform .5s;
+  transform: translateY(+100%);
+}
+.fade-enter, .fade-leave-to {
+  transform: translateY(+100%);
+}

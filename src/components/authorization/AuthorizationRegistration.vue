@@ -4,7 +4,7 @@
     <p class="authorization__text  text-grey">ДЛЯ РЕГИСТРАЦИИ УКАЖИТЕ ПОЖАЛУЙСТА СВОЙ АДРЕС ЭЛЕКТРОННОЙ ПОЧТЫ (E-MAIL)</p>
     <form
       class="authorization__form"
-      @submit.prevent="registration"
+      @submit.prevent="registrationHandler"
     >
       <div :class="['input-control',{'input-control_error':nError}]">
         <label>Имя</label>
@@ -28,7 +28,7 @@
         <small v-if="pError">{{ sError }}</small>
       </div>
 
-      <div :class="['input-control',{'input-control_error':eError}]">
+      <div :class="['input-control',{'input-control_error':(eError || emailMatch)}]">
         <label>Email</label>
         <input
             type="email"
@@ -37,6 +37,7 @@
             autocomplete="new-password"
         >
         <small v-if="eError">{{ eError }}</small>
+        <small v-if="emailMatch">Этот email уже используется!</small>
       </div>
 
       <div :class="['input-control',{'input-control_error':pError}]">
@@ -59,24 +60,22 @@
 import { useLoginForm } from '@/use/login-form'
 import { useField } from 'vee-validate'
 import * as yup from 'yup'
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
+import { ref } from '@vue/reactivity'
 export default {
-  emits: ['registrationHandler'],
-  setup (_, { emit }) {
-    const registration = () => {
-      emit('registrationHandler', {
-        name: name.value,
-        secondName: secondName.value,
-        email: email.value,
-        password: password.value
-      })
-    }
+  setup () {
+    const store = useStore()
+    const router = useRouter()
+    const emailMatch = ref(false)
     const {
       email,
       password,
       eError,
       pError,
       eBlur,
-      pBlur
+      pBlur,
+      handleSubmit
     } = useLoginForm()
     const { value: name, errorMessage: nError, handleBlur: nBlur } = useField(
       'name',
@@ -93,8 +92,22 @@ export default {
         .trim()
         .required('Пожалуйста укажите фамилию')
     )
+    const registrationHandler = handleSubmit(async obj => {
+      try {
+        await store.dispatch('auth/signUp', {
+          name: name.value,
+          secondName: secondName.value,
+          email: email.value,
+          password: password.value
+        })
+        emailMatch.value = false
+        router.push({ name: 'home' })
+      } catch (error) {
+        emailMatch.value = true
+      }
+    })
     return {
-      registration,
+      registrationHandler,
       name,
       secondName,
       nError,
@@ -106,7 +119,8 @@ export default {
       eError,
       pError,
       eBlur,
-      pBlur
+      pBlur,
+      emailMatch
     }
   }
 }

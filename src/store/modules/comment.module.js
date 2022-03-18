@@ -16,9 +16,8 @@ export default {
     }
   },
   actions: {
-    async sendComment ({ commit }, payload) {
+    async sendComment ({ commit, dispatch }, payload) {
       try {
-        console.log('asdasdas')
         const date = Date.now()
         const id = Date.now() + Math.random() * 1000
         const { name, secondName } = JSON.parse(localStorage.getItem('shop-user'))
@@ -31,14 +30,20 @@ export default {
           ...payload
         }
         const { data } = await axios.post('/comments.json', comment)
-        console.log(data)
         comment.id = data.name
         commit('addComment', comment)
+        dispatch('setMessage', {
+          value: 'Комментарий добавлен !',
+          type: 'primary'
+        }, { root: true })
       } catch (error) {
-        console.log(error)
+        dispatch('setMessage', {
+          value: 'Комментарий не удалось отправить !',
+          type: 'danger'
+        }, { root: true })
       }
     },
-    async loadComments ({ commit }, id) {
+    async loadComments ({ commit, dispatch }, id) {
       try {
         const { data } = await axios.get('/comments.json')
         const res = transform(data)
@@ -49,17 +54,20 @@ export default {
           return acc
         }, []))
       } catch (error) {
-        console.log(error)
+        dispatch('setMessage', {
+          value: 'Не удалось загрузить комментарии !',
+          type: 'danger'
+        }, { root: true })
       }
     },
-    async loadComment ({ commit }, id) {
-      try {
-        const { data } = await axios.get(`/comments/${id}.json`)
-        commit('setComments', data)
-      } catch (error) {
-        console.log(error)
-      }
-    },
+    // async loadComment ({ commit }, id) {
+    //   try {
+    //     const { data } = await axios.get(`/comments/${id}.json`)
+    //     commit('setComments', data)
+    //   } catch (error) {
+    //     console.log(error)
+    //   }
+    // },
     async rate (_, payload) {
       try {
         await axios.patch(`/comments/${payload.commentId}/rating.json`, {

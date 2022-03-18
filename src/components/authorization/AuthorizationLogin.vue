@@ -1,12 +1,12 @@
 <template>
   <div class="authorization-registration">
-    <h2 class="authorization__title title-block">Уже зарегистрированы?</h2>
+    <h2 class="authorization__title title-block">Уже зарегистрированы? {{mismatch}}</h2>
     <p class="authorization__text  text-grey">ДЛЯ ВХОДА УКАЖИТЕ ПОЖАЛУЙСТА СВОЙ АДРЕС ЭЛЕКТРОННОЙ ПОЧТЫ И ПАРОЛЬ</p>
     <form
       class="authorization__form"
       @submit.prevent="login"
     >
-      <div :class="['input-control',{'input-control_error':eError || isTooManyAttempts}]">
+      <div :class="['input-control',{'input-control_error':eError || (isTooManyAttempts || mismatch)}]">
         <label>Email</label>
         <input
             type="email"
@@ -16,7 +16,7 @@
         >
         <small v-if="eError">{{ eError }}</small>
       </div>
-      <div :class="['input-control',{'input-control_error':pError || isTooManyAttempts}]">
+      <div :class="['input-control',{'input-control_error':pError || isTooManyAttempts || mismatch}]">
         <label>Пароль</label>
         <input
             type="password"
@@ -26,6 +26,7 @@
         >
         <small v-if="pError">{{ pError }}</small>
         <small v-if="isTooManyAttempts">Слишком много попыток попробуйте позже</small>
+        <small v-if="mismatch">Данные не совпадают !</small>
       </div>
       <button
         :class="['authorization__btn', 'dark-btn',{'disabled':isTooManyAttempts}]"

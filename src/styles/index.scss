@@ -5,6 +5,7 @@
 @import './mixins';
 
 //ui
+@import './ui/promoSlider.scss';
 @import './ui/text.scss';
 @import './ui/modal.scss';
 @import './ui/buttons.scss';
@@ -16,7 +17,7 @@
 @import './ui/loader.scss';
 @import './ui/input';
 @import './ui/rating.scss';
-@import './ui/promoSlider.scss';
+@import './ui/message.scss';
 
 //blocks
 @import './header.scss';

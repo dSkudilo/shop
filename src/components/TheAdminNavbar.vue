@@ -10,7 +10,7 @@
       :class="{nav__list_hidden:!navFlag}"
     >
       <router-link
-        :to="{name:'home'}"
+        :to="{name:'adminProducts'}"
         custom
         v-slot="{href, navigate, isActive}"
       >

@@ -20,13 +20,16 @@ export default {
         console.log(error)
       }
     },
-    async loadPromo ({ commit }, payload) {
+    async loadPromo ({ commit, dispatch }, payload) {
       try {
         const { data } = await axios.get(`/promo/${payload}.json`)
         const ids = Object.values(data).map((element) => element.id)
         commit('setPromo', ids)
       } catch (error) {
-        console.log(error)
+        dispatch('setMessage', {
+          value: 'Не удалось загрузить промо товары  !',
+          type: 'danger'
+        }, { root: true })
       }
     }
   },

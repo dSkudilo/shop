@@ -1,12 +1,13 @@
 import { useField, useForm } from 'vee-validate'
 import * as yup from 'yup'
-import { computed, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 
 export function useLoginForm () {
   const store = useStore()
   const router = useRouter()
+  const mismatch = ref(false)
   const { handleSubmit, isSubmitting, submitCount } = useForm()
 
   const { value: email, errorMessage: eError, handleBlur: eBlur } = useField(
@@ -40,8 +41,10 @@ export function useLoginForm () {
   const login = handleSubmit(async values => {
     try {
       await store.dispatch('auth/login', values)
+      mismatch.value = false
       router.push({ name: 'home' })
     } catch (e) {
+      mismatch.value = true
     }
   })
 
@@ -55,6 +58,7 @@ export function useLoginForm () {
     login,
     isSubmitting,
     isTooManyAttempts,
-    handleSubmit
+    handleSubmit,
+    mismatch
   }
 }

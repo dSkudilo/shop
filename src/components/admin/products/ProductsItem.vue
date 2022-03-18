@@ -12,11 +12,11 @@
       >
     </div>
     <div class="admin-products__list-info">
-      <p class="topic-darck">Id: 38</p>
-      <p class="topic-darck">Название: Some shit</p>
-      <p class="topic-darck">Бренд: Some shit</p>
-      <p class="topic-darck">Категория: Some shit</p>
-      <p class="topic-darck">Кол-во: 67</p>
+      <p class="topic-darck">Id: {{product.id}}</p>
+      <p class="topic-darck">Название: {{product.name}}</p>
+      <p class="topic-darck">Бренд: {{product.brand}}</p>
+      <p class="topic-darck">Категория: {{product.category}}</p>
+      <p class="topic-darck">Кол-во: {{product.number}}</p>
         <ul
           class="admin-products__list-line"
         >
@@ -26,26 +26,26 @@
           </li>
           <li
             class="admin-products__list-point text-grey"
-            v-for="(size,id) in 5"
+            v-for="(size,id) in product.size"
             :key="id"
-          >{{id}}</li>
+          >&nbsp;{{size}}</li>
         </ul>
     </div>
     <div class="admin-products__list-colors">
       <ul
-        v-for="(color,id) in 4"
+        v-for="(color,id) in product.colors"
         :key="id"
         class="admin-products__list-line"
       >
         <li
           class="admin-products__list-point"
-        >red</li>
+        >{{color}}</li>
       </ul>
     </div>
     <div class="admin-products__list-meta">
-      <p class="topic-darck">New: true</p>
-      <p class="topic-darck">Скидка: нету</p>
-      <p class="topic-darck">Распродажа: не участвует</p>
+      <p class="topic-darck">New: {{product.new || 'не участвует'}}</p>
+      <p class="topic-darck">Скидка: {{product.discount || 'не участвует'}}</p>
+      <p class="topic-darck">Распродажа: {{product.sale || 'не участвует'}}</p>
     </div>
     <p
       class="topic-dark"
