@@ -70,6 +70,11 @@
 //admin
 @import './admin/products/products.scss';
 @import './admin/products/empty.scss';
+@import './admin/products/productsList.scss';
+@import './admin/products/productsItem.scss';
+
+@import './admin/product/product.scss';
+@import './admin/product/productImgs.scss';
 
 [v-cloak] {
     display: none;

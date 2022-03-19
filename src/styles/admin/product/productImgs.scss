@@ -1,0 +1,49 @@
+.admin-product__list-imgs{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.admin-product__list-img{
+  position: relative;
+  width: 220px;
+  height: 314px;
+  object-fit: cover;
+  margin: 0 8px 10px;
+  background-color: $img-bg;
+  border: 3px solid $lite;
+  border-radius: 4px;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  cursor: zoom-in;
+  transition: transform .3s ease, z-index .5s ease;
+  z-index: 100;
+}
+.admin-product__list-img_zoom{
+  transform: scale(1.5);
+  transition: transform .3s ease;
+  z-index: 3001;
+  cursor: zoom-out;
+}
+.admin-product__img{
+  display: block;
+  width: inherit;
+}
+
+.admin-product__img-close{
+  position: absolute;
+  top: 2.5px;
+  right: 5px;
+  line-height: 0;
+  background-color: $danger-bg;
+  color: $danger-color;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: color .3s ease;
+  &:hover{
+    color: $red;
+  }
+}

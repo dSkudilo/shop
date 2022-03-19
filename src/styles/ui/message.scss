@@ -9,7 +9,7 @@
   border-top-right-radius: 0.25rem;
   border-bottom: none;
   cursor: pointer;
-  transform: translateY(+100%);
+  transform: translateY(100%);
 }
 .message_show{
   transform: translateY(0);
@@ -26,21 +26,38 @@
   font-size: .75rem;
 }
 .message_primary {
-  color: $primary-color;
-  border-color: $green;
-  background-color: $primary-bg;
+  color: $primary-color !important;
+  border-color: $green !important;
+  background-color: $primary-bg !important;
 }
 
 .message_danger {
-  color: $danger-color;
-  border-color: $red;
-  background-color: $danger-bg;
+  color: $danger-color !important;
+  border-color: $red !important;
+  background-color: $danger-bg !important;
 }
 
 .fade-enter-active, .fade-leave-active {
   transition: transform .5s;
-  transform: translateY(+100%);
+  transform: translateY(100%);
 }
 .fade-enter, .fade-leave-to {
-  transform: translateY(+100%);
+  transform: translateY(100%);
+}
+@media screen and (max-width:549px) {
+  .message{
+    bottom: 100%;
+    left: 5%;
+    right: 5%;
+    min-height: 70px;
+    border-bottom:1px solid transparent;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    transform: translateY(150%);
+  }
+  .fade-enter-active, .fade-leave-active {
+    transform: translateY(-200%);
+  }
 }

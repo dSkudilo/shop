@@ -1,26 +1,28 @@
 <template>
-  <h2 class="topic-dark">Товары</h2>
-  <app-loader
-    v-if="loadFlag"
-  ></app-loader>
-  <div
-    v-else
-    class="admin-products__content">
-    <div class="input-control">
-      <label>Поиск товара по названию или ID</label>
-      <input
-        type="text"
-        v-model="searchValue"
-      >
-      {{searchValue}}
-    </div>
-    <products-not-found
-      v-if="!filterProducts.length"
-    ></products-not-found>
-    <products-list
+  <div class="container">
+    <h2 class="topic-dark">Товары</h2>
+    <app-loader
+      v-if="loadFlag"
+    ></app-loader>
+    <div
       v-else
-      :products="filterProducts"
-    ></products-list>
+      class="admin-products__content">
+      <div class="input-control">
+        <label>Поиск товара по названию или ID</label>
+        <input
+          type="text"
+          v-model="searchValue"
+        >
+        {{searchValue}}
+      </div>
+      <products-not-found
+        v-if="!filterProducts.length"
+      ></products-not-found>
+      <products-list
+        v-else
+        :products="filterProducts"
+      ></products-list>
+    </div>
   </div>
 </template>
 

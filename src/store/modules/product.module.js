@@ -31,6 +31,10 @@ export default {
       try {
         const { data } = await axios.get('/products.json')
         commit('setProducts', transform(data))
+        dispatch('setMessage', {
+          value: 'Не удалось загрузить товары !',
+          type: 'primary'
+        }, { root: true })
       } catch (error) {
         dispatch('setMessage', {
           value: 'Не удалось загрузить товары !',

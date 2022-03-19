@@ -2,8 +2,8 @@
   <the-admin-navbar></the-admin-navbar>
   <div class="with-nav with-aside wrapper">
     <main class="main">
-      <router-view>
-      </router-view>
+      <app-message></app-message>
+      <router-view></router-view>
     </main>
   </div>
 </template>
