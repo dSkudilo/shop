@@ -1,0 +1,10 @@
+.admin-product__promo{
+  display: flex;
+  align-items: center;
+  & div{
+    margin-right: 30px;
+    &:last-child{
+      margin-right: none;
+    }
+  }
+}

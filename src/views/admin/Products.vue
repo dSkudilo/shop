@@ -7,13 +7,20 @@
     <div
       v-else
       class="admin-products__content">
-      <div class="input-control">
-        <label>Поиск товара по названию или ID</label>
-        <input
-          type="text"
-          v-model="searchValue"
+      <div class="admin-products__contr">
+        <app-input v-model="searchValue">
+          Поиск товара по названию или ID
+        </app-input>
+        <router-link
+          :to="{name:'adminProductCreate'}"
+          v-slot="{href, navigate}"
         >
-        {{searchValue}}
+          <a
+            :href="href"
+            @click="navigate"
+            class="dark-btn"
+          >Добавить товар</a>
+        </router-link>
       </div>
       <products-not-found
         v-if="!filterProducts.length"

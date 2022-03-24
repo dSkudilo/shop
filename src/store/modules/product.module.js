@@ -14,12 +14,20 @@ export default {
     },
     setProductsDefinite (state, products) {
       state.productInCart = products
+    },
+    clearProducts (state) {
+      state.products = []
     }
   },
   actions: {
-    async sendProducts ({ dispatch }, payload) {
+    async sendProducts ({ dispatch, commit }, payload) {
       try {
         await axios.post('/products.json', payload)
+        commit('clearProducts')
+        dispatch('setMessage', {
+          value: 'Товар успешно добавлен !',
+          type: 'primary'
+        }, { root: true })
       } catch (error) {
         dispatch('setMessage', {
           value: error.message,
@@ -32,7 +40,7 @@ export default {
         const { data } = await axios.get('/products.json')
         commit('setProducts', transform(data))
         dispatch('setMessage', {
-          value: 'Не удалось загрузить товары !',
+          value: 'Тест прием это тест !',
           type: 'primary'
         }, { root: true })
       } catch (error) {
@@ -49,6 +57,22 @@ export default {
       } catch (error) {
         dispatch('setMessage', {
           value: 'Не удалось загрузить товар !',
+          type: 'danger'
+        }, { root: true })
+      }
+    },
+    async patchProduct ({ commit, dispatch }, val) {
+      try {
+        // throw Error
+        await axios.patch(`/products/${val.id}.json`, val.product)
+        dispatch('setMessage', {
+          value: 'Товар успешно изменен !',
+          type: 'primary'
+        }, { root: true })
+      } catch (error) {
+        dispatch('loadProduct', val.id)
+        dispatch('setMessage', {
+          value: 'Не удалось загрузить изменить товар !',
           type: 'danger'
         }, { root: true })
       }

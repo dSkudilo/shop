@@ -56,6 +56,11 @@ const routes = [
         path: 'product/:id',
         name: 'adminProduct',
         component: () => import('../views/admin/Product.vue')
+      },
+      {
+        path: 'product/create',
+        name: 'adminProductCreate',
+        component: () => import('../views/admin/ProductCreate.vue')
       }
     ]
   }

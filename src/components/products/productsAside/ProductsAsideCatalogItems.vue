@@ -5,30 +5,31 @@
     </li>
     <li
       class="products-aside__item"
-      v-for="brand in brands"
-      :key="brand.id"
+      v-for="d in data"
+      :key="d.id"
     >
       <app-checkbox
-        :data="brand"
-        @changeValueHandler="changeFilter"
-      ></app-checkbox>
+        :data="d"
+        @changeValueHandler="changeFilterHandler"
+      >{{d.title}}</app-checkbox>
     </li>
   </ul>
 </template>
 
 <script>
 export default {
-  props: ['brands'],
+  props: ['data', 'nameType'],
   emits: ['changeFilterHandler'],
-  setup (_, { emit }) {
-    const changeFilter = (val) => {
+  setup (props, { emit }) {
+    const changeFilterHandler = (val, data) => {
       emit('changeFilterHandler', {
-        cat: 'brand',
-        ...val
+        cat: props.nameType,
+        type: data.type,
+        value: val
       })
     }
     return {
-      changeFilter
+      changeFilterHandler
     }
   }
 }

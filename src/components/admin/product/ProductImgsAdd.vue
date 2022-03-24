@@ -7,11 +7,11 @@
         type="text"
         v-model="newImg"
       >
-      {{newImg}}
     </div>
     <button
       class="dark-btn"
-      @click="addImg(newImg)"
+      @click="addImgHandler(newImg)"
+      type="button"
     >Добавить</button>
   </div>
 </template>
@@ -22,12 +22,12 @@ export default {
   emits: ['addImgHandler'],
   setup (_, { emit }) {
     const newImg = ref('')
-    const addImg = () => {
+    const addImgHandler = () => {
       emit('addImgHandler', newImg.value)
       newImg.value = ''
     }
     return {
-      addImg,
+      addImgHandler,
       newImg
     }
   }

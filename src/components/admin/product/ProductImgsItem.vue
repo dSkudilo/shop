@@ -15,7 +15,7 @@
     >
     <span
       class="admin-product__img-close"
-      @click.stop="deleteImg(img)"
+      @click.stop="deleteImgHandler(img)"
     >&times;</span>
   </li>
   <teleport
@@ -45,7 +45,7 @@ export default {
       }
       currentImgSelected.value = id
     }
-    const deleteImg = (img) => {
+    const deleteImgHandler = (img) => {
       emit('deleteImgHandler', img)
       zoomOutHandler()
     }
@@ -67,7 +67,7 @@ export default {
       currentImgSelected,
       selectImgHandler,
       zoomOutHandler,
-      deleteImg
+      deleteImgHandler
     }
   }
 }

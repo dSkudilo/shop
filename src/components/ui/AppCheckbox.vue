@@ -5,31 +5,34 @@
         type="checkbox"
         class="checkbox__real"
         v-model="checkboxValue"
-        @change="changeValue"
+        @change="$emit('changeValueHandler',checkboxValue,data)"
       >
       <span class="checkbox__fake"></span>
-        {{data.title}}
+        <slot></slot>
     </label>
   </div>
 </template>
-
 <script>
 import { ref } from '@vue/reactivity'
+import { watch } from '@vue/runtime-core'
 export default {
   name: 'app-checkbox',
-  props: ['data'],
+  props: {
+    data: {},
+    initVal: {
+      type: Boolean,
+      default: false
+    },
+    modelValue: {}
+  },
   emits: ['changeValueHandler'],
-  setup (props, { emit }) {
-    const checkboxValue = ref('')
-    const changeValue = () => {
-      emit('changeValueHandler', {
-        type: props.data.type,
-        value: checkboxValue.value
-      })
-    }
+  setup (props) {
+    const checkboxValue = ref(props.initVal)
+    watch(() => props.initVal, () => {
+      checkboxValue.value = props.initVal
+    })
     return {
-      checkboxValue,
-      changeValue
+      checkboxValue
     }
   }
 }

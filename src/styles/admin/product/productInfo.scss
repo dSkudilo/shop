@@ -1,0 +1,11 @@
+.admin-product__info{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  & div{
+    margin-right: 15px;
+    &:last-child{
+      margin-right: none;
+    }
+  }
+}

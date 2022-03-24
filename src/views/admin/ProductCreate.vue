@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <h1>Create product</h1>
     <app-loader
       v-if="loadFlag"
     ></app-loader>
@@ -17,15 +18,12 @@
 </template>
 
 <script>
-import { useRoute } from 'vue-router'
 import ProductForm from '@/components/admin/product/ProductForm.vue'
 import { useProductForm } from '@/use/product-form.js'
 export default {
   setup () {
-    const route = useRoute()
-    const productId = route.params.id
     return {
-      ...useProductForm(productId)
+      ...useProductForm()
     }
   },
   components: {

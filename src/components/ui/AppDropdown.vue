@@ -11,6 +11,7 @@
       class="dropdown__select"
       :class="{'dropdown__select_active':flag}"
       @click="flag = !flag"
+      type="button"
     >{{content}}</button>
     <ul class="dropdown__list" v-if="flag">
       <li
@@ -26,18 +27,28 @@
 </template>
 <script>
 import { ref } from '@vue/reactivity'
+import { watch } from '@vue/runtime-core'
 export default {
   name: 'app-dropdown',
-  props: ['data'],
+  props: {
+    data: Array,
+    initVal: {
+      type: String,
+      required: false
+    }
+  },
   emits: ['selectHandler'],
-  setup (_, { emit }) {
-    const content = ref('Выберите размер')
+  setup (props, { emit }) {
+    const content = ref(props.initVal ? props.initVal : 'Выберите размер')
     const flag = ref(false)
     const selectHandler = (item) => {
       content.value = item
       flag.value = false
       emit('selectHandler', item)
     }
+    watch(() => props.initVal, () => {
+      content.value = props.initVal
+    })
     return {
       flag,
       content,

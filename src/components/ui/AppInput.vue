@@ -3,16 +3,15 @@
     :class="['input-control',{'input-control_error':error}]"
   >
     <label
-      v-if="label"
     >
-      {{label}}
+      <slot></slot>
     </label>
     <input
       :type="type"
       :placeholder="placeholder"
-      v-model="inputVal"
       @blur="blur"
-      @input="input"
+      :value="modelValue"
+      @input="$emit('update:modelValue', $event.target.value)"
       :autocomplete="autocomplete"
     >
     <small v-if="error">{{error}}</small>
@@ -24,6 +23,7 @@ import * as yup from 'yup'
 export default {
   name: 'app-input',
   props: {
+    modelValue: {},
     type: {
       type: String,
       default: 'text'
@@ -31,9 +31,6 @@ export default {
     placeholder: {
       type: String,
       default: 'Введите текст'
-    },
-    label: {
-      type: String
     },
     autocomplete: {
       type: String,
@@ -52,7 +49,7 @@ export default {
       default: 0
     }
   },
-  emits: ['input'],
+  emits: ['input', 'update:modelValue'],
   setup (props, { emit }) {
     const input = () => {
       emit('input', inputVal.value)
