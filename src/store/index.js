@@ -7,6 +7,7 @@ import product from './modules/product.module'
 import comment from './modules/comment.module'
 import auth from './modules/auth.module'
 import cart from './modules/cart.module'
+import color from './modules/color.module'
 
 export default createStore({
   state () {
@@ -36,6 +37,7 @@ export default createStore({
     product,
     comment,
     auth,
-    cart
+    cart,
+    color
   }
 })

@@ -7,10 +7,11 @@
       v-else
       :product="product"
       :categories="categories"
+      :brands="brands"
+      :sizes="sizes"
+      :allColors="colors"
       @deleteImgHandler="deleteImgHandler"
       @addImgHandler="addImgHandler"
-      @changeInfoHandler="changeInfoHandler"
-      @changePromoHandler="changePromoHandler"
       @actionProductHadler="actionProductHadler"
     ></product-form>
   </div>
@@ -23,7 +24,7 @@ import { useProductForm } from '@/use/product-form.js'
 export default {
   setup () {
     const route = useRoute()
-    const productId = route.params.id
+    const productId = route.params.id || null
     return {
       ...useProductForm(productId)
     }

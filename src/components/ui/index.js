@@ -7,6 +7,7 @@ import AppPromoSlider from '@/components/ui/AppPromoSlider.vue'
 import AppRating from '@/components/ui/AppRating.vue'
 import AppDropdown from '@/components/ui/AppDropdown.vue'
 import AppMessage from '@/components/ui/AppMessage.vue'
+import AppSelect from '@/components/ui/AppSelect.vue'
 export default [
   AppLoader,
   AppCheckbox,
@@ -16,5 +17,6 @@ export default [
   AppPromoSlider,
   AppRating,
   AppDropdown,
-  AppMessage
+  AppMessage,
+  AppSelect
 ]

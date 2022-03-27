@@ -122,7 +122,7 @@ export default {
       //  window.scrollTo({ top: 0 })
     })
     return {
-      product: computed(() => store.getters['product/products']),
+      product: computed(() => store.getters['product/product']),
       comments: computed(() => store.getters['comment/comments']),
       loadFlag,
       selectSizeHandler,

@@ -8,11 +8,14 @@
       <slot></slot>
     </span>
     <button
-      class="dropdown__select"
-      :class="{'dropdown__select_active':flag}"
+      :class="[
+        'dropdown__select',
+        {'dropdown__select_active':flag},
+        {'dropdown__select_error':error && !flag}
+      ]"
       @click="flag = !flag"
       type="button"
-    >{{content}}</button>
+    >{{content || 'Выберите значение !'}}</button>
     <ul class="dropdown__list" v-if="flag">
       <li
         class="dropdown__item"
@@ -23,6 +26,10 @@
         {{item}}
       </li>
     </ul>
+    <small
+      v-show="error"
+      class="dropdown__error-text"
+    >{{error}}</small>
   </div>
 </template>
 <script>
@@ -35,11 +42,12 @@ export default {
     initVal: {
       type: String,
       required: false
-    }
+    },
+    error: String
   },
   emits: ['selectHandler'],
   setup (props, { emit }) {
-    const content = ref(props.initVal ? props.initVal : 'Выберите размер')
+    const content = ref(props.initVal)
     const flag = ref(false)
     const selectHandler = (item) => {
       content.value = item

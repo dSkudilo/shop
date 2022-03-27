@@ -4,7 +4,7 @@ $durAnim:.2s;
     position: relative;
     width: 100%;
     @include text(14px,$dropdown,1.42,normal) ;
-    margin: 20px 0;
+    margin: 20px 0 30px;
     user-select: none;
 }
 .dropdown__select{
@@ -57,6 +57,23 @@ $durAnim:.2s;
         background-color: $border-dark;
     }
     z-index: 2001;
+}
+.dropdown__select_error{
+    border-color: $red;
+    // color: $red;
+    background-color: rgba($color:$red, $alpha: .05);
+    &::after{
+        background-color: $red;
+    }
+    &::before{
+        border-color: $white;
+    }
+}
+.dropdown__error-text{
+    color: $red;
+    position: absolute;
+    bottom: 0;
+    transform: translateY(calc(100% + 5px));
 }
 .dropdown__list{
     position: absolute;

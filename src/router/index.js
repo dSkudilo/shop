@@ -60,7 +60,7 @@ const routes = [
       {
         path: 'product/create',
         name: 'adminProductCreate',
-        component: () => import('../views/admin/ProductCreate.vue')
+        component: () => import('../views/admin/Product.vue')
       }
     ]
   }

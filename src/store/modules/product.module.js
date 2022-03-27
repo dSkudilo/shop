@@ -5,6 +5,7 @@ export default {
   state () {
     return {
       products: [],
+      product: {},
       productInCart: []
     }
   },
@@ -12,18 +13,24 @@ export default {
     setProducts (state, products) {
       state.products = products
     },
+    setProduct (state, product) {
+      state.product = product
+    },
     setProductsDefinite (state, products) {
       state.productInCart = products
     },
     clearProducts (state) {
       state.products = []
+    },
+    clearProduct (state) {
+      state.product = {}
     }
   },
   actions: {
-    async sendProducts ({ dispatch, commit }, payload) {
+    async sendProduct ({ dispatch, commit }, payload) {
       try {
         await axios.post('/products.json', payload)
-        commit('clearProducts')
+        commit('clearProduct')
         dispatch('setMessage', {
           value: 'Товар успешно добавлен !',
           type: 'primary'
@@ -53,7 +60,7 @@ export default {
     async loadProduct ({ commit, dispatch }, id) {
       try {
         const { data } = await axios.get(`/products/${id}.json`)
-        commit('setProducts', data)
+        commit('setProduct', data)
       } catch (error) {
         dispatch('setMessage', {
           value: 'Не удалось загрузить товар !',
@@ -63,7 +70,6 @@ export default {
     },
     async patchProduct ({ commit, dispatch }, val) {
       try {
-        // throw Error
         await axios.patch(`/products/${val.id}.json`, val.product)
         dispatch('setMessage', {
           value: 'Товар успешно изменен !',
@@ -96,6 +102,9 @@ export default {
   getters: {
     products (state) {
       return state.products
+    },
+    product (state) {
+      return state.product
     },
     productDefinite (state) {
       return state.productInCart

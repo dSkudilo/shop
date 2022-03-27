@@ -14,12 +14,10 @@
       @input="$emit('update:modelValue', $event.target.value)"
       :autocomplete="autocomplete"
     >
-    <small v-if="error">{{error}}</small>
+    <small v-show="error">{{error}}</small>
   </div>
 </template>
 <script>
-import { useField } from 'vee-validate'
-import * as yup from 'yup'
 export default {
   name: 'app-input',
   props: {
@@ -46,28 +44,14 @@ export default {
     },
     minLength: {
       type: Number,
-      default: 0
-    }
+      default: 100
+    },
+    error: {
+      type: String
+    },
+    blur: {}
   },
-  emits: ['input', 'update:modelValue'],
-  setup (props, { emit }) {
-    const input = () => {
-      emit('input', inputVal.value)
-    }
-    const { value: inputVal, errorMessage: error, handleBlur: blur } = useField(
-      'inputVal',
-      yup
-        .string()
-        .trim()
-        .required(props.requiredText)
-        .min(props.minLength, props.minText + props.minLength + ' символов')
-    )
-    return {
-      inputVal,
-      input,
-      error,
-      blur
-    }
-  }
+  emits: ['input', 'update:modelValue']
+
 }
 </script>

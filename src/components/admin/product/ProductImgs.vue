@@ -16,6 +16,7 @@
   </ul>
   <product-imgs-add
     @addImgHandler="addImgHandler"
+    :error="error"
   ></product-imgs-add>
 </template>
 
@@ -23,7 +24,7 @@
 import ProductsImgsItem from '@/components/admin/product/ProductImgsItem.vue'
 import ProductImgsAdd from '@/components/admin/product/ProductImgsAdd.vue'
 export default {
-  props: ['imgs'],
+  props: ['imgs', 'error'],
   emits: ['deleteImgHandler', 'addImgHandler'],
   setup (_, { emit }) {
     const addImgHandler = (val) => emit('addImgHandler', val)

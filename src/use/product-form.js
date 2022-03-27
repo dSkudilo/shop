@@ -1,21 +1,19 @@
 import { computed, onMounted, ref } from 'vue'
 import { useStore } from 'vuex'
-import { onBeforeRouteLeave } from 'vue-router'
 export function useProductForm (productId) {
   const store = useStore()
   const loadFlag = ref(true)
-  const product = productId
-    ? computed(() => store.getters['product/products'])
-    : ref({})
-  const initProduct = ref('')
+  const product = computed(() => store.getters['product/product'])
   onMounted(async () => {
     if (productId) {
       await store.dispatch('product/loadProduct', productId)
     } else {
-      store.commit('product/clearProducts')
+      store.commit('product/clearProduct')
     }
     await store.dispatch('category/loadCategories')
-    initProduct.value = JSON.stringify(product.value)
+    await store.dispatch('brand/loadBrands')
+    await store.dispatch('size/loadSizes')
+    await store.dispatch('color/loadColors')
     loadFlag.value = false
   })
   const addImgHandler = (img) => {
@@ -28,51 +26,47 @@ export function useProductForm (productId) {
   const deleteImgHandler = (img) => {
     const id = product.value.imgs.findIndex(item => item === img)
     product.value.imgs.splice(id, 1)
+    if (product.value.imgs.length <= 0) {
+      delete product.value.imgs
+    }
   }
-  const changePromoHandler = (obj) => {
-    product.value[obj.cat] = obj.val
-  }
-  const changeInfoHandler = (val) => {
+  const getProductValueHandler = (val) => {
     Object.keys(val).forEach(key => {
-      if (product.value[key] !== val[key]) {
-        if (key === 'colors' || key === 'size') {
-          const obj = val[key].split(',').reduce((acc, item, id) => {
-            acc[id] = item
-            return acc
-          }, {})
-          product.value[key] = obj
-          return
-        }
-        product.value[key] = val[key]
+      // if (product.value[key] !== val[key]) {
+      if (key === 'colors' || key === 'size') {
+        const obj = val[key].reduce((acc, item, id) => {
+          acc[id] = item
+          return acc
+        }, {})
+        product.value[key] = obj
+        console.log(obj)
+        return
       }
+      product.value[key] = val[key]
+      // }
     })
   }
-  const actionProductHadler = async () => {
+  const actionProductHadler = async (val) => {
+    getProductValueHandler(val)
     if (productId) {
       await store.dispatch('product/patchProduct', {
         id: productId, product: product.value
       })
+      await store.dispatch('product/loadProduct', productId)
     } else {
-      await store.dispatch('product/sendProducts', product.value)
+      await store.dispatch('product/sendProduct', product.value)
     }
-    initProduct.value = JSON.stringify(product.value)
   }
-  onBeforeRouteLeave(() => {
-    if (initProduct.value !== JSON.stringify(product.value)) {
-      const answer = window.confirm(
-        'Вы действительно хотите перейти? У вас есть несохраненные изменения !'
-      )
-      if (!answer) return false
-    }
-  })
   return {
     product,
     loadFlag,
     categories: computed(() => store.getters['category/categories']),
+    brands: computed(() => store.getters['brand/brands']),
+    sizes: computed(() => store.getters['size/sizes']),
+    colors: computed(() => store.getters['color/colors']),
     addImgHandler,
     deleteImgHandler,
-    changePromoHandler,
-    changeInfoHandler,
+    getProductValueHandler,
     actionProductHadler
   }
 }
